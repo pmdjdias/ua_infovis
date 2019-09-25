@@ -1,0 +1,67 @@
+<!-
+
+Google Charts
+
+World cup example
+
+Autor: P. Dias
+
+Data: July 2018
+
+->
+<html>
+<head>
+    <!--Load the AJAX API-->
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    
+    <!--Load jquery and jquery.csv to load csv file-->
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://prithwis.x10.bz/charts/jquery.csv-0.71.js"></script>     
+
+    <script type="text/javascript">
+
+    // Load the Visualization API and the corechart package.
+    google.charts.load('current', {'packages':['corechart']});
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+    
+    // Callback that creates and populates a data table, 
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
+        
+        // grab the CSV
+        $.get("world_cup.csv", function(csvString) {
+            // transform the CSV string into a 2-dimensional array
+            var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+
+            // this new DataTable object holds all the data
+            var data = new google.visualization.arrayToDataTable(arrayData);
+
+            // this view can select a subset of the data at a time
+            var view = new google.visualization.DataView(data);
+            view.setColumns([8,0]);
+
+            // set chart options
+            var options = {
+                title: "World cup attendance",
+                hAxis: {title: data.getColumnLabel(8), minValue: data.getColumnRange(8).min, maxValue: data.getColumnRange(8).max},
+                vAxis: {title: data.getColumnLabel(0), minValue: data.getColumnRange(0).min, maxValue: data.getColumnRange(0).max},
+                legend: 'none'
+            };
+
+            // create the chart object and draw it
+            var chart = new google.visualization.ScatterChart(document.getElementById('id_chart'));
+            chart.draw(view, options);
+        });
+    }
+    </script>
+
+</head>
+<body style="font-family: Arial;border: 0 none;">
+    <div id="id_chart" style="width: 600px; height: 400px;"></div>
+</body>
+</html>

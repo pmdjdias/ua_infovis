@@ -1,0 +1,100 @@
+<!--
+
+Google Chart 
+
+Pie Chart Example
+
+Autor: P. Dias
+
+Data: July 2018
+
+-->
+
+<html>
+
+<title>
+
+Google Chart Tools - Geo Chart Example
+
+</title>
+
+<head>
+
+<!--Load the AJAX API-->
+<meta charset="utf-8"/>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+
+// Load the Visualization API and the geochart package.
+
+google.charts.load('current', {'packages':['geochart']});
+
+// Set a callback to run when the Google Visualization API is loaded.
+
+google.charts.setOnLoadCallback( drawChart );
+
+// Callback that creates and populates a data table, 
+
+// instantiates the geo chart, passes in the data and
+
+// draws it.
+
+function drawChart( ) 
+{
+
+	// Create the data table using arrayToDataTable - NEW !
+
+	// Censos 2011 - Munic�pios com maior Densidade Populacional - Habitantes por Km^2
+
+	var data = new google.visualization.arrayToDataTable([
+		['Município', 'Densidade Populacional'],
+		['Amadora', 7363],
+		['Lisboa', 6446],
+		['Porto', 5736],
+		['Odivelas', 5484],
+		['Oeiras', 3751],
+		['Matosinhos', 2811],
+		['São João da Madeira', 2733],
+		['Almada', 2478],
+		['Barreiro', 2164],
+		['Cascais', 2119],
+		['Vila Nova de Gaia', 1794],
+		['Seixal', 1657],
+		['Maia', 1630],
+		['Espinho', 1509],
+		['Entroncamento', 1471]
+     ]);
+
+	// Set chart configuration options
+
+	var options = {	
+			region : 'PT',
+			resolution : 'provinces',
+			displayMode : 'markers',
+			colorAxis : { colors: ['green', 'blue'] }
+	};
+
+	// Instantiate the chart.
+	var chart = new google.visualization.GeoChart( document.getElementById('chart_div') );
+
+	// Draw the chart, passing in some configuration options.
+	chart.draw(data, options);
+
+} // drawChart( ) 
+
+</script>
+
+</head>
+
+<body>
+
+<!--Div that will hold the pie chart-->
+
+<div id="chart_div" style="width:600; height:600"></div>
+
+<p>2011 - Os 15 municípios com maior densidade populacional (Habitantes por km^2)</p>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!--
+
+Google Chart
+
+Pie Chart Example
+
+Autor: P. Dias
+
+Data: July 2018
+
+-->
+
+<html>
+
+<head>
+
+<!-- Load the AJAX API-->
+<meta charset="utf-8"/>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+// Load the Visualization API and the corechart package.
+google.charts.load('current', {'packages':['corechart']});
+
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback( drawChart );
+
+// Callback that creates and populates a data table,
+// instantiates the pie chart, passes in the data and
+// draws it.
+
+function drawChart( )
+{
+
+	// Create the data table.
+	var data = new google.visualization.DataTable( );
+
+
+	// First column
+	data.addColumn('string', 'Curricular year');
+
+	// Second column
+	data.addColumn('number', 'Number of Students');
+
+	data.addRows([
+				['1st year', 79],
+				['2nd year', 112],
+				['3rd year', 68],
+				['4th year', 62],
+				['5th year', 83]
+
+	]);
+
+	// Set chart configuration options
+	var options = {
+			title : 'UA - MIECT - Students by curricular year',
+			width : 400,
+			height : 300
+	};
+
+	// Instantiate the pie chart.
+	var chart = new google.visualization.PieChart( document.getElementById('chart_div') );
+	debugger;
+	// Draw the chart, passing in some configuration options.
+	chart.draw(data, options);
+
+} // drawChart( )
+
+</script>
+</head>
+
+<body>
+<!--Div that will hold the pie chart-->
+<div id="chart_div" style="width:400; height:300"></div>
+</body>
+
+</html>
