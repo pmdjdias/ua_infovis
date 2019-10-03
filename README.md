@@ -5,6 +5,7 @@ Welcome to Information Visualization Course repository! Here you will find the s
 ## Lab Classes and sources
 In [this page](./webtech.md) there are some pointers and reminders for web development and ways to serve files.  
 * [Google Charts](./GoogleCharts/)
+* [SVG](./SVG/)
 * D3
 * Three.js
 
