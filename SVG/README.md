@@ -15,12 +15,21 @@
 Save the excerpt below in a `html` file
 and load it.
 
-``` xml
-<title> Exercise 1.1 </title>
-<desc> SVG First Example </desc>
+``` html
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
 <svg width="300" height="200">
-<rect x="80" y="50" width="100" height="150"/>
+    <title> Exercise 1.1 </title>
+    <desc> SVG First Example </desc>
+    <rect x="80" y="50" width="100" height="150"/>
 </svg>
+
+</body>
+<html>
 ```
 
 Add the attributes `stroke="black"` and `fill="lightgrey"` and see the changes. Try to modify the example to obtain the results of the image below, manipulating _fill_ and _stroke_ options (fill, fill-opacity, fill-rule, stroke, stroke-width, stroke-opacity, strokedasharray). More [here](http://www.w3.org/TR/SVG/painting.html).

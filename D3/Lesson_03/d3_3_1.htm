@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Scatterplot</title>
+    <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
+    <!-- <script type="text/javascript" src="../d3/d3.min.js"></script> -->
+</head>
+
+
+<body>
+    <div class="div_d3"> </div>
+
+    <script type="text/javascript">
+        let w = 500;
+        let h = 400;
+
+        /*
+        let dataset = [
+            [5, 20],
+            [480, 90],
+            [250, 50],
+            [100, 33],
+            [330, 95],
+            [410, 12],
+            [475, 44],
+            [25, 67],
+            [85, 21],
+            [220, 88]
+        ]; // */
+
+        let dataset = [];
+		for (let i = 0; i < 25; i++) {
+		  dataset[i] = [];
+		  dataset[i][0] = Math.floor((Math.random() * w));
+		  dataset[i][1] = Math.floor((Math.random() * h));
+		  dataset[i][2] = Math.floor((Math.random() * 10 + 10));
+		}
+
+
+        // draw(data)
+        let svg = d3.select('.div_d3')
+            .append('svg')
+                .attr('width', w)
+                .attr('height', h)
+                //.style('background', 'teal');
+
+        let circle = svg.selectAll("circle")
+            .data(dataset)
+            .enter()
+            .append("circle")
+                .attr("cx", function (d) {
+                    return d[0]
+                })
+                .attr("cy", function (d) {
+                    return d[1]
+                })
+                .attr("r",function (d) {
+                    return d[2]
+                });
+
+         svg.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+                .text(function (d) {
+                    return "("+d[0]+","+d[1]+")";
+                })
+                .attr("x", function (d, i) {
+                    return d[0]
+                })
+                .attr("y", function (d) {
+                    return d[1]
+                })
+                .attr("fill","red")
+                .attr("text-anchor","left");
+    </script>
+
+</body>
+
+</html>

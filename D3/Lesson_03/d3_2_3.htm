@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Primeiro exemplo d3</title>
+
+    <style type="text/css">
+        div.bar {
+            display: inline-block;
+            width: 20px;
+            height: 75px;
+            margin-right: 2px;
+            background-color: teal;
+        }
+    </style>
+
+    <script type="text/javascript" src="http://d3js.org/d3.v4.js"></script>
+    <!--script type="text/javascript" src="../d3/d3.min.js"></script-->
+
+</head>
+
+
+<body>
+    
+    <script type="text/javascript">
+        var w = 500;
+        var h = 50;
+
+        var dataset = [5, 10, 15, 20, 25];
+       
+        var svg = d3.select('body')
+			 .append('svg')
+			 .attr('width', w)
+			 .attr('height', h)
+			 .style('background', 'teal');
+        
+        
+        var circles = svg.selectAll("circle")
+            .data(dataset)
+            .enter()
+            .append("circle");
+
+        /*circles.attr("cx", "10")
+            .attr("cy", "10")
+            .attr("r", "10");*/
+
+        circles.attr("cx", function (d, i) {
+            //debugger;
+            return (i * 50) + 25;
+        });
+        circles.attr("cy", h/2);
+        circles.attr("r",function (d) {
+            return d;
+        });
+ 
+        
+
+
+
+    </script>
+    
+</body>
+
+</html>
