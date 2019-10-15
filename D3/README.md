@@ -3,10 +3,10 @@
 
 ## Lessons
 * [Lesson 1 - D3 Introduction](./Lesson_01/)
-* [Lesson 2](./Lesson_02/)
+* [Lesson 2 - Bar Chart and Interaction](./Lesson_02/)
+* [Lesson 3 - Scatterplot and Scales & Axes](./Lesson_03/)
 <!--
-* [Lesson 3](./Lesson_03/)
-* [Lesson 4](./Lesson_04/)
+* [Lesson 4 - Map Visualization and Filters](./Lesson_04/)
 * [Lesson 5](./Lesson_05/)
 -->
 

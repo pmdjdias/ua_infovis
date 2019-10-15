@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <style>
+    </style>
+
+    <script type="text/javascript">
+        function draw(geo_data) {
+            // código de visualização
+            var margin = 75,
+                width = 1400 - margin,
+                height = 600 - margin;
+
+            var svg = d3.select("body")
+                .append("svg")
+                .attr("width", width + margin)
+                .attr("height", height + margin)
+                .append('g')
+                .attr('class', 'map');
+
+            // v4   
+            var projection = d3.geoMercator()
+                .scale(150)
+                .translate([width/2,height/2]);
+
+            var path = d3.geoPath().projection(projection);
+
+            svg.append("path")
+                .attr("d", path(geo_data))
+                .attr("fill","rgb(9,165,170")
+                .attr("stroke","black")
+                .attr("stroke-width",0.5);
+        };
+    </script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // Leitura do ficheiro GeoJSON
+        d3.json("world_countries.json", draw);
+    </script>
+</body>
+
+</html>

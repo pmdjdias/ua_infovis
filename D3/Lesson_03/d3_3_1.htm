@@ -40,11 +40,10 @@
 
 
         // draw(data)
-        let svg = d3.select('.div_d3')
-            .append('svg')
-                .attr('width', w)
-                .attr('height', h)
-                //.style('background', 'teal');
+        let svg = d3.select('.div_d3').append('svg')
+            .attr('width', w)
+            .attr('height', h)
+            //.style('background', 'teal');
 
         let circle = svg.selectAll("circle")
             .data(dataset)

@@ -1,5 +1,5 @@
 
-# Lesson 3 - Scatterplot, load files, scales and axes
+# Lesson 3 - Scatterplot and Scales & Axes
 
 ## Outline
 * Scatterplot
@@ -11,7 +11,7 @@
 ## Scatterplot
 For this chart the data is bidimensional, allowing specification of `x,y` on the plane. Add this data to the `d3_2_3.htm` file:
 ``` javascript
-var dataset = [
+let dataset = [
     [ 5, 20 ],
     [ 480, 90 ],
     [ 250, 50 ],
@@ -33,7 +33,6 @@ dataset[i][0] = Math.floor((Math.random() * 500));
 ### Optional
 Add labels to each point, to get an image like this:
 ![Points and labels](./points_labels.jpg)
-
 
 ## Load file
 Most data used for visualization is stored in files. Embbed data woth the script is uncommon on real world, and now we will see how D3 handles this. Note that this only works on a web server. Create a new file with the following content:
@@ -131,4 +130,28 @@ At the end, add a title for the scatterplot and for each axis. You can use the f
 Use the `d3.scaleOrdinal` to directly map the course years to a scale ("1º Ano", ... "5º Ano").
 
 ## Line
-For the SVG primitives, it is fairly 
+For the SVG primitives, it is fairly simple to generate a line using path. To create lines using D3 with only the selections we have seen so far is possible, but the exchange between the `M`, `L` or `Q` commands along the points can be troublesome. D3 has a solution for this problem, it provides a Line generator, that builds a `d` attribute ready for usage by a `path` tag. Using our example, it can be generated and used with this code:
+``` javascript
+let line = d3.line()
+    .x(function (d,i) { return x_scale(i) })
+    .y(function (d) { return y_scale(d.Numero_de_Alunos) });
+d3.select("svg")
+    .append("path")
+    .attr("d", line(data))
+    .attr("class", "linha_alunos");
+```
+See the results. You can style the line using CSS:
+``` css
+path {
+    fill:none;
+    stroke:black;
+    stroke-width:2px;
+} 
+path.linha_alunos{
+    stroke:DeepPink;
+}
+```
+
+### Optional
+Modify the example to read the `DETI_Dados_Candidatos` file and generate a chart with three lines showing the evolution of the 3 DETI courses in the last years.
+

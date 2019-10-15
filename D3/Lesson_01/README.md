@@ -134,7 +134,7 @@ d3.select("body").selectAll("div")
     .data(dataset)
     .enter()
     .append("div")
-    .attr("class", "bar");
+        .attr("class", "bar");
 ```
 
 Analyze the result. To bind the height of the divs with the data a adjustment is necessary:

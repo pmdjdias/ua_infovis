@@ -21,7 +21,7 @@ let svg = d3.select('.div_d3').append('svg')
 Modify the attributes `width` and `height` to 600 and 300, as the `background-color` to `#ffa07a`. Try changing these values and see how the SVG behaves.
 
 ### Adding Circles
-Add a circle to the SVG node (`svg.append('circle')`) in the possition 300,150, with radius 50 and red color. More about circles [here](https://www.w3schools.com/graphics/svg_circle.asp)
+Add a circle to the SVG node (`svg.append('circle')`) in the possition 300,150 with radius 50 and red color. More about circles [here](https://www.w3schools.com/graphics/svg_circle.asp)
 
 Now modify the example using the following code, and change the color for `teal`:
 ``` javascript
@@ -38,9 +38,9 @@ Add the following code and analyze what happens:
 let dataset = [5, 10, 15, 20, 25];
 
 let circles = svg.selectAll("circle")
-.data(dataset)
-  	.enter()
-  	.append("circle");
+    .data(dataset)
+    .enter()
+    .append("circle");
 
 circles.attr("cx", "10")
         .attr("cy", "10")
@@ -147,7 +147,7 @@ var sortBars = function() {
 Repeat the pattern for the labels.
 
 ### Transition
-Using the `transition` function D3 updates the visual marks using animation. This animation allows interpolation between initial and final values. Add transition to the example, before the `x` attribute and reload the page. Note that the transition must be placed before the attribute/style property. The default time for animations is 250 ms. Use the `transition()` function adding the `duration(miliseconds)` to set the animatino time. Experiment with the `ease(easeType)`to the interpolation type. Try these: `d3.easeCubic`, `d3.easeLinear`, `d3.easeCircle`, `d3.easeElastic` and `d3.easeBounce`.  More on transitions [here](https://github.com/d3/d3-transition/blob/master/README.md#transition_delay)
+Using the `transition` function D3 updates the visual marks using animation. This animation allows interpolation between initial and final values. Add transition to the example, before the `x` attribute and reload the page. Note that the transition must be placed before the attribute/style property. The default time for animations is 250 ms. Use the `transition()` function adding the `duration(miliseconds)` to set the animatino time. Experiment with the `ease(easeType)`to the interpolation type. Try these: `d3.easeCubic`, `d3.easeLinear`, `d3.easeCircle`, `d3.easeElastic` and `d3.easeBounce`.  More on transitions [here](https://github.com/d3/d3-transition/blob/master/README.md#transition_delay).
 
 ### Optional
 Add a start delay for both bars and labels based on the data values. For this use `delay()` after the `transition()`.

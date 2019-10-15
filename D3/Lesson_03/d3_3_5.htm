@@ -44,94 +44,87 @@
     <script>
         function draw(data) {
 
-            var width = 500;
-            var height = 300;
-            var margin = 50;
+            let width = 500;
+            let height = 300;
+            let margin = 50;
 
             console.log(data);
 
             // código de visualização
-            var svg = d3.select('body')
-                .append('svg')
+            let svg = d3.select('body').append('svg')
                 .attr('width', width)
                 .attr('height', height)
             //.style('background', 'teal');
 
             // X Scale
-            var x_extent = [0, data.length];
-            var x_scale = d3.scaleLinear()
+            let x_extent = [0, data.length];
+            let x_scale = d3.scaleLinear()
                 .range([margin, width - margin])
                 .domain([0, data.length]);
-            /*var x_scale = d3.scalePoint()
+            /*let x_scale = d3.scalePoint()
                 .range([margin, width - margin])
                 .padding(0.5)
                 .domain(["1º ano", "2º ano", "3º ano", "4º ano", "5º ano"]);*/
 
 
             // X Axis
-            var x_axis = d3.axisBottom(x_scale);
+            let x_axis = d3.axisBottom(x_scale);
 
-            d3.select("svg")
-                .append("g")
+            d3.select("svg").append("g")
                 .attr("class", "x axis")
                 .attr("transform", "translate(0," + (height - margin) + ")")
                 .call(x_axis);
 
             // Y Scale
-            var y_extent = d3.extent(data, function (d) { return d.Numero_de_Alunos });
+            let y_extent = d3.extent(data, function (d) { return d.Numero_de_Alunos });
             y_extent[0] = 0;
-            var y_scale = d3.scaleLinear()
+            let y_scale = d3.scaleLinear()
                 .range([height - margin, margin])
                 .domain(y_extent);
 
             // Y Axis
-            var y_axis = d3.axisLeft(y_scale);
-            d3.select("svg")
-                .append("g")
+            let y_axis = d3.axisLeft(y_scale);
+            d3.select("svg").append("g")
                 .attr("class", "y axis")
                 .attr("transform", "translate(" + margin + ", 0)")
                 .call(y_axis);
 
-            var circles = svg.selectAll("circle")
+            let circles = svg.selectAll("circle")
                 .data(data)
                 .enter()
                 .append("circle")
-                .attr("cx", function (d, i) {
-                    return x_scale(i);
-                })
-                .attr("cy", function (d) {
-                    return y_scale(d.Numero_de_Alunos);
-                })
-                .attr("r", function (d) {
-                    return 10;
-                });
+                    .attr("cx", function (d, i) {
+                        return x_scale(i);
+                    })
+                    .attr("cy", function (d) {
+                        return y_scale(d.Numero_de_Alunos);
+                    })
+                    .attr("r", function (d) {
+                        return 10;
+                    });
 
             // Line
-            var line = d3.line()
+            let line = d3.line()
                 .x(function (d, i) { return x_scale(i) })
                 .y(function (d) { return y_scale(d.Numero_de_Alunos) });
 
-            d3.select("svg")
-                .append("path")
+            d3.select("svg").append("path")
                 .attr("d", line(data))
                 .attr("class", "linha_alunos");
 
-            d3.select("svg")
-                .append("text")
+            d3.select("svg").append("text")
                 .text("Alunos do MIECT")
                 .attr("x", (width / 2) - margin)
                 .attr("y", margin / 2)
                 .attr("fill", "red");
 
 
-            d3.select("svg")
-                .append("text")
+            d3.select("svg").append("text")
                 .text("Anos de curso")
                 .attr("x", (width / 2) - margin)
                 .attr("y", height - margin / 3);
 
-            d3.select("svg")
-                .append("text")
+            d3.select("svg").append("text")
                 .text("N. de alunos")
                 .attr("x", 0)
                 .attr("y", 0)
@@ -143,7 +136,9 @@
 
 <body>
     <script>
-        d3.json("MIECT_Alunos_Ano.json").then(draw);
+        d3.json("MIECT_Alunos_Ano.json")
+            .then(draw)
+            .catch(function(err){console.log(err)});
     </script>
 </body>
 

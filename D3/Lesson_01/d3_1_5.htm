@@ -27,22 +27,21 @@
 			    .data(dataset)
 			    .enter()
 			    .append("p")
-			    .text(function (d) {
-                    return "I can count up to " + d;
-                })
-                .style("color",function (d) {
-                    if (d<15)
-                        return "black";
-                    else
-                        return "red";
-                })
-                .style("margin-left", function (d) {
-					return d/5+"em";
-				})
-				.style("font-size", function (d) {
-					return d*2 + "px";
-				});
-
+                    .text(function (d) {
+                        return "I can count up to " + d;
+                    })
+                    .style("color", function (d) {
+                        if (d < 15)
+                            return "black";
+                        else
+                            return "red";
+                    })
+                    .style("margin-left", function (d) {
+                        return ( d/5 )+"em";
+                    })
+                    .style("font-size", function (d) {
+                        return ( d*2 ) + "px";
+                    });
 
         </script>
     </body>
