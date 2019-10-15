@@ -16,3 +16,4 @@
 * [Awesome D3](https://github.com/wbkd/awesome-d3)
 * [D3 Gallery](https://github.com/d3/d3/wiki/Gallery)
 * [D3 Discovery](https://d3-discovery.net/)
+* [Offline documentation browser - Zeal](https://zealdocs.org/)
