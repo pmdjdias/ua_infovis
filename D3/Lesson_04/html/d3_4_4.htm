@@ -3,29 +3,29 @@
 
 <head>
     <meta charset="utf-8">
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3.v5.js"></script>
     <style>
     </style>
 
     <script type="text/javascript">
         function draw(geo_data) {
-            // código de visualização
-            var margin = 75,
+            
+            let margin = 75,
                 width = 1400 - margin,
                 height = 600 - margin;
 
-            var svg = d3.select("body")
+            let svg = d3.select("body")
                 .append("svg")
-                .attr("width", width + margin)
-                .attr("height", height + margin)
+                    .attr("width", width + margin)
+                    .attr("height", height + margin)
                 .append('g')
-                .attr('class', 'map');
+                    .attr('class', 'map');
 
-            var projection = d3.geoMercator()
+            let projection = d3.geoMercator()
                 .scale(170)
                 .translate([width / 2, height / 2]);
 
-            var path = d3.geoPath().projection(projection);
+            let path = d3.geoPath().projection(projection);
 
             svg.append("path")
                 .attr("d", path(geo_data))
@@ -36,7 +36,7 @@
             function plot_circles(data) {
                 //console.table(data[0]);
                 //console.log(data[0].date);
-                var nested = d3.nest()
+                let nested = d3.nest()
                     .key(function (d) {
                         //console.log( d["date"].getUTCFullYear());
                         //debugger;
@@ -49,22 +49,27 @@
                     .entries(data);
             }
 
-            var parseTime = d3.timeParse("%d-%m-%Y (%H:%M h)");
+            let parseTime = d3.timeParse("%d-%m-%Y (%H:%M h)");
 
-            d3.tsv("world_cup_geo.tsv", function (d) {
-                d["attendance"] = +d["attendance"];
-                d["date"] = parseTime(d["date"]);
-                return (d)
-            }, plot_circles);
-
+            d3.tsv("world_cup_geo.tsv")
+                .then((data) => {
+                    let newdata = data.map( d => {
+                        d["attendance"] = +d["attendance"];
+                        d["date"] = parseTime(d["date"]);
+                        return d;
+                    });
+                    plot_circles(newdata);
+                })
+                .catch(err => {console.log(err)});
         };
     </script>
 </head>
 
 <body>
     <script type="text/javascript">
-        // Leitura do ficheiro GeoJSON
-        d3.json("world_countries.json", draw);
+        d3.json("world_countries.json")
+            .then(draw)
+            .catch(err => {console.log(err)});
     </script>
 </body>
 

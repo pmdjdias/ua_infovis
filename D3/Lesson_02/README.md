@@ -107,7 +107,7 @@ Modify the text properties (namely the `text-anchor` one) to obatin the followin
 
 ## Interaction
 Add the following code to add a callback to the click event of the bars:
-``` javacript
+``` javascript
 rects.on("click", function(d) {
     console.log("The value is "+ d);
 });
@@ -122,7 +122,7 @@ d3.select("body").append("button")
     .attr("id","sort_button")
     .text("Sort bars");
 ```
-The following code sort the bars using a `sort` flag and the some sort helper (to sorte and define the rules to sort) functions of D3:
+The following code sort the bars using a `sort` flag and the some sort helper (to sort and define the rules to sort) functions of D3:
 ``` javascript
 //Define sort order flag
 var sortOrder = false;	

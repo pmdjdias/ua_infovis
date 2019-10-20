@@ -17,13 +17,12 @@
                 .attr("width", width + margin)
                 .attr("height", height + margin)
                 .append('g')
-                .attr('class', 'map');
+                    .attr('class', 'map');
         };
     </script>
 </head>
 <body>
     <script type="text/javascript">
-   // Leitura do ficheiro GeoJSON
     d3.json("world_countries.json")
         .then(draw)
         .catch( err => {console.log(err)});

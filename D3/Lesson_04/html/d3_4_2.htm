@@ -16,10 +16,10 @@
 
             let svg = d3.select("body")
                 .append("svg")
-                .attr("width", width + margin)
-                .attr("height", height + margin)
+                    .attr("width", width + margin)
+                    .attr("height", height + margin)
                 .append('g')
-                .attr('class', 'map');
+                    .attr('class', 'map');
 
             let projection = d3.geoMercator()
                 .scale(170)
@@ -41,7 +41,7 @@
     <script type="text/javascript">
         d3.json("world_countries.json")
             .then(draw)
-            .catch( err => {console.log(err)});
+            .catch( err => { console.log(err) });
     </script>
 </body>
 

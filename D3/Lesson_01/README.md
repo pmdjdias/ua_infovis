@@ -44,7 +44,7 @@ Modify the _Hello_ in the HTML with the following code:
 ``` 
 And using the console select the paragraph (`<p>` tag) with the following command:
 ``` javascript
-elem = d3.select(".p1")
+let elem = d3.select(".p1")
 ```
 
 Now it is possible to modify the style properties of the node using the command `style`. In the console verify and change the background color with the commands:
@@ -66,7 +66,7 @@ Create a new HTML file, with the following content:
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Primeiro exemplo d3</title>
+        <title>First D3 Example</title>
         <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
     </head>
 
