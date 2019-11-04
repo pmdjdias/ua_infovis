@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Circles</title>
+
+    <style type="text/css">
+        div.bar {
+            display: inline-block;
+            width: 20px;
+            height: 75px;
+            margin-right: 2px;
+            background-color: teal;
+        }
+    </style>
+
+    <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
+    <!--script type="text/javascript" src="../d3/d3.min.js"></script-->
+
+</head>
+
+<body>
+    
+    <script type="text/javascript">
+        let w = 500;
+        let h = 300;
+
+        function draw(dataset) {
+            
+            let svg = d3.select('body')
+			 .append('svg')
+                .attr('width', w)
+                .attr('height', h);
+        
+
+            let y_extent = d3.extent(dataset, function(d) {
+                return d.Numero_de_Alunos
+            });
+
+            let y_scale = d3.scaleLinear()
+                .range([0,h-50])
+                .domain(y_extent)
+            
+            let y_axis = d3.axisBottom(y_scale);
+
+            let circles = svg.selectAll("circle")
+                .data(dataset)
+                .enter()
+                .append("circle");
+
+            circles.attr("cx", function (d, i) {
+                return i*50 + 25;
+            });
+            circles.attr("cy", function(d){
+                return y_scale(d.Numero_de_Alunos);
+            });
+            circles.attr("r",function (d) {
+                return 10;
+            });
+
+            d3.select("svg")
+                .append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + (h - 50) + ")")
+                .call(y_axis);
+            
+            d3.select("svg")
+                .append("text")
+                .text("Alunos")
+                .attr("transform","translate(50,30)")
+        }
+
+        d3.json("MIECT_Alunos_Ano.json")
+            .then(draw)
+            .catch(function(err){console.log(err)});
+        
+    </script>    
+</body>
+
+</html>

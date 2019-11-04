@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Circles</title>
+
+    <style type="text/css">
+        div.bar {
+            display: inline-block;
+            width: 20px;
+            height: 75px;
+            margin-right: 2px;
+            background-color: teal;
+        }
+    </style>
+
+    <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
+    <!--script type="text/javascript" src="../d3/d3.min.js"></script-->
+
+</head>
+
+<body>
+    
+    <script type="text/javascript">
+        let w = 500;
+        let h = 300;
+        let margin = 50;
+
+        //////////////
+        function draw(data) {
+            console.log(data)
+            let svg = d3.select('body')
+			 .append('svg')
+                .attr('width', w)
+                .attr('height', h);
+        
+            let y_extent = d3.extent(data, function(d) {
+                return d.Numero_de_Alunos;
+            })
+            
+            let y_scale = d3.scaleLinear()
+                        .range([h - margin, margin])
+                        .domain(y_extent)
+
+            let circles = svg.selectAll("circle")
+                .data(data)
+                .enter()
+                .append("circle");
+
+            let y_axis = d3.axisLeft(y_scale);
+            d3.select("svg")
+                .append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(50," + (0) + ")")
+                .call(y_axis);
+
+            circles.attr("cx", function (d, i) {
+                return (i*70) + 100;
+            });
+            circles.attr("cy", function(d){
+                return y_scale(d.Numero_de_Alunos)
+            });
+            circles.attr("r",function (d) {
+                return 10;
+            });
+        }
+        
+        d3.json("MIECT_Alunos_Ano.json")
+            .then(draw)
+            .catch(function(err){console.log(err)});
+
+        ///////////
+    </script>    
+</body>
+
+</html>
