@@ -8,7 +8,7 @@
 
 ## Force Layout
 
-Force Layout uses a physics algorithm to define nodes position, and a timer (_tick_ event) allows change to the nodes properties in a timed scale. More [here](http://d3indepth.com/force-layout/)
+Force Layout uses a physics algorithm to define nodes position, and a timer (_tick_ event) allows change to the nodes properties in a timed scale. More [here](http://d3indepth.com/force-layout/).  
 Run the `D3_5_1.htm` file. Note the file loading, modify the data to add a node to the visualization.
 
 Modify the example to show the name above the node (Lesson 2.6). Change the data file adding a group to a node and a weight value.
@@ -23,7 +23,7 @@ Use this information to map different groups  with different colors and the widt
 ![Force direceted graph](./forcelayout.jpg)
 
 You can add interaction, adding this to node:
-```
+``` javascript
 .call(d3.drag()
     .on("start", dragstarted)
     .on("drag", dragged)
@@ -58,7 +58,7 @@ Analyse the results, try drag the nodes. You can try the `miserables.json` file.
 
 ## Tree
 Now create a tree layout to visualize DETI hierarchy (deti.json). Start crating the hierarchy using this:
-``` javascriptt
+``` javascript
 let root = d3.hierarchy(data);
 ```
 
