@@ -131,4 +131,4 @@ Now you can add centered text in the leaves (d.children) to obtain the following
 
 ![Treemap](./treemap.jpg)
 
-Try some options and the draing mode. What's the default option?
+Try some options and the drawing mode. What's the default option?
