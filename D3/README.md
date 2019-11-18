@@ -6,9 +6,8 @@
 * [Lesson 2 - Bar Chart and Interaction](./Lesson_02/)
 * [Lesson 3 - Scatterplot and Scales & Axes](./Lesson_03/)
 * [Lesson 4 - Map Visualization and Nesting](./Lesson_04/)
-<!--
-* [Lesson 5](./Lesson_05/)
--->
+* [Lesson 5 - Layouts](./Lesson_05/)
+* [Lesson 6 - Brush and filter](./Lesson_06_extra/)
 
 ## External Sources
 * [Block Builder](https://blockbuilder.org/)
