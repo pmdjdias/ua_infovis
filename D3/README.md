@@ -7,7 +7,7 @@
 * [Lesson 3 - Scatterplot and Scales & Axes](./Lesson_03/)
 * [Lesson 4 - Map Visualization and Nesting](./Lesson_04/)
 * [Lesson 5 - Layouts](./Lesson_05/)
-* [Lesson 6 - Brush and filter](./Lesson_06_extra/)
+* [Lesson 6 - Brush and filter](./Lesson_06_Extra/)
 
 ## External Sources
 * [Block Builder](https://blockbuilder.org/)
