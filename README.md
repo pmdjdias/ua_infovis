@@ -9,7 +9,7 @@ In [this page](./webtech.md) there are some pointers and reminders for web devel
 * [D3](./D3/)
 
 # Credits
-* Course organization and class notes and tutorials  
+* Course organization, class notes and tutorials  
 Prof<sup>a</sup> Beatriz Sousa Santos  
 Prof Paulo Dias  
 * Translation, review and updates
