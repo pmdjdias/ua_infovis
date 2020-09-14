@@ -59,13 +59,17 @@ function render() {
 Para permitir o mapeamento de uma cor diferente em cada vértice é necessário associar uma cor a cada vértice. Tal pode ser feito da forma seguinte:
 
 ``` html
-geometry.faces[0].vertexColors[0] = new THREE.Color(0xFF0000);
-…
+geometry.faces[0].vertexColors[0] = new THREE.Color(0xFF0000)
+
+```
 Sendo depois criado um material baseado nessa informação:
+``` html
 var geometryMaterial = new THREE.MeshBasicMaterial({
 vertexColors:THREE.VertexColors});
+```
 Modifique o exemplo anterior para que as cores dos vértices sejam azul, amarelo e vermelho.
 Modifique depois o exemplo para criar a figura que segue usando as coordenadas 2D seguintes:
+``` html
 (0.0,  0.0,  0.0) ( 0.5,  0.75, 0.0) ( 1.0,  0.0,  0.0);
 (0.0,  0.0,  0.0) (-0.35,-1.0,  0.0) (-0.7,  0.25, 0.0);
 (-0.2, 0.15, 0.0) ( 0.35, 0.65, 0.0) (-0.85, 0.9,  0.0 );
