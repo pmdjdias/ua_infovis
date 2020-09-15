@@ -25,7 +25,7 @@ var controls = new THREE.OrbitControls(camera);
 Não se esqueça de fazer o update dos controlos na função de desenho: 
 ``` html
 controls.update();
-html
+```
 Existem outros controlos. Experimente alguns, por exemplo o: TrackballControls 
 
 # Iluminação e materiais
@@ -48,7 +48,9 @@ scene.add(alight);
 # Sombreamento
 Modifique o exemplo base (cubo a rodar) para representar não um cubo mas uma esfera (primitiva sphereGeometry) de raio 1. 
 Modifique os parâmetros 2 e 3 com a opção wireframe ativa. Ao que correspondem os parâmetros widthSegments e heightSegments? Desative o wireframe e coloque o número de segmentos a 10. 
+
 Crie agora outra esfera com as mesmas caraterísticas e coloque uma esfera em x=-2.5 e a outra em x =2.5 (use o método position.x).
+
 Adicione a luz ambiente e a luz direcional do exemplo 2.3 entre as duas esferas com y=5. Aplique dois materiais iguais do tipo MeshPhongMaterial as duas esferas (use o exemplo anterior). Modifique a opção de flatShading de um dos materiais alternando entre true e false e veja o resultado. 
 
 Opcional : Aplique a esfera 1 um material do tipo MeshLambertMaterial com as mesmas caraterísticas da esfera 2. No material do tipo Lambertiano, retire as componentes specular e shininess. O que observa? Os materiais lambertianos dispersam a luz de igual forma em todas as direções pelo que o coeficiente especular e o brilho são ignorados.
@@ -61,25 +63,28 @@ esmeralda.color = new THREE.Color(0.07568, 0.61424, 0.07568);
 esmeralda.specular= new THREE.Color(0.633, 0.7278, 0.633);
 esmeralda.shininess = 0.6 * 256;
 ``` 
-|Nome             |	Ambiente                      |Difuso	                        |Especular	                        |Brilho
-|esmeralda  	|0.0215	0.1745	0.0215      |0.07568	0.61424	0.07568     |0.633	0.727811	0.633       |0.6
-|ouro             |0.24725	0.1995	0.0745      |0.75164	0.60648	0.22648     |0.628281	0.555802	0.366065    |0.4
-|prata            |0.19225	0.19225	0.19225     |0.50754	0.50754	0.50754     |0.508273	0.508273	0.508273    |0.4
-|plástico preto   |0.0	0.0	0.0                     |0.01	0.01	0.01                    |0.50	0.50	0.50                    |0.25
-|plástico vermelho|0.0	0.0	0.0                     |0.5	0.0	0.0                     |0.7	0.6	0.6                     |0.25
-|plástico branco  |0.0	0.0	0.0                     |0.55	0.55	0.55                    |0.70	0.70	0.70                    |0.25
-|borracha preta   |0.02	0.02	0.02                    |0.01	0.01	0.01                    |0.4	0.4	0.4                     |0.0781
-|borracha vermelha|0.05	0.0	0.0                     |0.5	0.4	0.4                     |0.7	0.04	0.04                    |0.0781
-|borracha branca  |0.05	0.05	0.05                    |0.5	0.5	0.5                     |0.7	0.7	0.7                     |0.0781
+Nome             |	Ambiente                      |Difuso	                        |Especular	                        |Brilho
+-----------------|------------------------------------|-----------------------------------|-----------------------------------|----------:
+esmeralda        |0.0215	0.1745	0.0215      |0.07568	0.61424	0.07568     |0.633	0.727811	0.633       |0.6
+ouro             |0.24725	0.1995	0.0745      |0.75164	0.60648	0.22648     |0.628281	0.555802	0.366065    |0.4
+prata            |0.19225	0.19225	0.19225     |0.50754	0.50754	0.50754     |0.508273	0.508273	0.508273    |0.4
+plástico preto   |0.0	0.0	0.0                     |0.01	0.01	0.01                    |0.50	0.50	0.50                    |0.25
+plástico vermelho|0.0	0.0	0.0                     |0.5	0.0	0.0                     |0.7	0.6	0.6                     |0.25
+plástico branco  |0.0	0.0	0.0                     |0.55	0.55	0.55                    |0.70	0.70	0.70                    |0.25
+borracha preta   |0.02	0.02	0.02                    |0.01	0.01	0.01                    |0.4	0.4	0.4                     |0.0781
+borracha vermelha|0.05	0.0	0.0                     |0.5	0.4	0.4                     |0.7	0.04	0.04                    |0.0781
+borracha branca  |0.05	0.05	0.05                    |0.5	0.5	0.5                     |0.7	0.7	0.7                     |0.0781
 
 Se o desejar pode utilizar os endereços seguinte para visualizar outros efeitos de iluminação ou outros materiais usando:
+
 http://www.realtimerendering.com/teapot/
+
 http://www.lighthouse3d.com/2014/01/webgl-basic-material-list-from-teapots-c/
 
 Opcional: Acrescente as seguintes luzes no ambiente, todas a apontar para a origem
-*Luz direcional vermelha na posição (-5,0,0) 
-*Luz direcional azul na posição (5,0,0) 
-*Luz tipo spotlight verde na posição (0,0,-5)
+Luz direcional vermelha na posição (-5,0,0) 
+Luz direcional azul na posição (5,0,0) 
+Luz tipo spotlight verde na posição (0,0,-5)
 
 # Transparência
 Acrescente no exemplo 2.4 uma esfera (ou um cubo) a volta das duas esferas do exemplo anterior (defina o modelo com um tamanho ligeiramente maior).

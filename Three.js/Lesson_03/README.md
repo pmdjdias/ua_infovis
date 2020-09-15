@@ -23,6 +23,7 @@ Modifique o programa para mapear uma imagem diferente para cada face do cubo (us
 var cube = new THREE.Mesh(geometry, materials);
 ``` 
 Pode adicionar um OrbitControls para controlar a posição e orientação do cubo (ver 2.2 da última aula).
+
  
 ![cuboTextura](./cuboTextura.png)
 
