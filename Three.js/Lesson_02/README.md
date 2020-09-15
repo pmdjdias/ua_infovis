@@ -15,15 +15,15 @@ Opcional: Acrescente uma função para garantir que o cubo não é deformado qua
 
 # Orbit control
 O three.js disponibiliza algumas classes para permitir um fácil controlo da câmara como é o caso do OrbitControls.js. Note que para usar esses controlos é preciso uma cópia local do script onde esses controlos estão definidos. Pode fazer o download do three.js em http://threejs.org/ sendo que a biblioteca a usar está na pasta:
-´´´html
+``` html
 threejs folder > examples > js > controls > OrbitControls.js
-´´´
+``` 
 No exemplo anterior substitua o controlo da câmara pela linha seguinte e veja o que acontece:
-´´´html
+``` html
 var controls = new THREE.OrbitControls(camera);
-´´´
+``` 
 Não se esqueça de fazer o update dos controlos na função de desenho: 
-´´´html
+``` html
 controls.update();
 html
 Existem outros controlos. Experimente alguns, por exemplo o: TrackballControls 
@@ -32,18 +32,18 @@ Existem outros controlos. Experimente alguns, por exemplo o: TrackballControls
 Vamos agora adicionar luzes na cena. 
 Volte a ativar a rotação e visualizar o cubo sem ser em wireframe. 
 Crie uma DirectionalLight na posição 0,5,0 com a cor 0xffffff e intensidade 1.0. Não se esqueça de a adicionar a cena. Vê alguma alteração na cena? Para que o objeto interaja com a luz é necessário utilizar um material de um tipo diferente, utilize um material do tipo MeshPhongMaterial e observe novamente.
-´´´html
+``` html
 var material = new THREE.MeshPhongMaterial({
             color: '#006063',
 		specular: '#a9fcff',
 		shininess: 100
             });
-´´´
+``` 
 Adicione uma luz ambiente, note (note que a componente de luz ambiente (color) do material só é usada se uma luz ambiente está definida), por exemplo: 
-´´´html
+``` html
 var alight = new THREE.AmbientLight(0xffffff);
 scene.add(alight);
-´´´
+``` 
 
 # Sombreamento
 Modifique o exemplo base (cubo a rodar) para representar não um cubo mas uma esfera (primitiva sphereGeometry) de raio 1. 
@@ -54,13 +54,13 @@ Adicione a luz ambiente e a luz direcional do exemplo 2.3 entre as duas esferas 
 Opcional : Aplique a esfera 1 um material do tipo MeshLambertMaterial com as mesmas caraterísticas da esfera 2. No material do tipo Lambertiano, retire as componentes specular e shininess. O que observa? Os materiais lambertianos dispersam a luz de igual forma em todas as direções pelo que o coeficiente especular e o brilho são ignorados.
 
 Pode ainda modificar as propriedades das esferas a seu gosto usando alguns valores da tabela seguinte (note que o brilho deve ser multiplicado por 256). Veja o exemplo:
-´´´html
+``` html
 var esmeralda = new THREE.MeshPhongMaterial({
 shading: THREE.SmoothShading	});
 esmeralda.color = new THREE.Color(0.07568, 0.61424, 0.07568);
 esmeralda.specular= new THREE.Color(0.633, 0.7278, 0.633);
 esmeralda.shininess = 0.6 * 256;
-´´´
+``` 
 |Nome             |	Ambiente                      |Difuso	                        |Especular	                        |Brilho
 |esmeralda  	|0.0215	0.1745	0.0215      |0.07568	0.61424	0.07568     |0.633	0.727811	0.633       |0.6
 |ouro             |0.24725	0.1995	0.0745      |0.75164	0.60648	0.22648     |0.628281	0.555802	0.366065    |0.4
@@ -84,7 +84,7 @@ Opcional: Acrescente as seguintes luzes no ambiente, todas a apontar para a orig
 # Transparência
 Acrescente no exemplo 2.4 uma esfera (ou um cubo) a volta das duas esferas do exemplo anterior (defina o modelo com um tamanho ligeiramente maior).
 Utilize o material seguinte para esses dois modelos e observe o efeito, modifique o parâmetro opacity para ajustar a transparência. 
-´´´html
+``` html
 var glassMaterial = new THREE.MeshPhongMaterial( { 
 color: 0x222222, 
 specular: 0xFFFFFF,
@@ -92,7 +92,7 @@ shininess: 100,
 opacity: 0.3, 
 transparent: true 
 } );
-´´´
+``` 
 
 # Transformações (escala e rotação)
 Crie uma nova cena constituída por um paralelepípedo de tamanho (2,1,4) (use a propriedade scale) na posição (0,0,0) e quatro esferas (raio 0.5) centradas nos seus vértices inferiores (ver figura). Em vez de adicionar várias malhas separadas, pode adicionar as várias malhas num único THREE.Object3D() através do comando add. 

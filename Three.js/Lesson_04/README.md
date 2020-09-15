@@ -10,7 +10,7 @@
 Utilize como base um exemplo das últimas aulas por exemplo o exercício 2.3 com o cubo e alguma iluminação. Desative as animações e controlo da câmara (com orbitControl).
 O objetivo é permitir controlar a orientação do objeto através da utilização do rato.
 Analise o código seguinte e use-o para permitir rodar o cubo usando o rato (considere phi o ângulo de rotação em x e theta em y).
-´´´html
+``` html
     var drag = false;
     var phi = 0, theta = 0;
     var old_x, old_y;
@@ -39,17 +39,17 @@ Analise o código seguinte e use-o para permitir rodar o cubo usando o rato (con
     renderer.domElement.addEventListener("mousedown", mouseDown);
     renderer.domElement.addEventListener("mouseup", mouseUp);
     renderer.domElement.addEventListener("mousemove", mouseMove);
-´´´
+``` 
 
 # Seleção de objetos 
 O three.js disponibiliza duas classes (Projector e Raycaster) que podem ser utilizadas para realizar raycasting na cena permitindo desta forma intercetar/selecionar objetos.
 A classe Projector permite a partir de uma coordenada 2D (pixel na imagem/ecrã) e informação da câmara calcular a direção de um raio 3D que indica todos os pontos 3D da cena que são projetados no pixel original. Deve adicionar a ligação ao script no início do código: 
-´´´html
+``` html
 <script src="js/examples/js/renderers/Projector.js"></script>
-´´´
+``` 
 Por seu lado a classe Raycaster permite, dado a posição da câmara e um vetor direção, emitir um raio na cena e determinar que objetos são intersetados pelo mesmo.
 Analise o código seguinte, acrescente-o no exemplo anterior e veja o resultado do mesmo.
-´´´html
+``` html
 //mouse event variables
 var projector = new THREE.Projector(),
 mouse_vector = new THREE.Vector3(),
@@ -83,7 +83,7 @@ function onMouseDown(e) {
         }
 }
 renderer.domElement.addEventListener('mousedown', onMouseDown);
-´´´
+``` 
 Coloque outro modelo na cena e modifique o código para permitir distinguir em que modelo foi feito a seleção. Pode ainda modificar a cor do objeto selecionado: ao clicar num dos cubos o mesmo fica vermelho por exemplo.
 
 Adicione um controlo do tipo OrbitControls ou TrackballControls e veja o que ocorre quando os cubos estão alinhados. Garanta que o código permita selecionar os dois cubos quando os mesmos estão alinhados (pode usar o método IntersectObjects do rayCaster com a variável scene.children).
@@ -93,19 +93,19 @@ O método usado anteriormente no ponto 4.1 só permite rodar um objeto sobre ele
 Para permitir mudar o ponto de vista é necessário agir sobre a posição e orientação da câmara e não sobre a posição e orientação do objeto.
 Modifique o código da alínea 4.1 anterior para movimentar agora a câmara sobre uma esfera centrada na origem e com raio 5. Deve permitir atualizar a posição da câmara na esfera de acordo com as variáveis pi e theta. Note que para além da posição (camera.position.set(x,y,z)) tem também de definir a orientação da câmara (camera.lookAt()). Para calcular as coordenadas cartesianas (x,y,z) a partir das coordenadas esféricas (rho, phi, theta). 
 Pode usar o código seguinte: 
-´´´html
+``` html
 theta = …
 phi = …
 camera.position.x = raio * Math.sin(theta) * Math.cos(phi);
 camera.position.y = raio * Math.sin(phi);
 camera.position.z = raio * Math.cos(theta) * Math.cos(phi);
 camera.updateMatrix();
-´´´
+``` 
 Utilize as teclas +/- do teclado (ver a última aula) para permitir fazer “zoom in” e “zoom out”.
 
 # Texto 
 Utilize o TextGeometry do Three.js para colocar em cima dos cubos um texto indicando “cubo1” ou “cubo2”. Utilize a fonte "helvetiker" (pode utilizar o ficheiro fornecido na pasta examples/fonts do three.js (helvetiker_regular.typeface.json). Para definir o objeto de texto pode usar o código seguinte para criar a geometria de texto para o cubo 1.
-´´´html
+``` html
 var textMesh1;
 var loader = new THREE.FontLoader();
 loader.load("../../js/helvetiker_regular.typeface.json", function (font) {
@@ -119,5 +119,5 @@ loader.load("../../js/helvetiker_regular.typeface.json", function (font) {
     textMesh1.position.x = -2.5;
     textMesh1.position.y = 1.5;
 });
-´´´
+``` 
 Altere o código usando o exemplo 4.2 para que o texto só apareça ao selecionar um dado cubo, para tal use de forma adequada a propriedade visible do mesh.

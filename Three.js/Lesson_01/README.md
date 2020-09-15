@@ -82,8 +82,7 @@ Modifique depois o exemplo para criar a figura que segue usando as coordenadas 2
 
 Se não conseguir visualizar bem os triângulos, ative no material a opção side: THREE.DoubleSide. Para que serve esta opção? Como pode resolver o problema de outra forma?
 Para o último triângulo deve criar outro modelo utilizando a propriedade wireframe do MeshBasicMaterial.
- 
-![4 Triângulos](./figura1.png)
+![4Triângulos](./figura1.png)
 
 ## Atualização do Viewport
 Voltando ao exemplo inicial (cubo a rodar). Visualize o exemplo e tente redimensionar a janela do navegador. O que acontece? Isso ocorre porque as caraterísticas da janela de visualização (viewport) não são atualizada quando se muda o tamanho do navegador.
