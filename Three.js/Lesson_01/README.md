@@ -1,14 +1,14 @@
 # Lesson 1 - three.js Introduction
 
 ## Outline
-* three.js configuration
-* First example
-* Visualization of a mesh
-* Viewport update
-* Other primitives 
+* Configuração do ambiente de desenvolvimento
+* Primeiro exemplo, blocos para a visualização
+* Visualização de uma malha poligonal / cor
+* Atualização do viewport
+* Outras primitivas 
+ 
 
-
-## three.js configuration
+## Configuração three.js 
 O three.js é uma biblioteca construída sobre o webGL para abstrair alguma da complexidade associada a essa ferramenta e reduzindo a quantidade de código a escrever. Sendo assim a configuração do ambiente é semelhante ao webGL.
 Para usar o three js pode incluir a linha seguinte no ficheiro html :
 
@@ -82,9 +82,8 @@ Modifique depois o exemplo para criar a figura que segue usando as coordenadas 2
 
 Se não conseguir visualizar bem os triângulos, ative no material a opção side: THREE.DoubleSide. Para que serve esta opção? Como pode resolver o problema de outra forma?
 Para o último triângulo deve criar outro modelo utilizando a propriedade wireframe do MeshBasicMaterial.
-
  
-![Correct Loading](./figura1.png)
+![4 Triângulos](./figura1.png)
 
 ## Atualização do Viewport
 Voltando ao exemplo inicial (cubo a rodar). Visualize o exemplo e tente redimensionar a janela do navegador. O que acontece? Isso ocorre porque as caraterísticas da janela de visualização (viewport) não são atualizada quando se muda o tamanho do navegador.
