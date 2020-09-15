@@ -84,7 +84,7 @@ Se não conseguir visualizar bem os triângulos, ative no material a opção sid
 Para o último triângulo deve criar outro modelo utilizando a propriedade wireframe do MeshBasicMaterial.
 
  
-Figura 1 1: Resultado esperado.
+![Correct Loading](./figura1.png)
 
 ## Atualização do Viewport
 Voltando ao exemplo inicial (cubo a rodar). Visualize o exemplo e tente redimensionar a janela do navegador. O que acontece? Isso ocorre porque as caraterísticas da janela de visualização (viewport) não são atualizada quando se muda o tamanho do navegador.
