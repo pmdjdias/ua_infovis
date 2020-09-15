@@ -7,6 +7,8 @@ In [this page](./webtech.md) there are some pointers and reminders for web devel
 * [Google Charts](./GoogleCharts/)
 * [SVG](./SVG/)
 * [D3](./D3/)
+* [threejs](./threejs/)
+
 
 # Credits
 * Course organization, class notes and tutorials  
@@ -14,3 +16,4 @@ Prof<sup>a</sup> Beatriz Sousa Santos
 Prof Paulo Dias  
 * Translation, review and updates
 MSc. Tiago Araújo - [contact](mailto:tiagodavi70@gmail.com)
+Paulo Dias - [contact](mailto:paulo.dias@ua.pt)
