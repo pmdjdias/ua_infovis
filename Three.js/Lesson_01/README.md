@@ -55,6 +55,10 @@ function render() {
 }
 ```
 4.	Animação da cena: 
+``` html
+cube.rotation.x += 0.1;
+cube.rotation.y += 0.1;
+```
 ## Adição de cor
 Para permitir o mapeamento de uma cor diferente em cada vértice é necessário associar uma cor a cada vértice. Tal pode ser feito da forma seguinte:
 
