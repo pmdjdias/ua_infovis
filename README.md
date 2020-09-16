@@ -15,5 +15,5 @@ In [this page](./webtech.md) there are some pointers and reminders for web devel
 Prof<sup>a</sup>. Beatriz Sousa Santos  
 Prof. Paulo Dias  
 * Translation, review and updates
-MSc. Tiago Araújo - [contact](mailto:tiagodavi70@gmail.com)
+MSc. Tiago Araújo 
 Prof. Paulo Dias - [contact](mailto:paulo.dias@ua.pt)
