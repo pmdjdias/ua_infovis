@@ -52,7 +52,19 @@ First represent this data using a Bar Chart. In this case since we have several 
 Now represent the same information using a Line chart. If you are interested in the evolution of the number of student in each course, which chart seems more adequate, a column or a line chart? On the other side which chart would you use to compare the number of student between courses? More [here](https://developers.google.com/chart/interactive/docs/gallery/linechart).
 
 ## 1.5 Combo charts
-Modify the previous example to present a combo chart like the following figure. Notice that in this visualization we also present the total of candidates in each year. More [here](https://developers.google.com/chart/interactive/docs/gallery/combochart)
+Modify the previous example to present a combo chart like the following figure. Notice that in this visualization we also present the total of candidates in each year. 
+ ['2007', 328, 589, 115, 0, 831],
+['2008', 361, 605, 223, 0, 972],
+['2009', 400, 365, 152, 0, 755], 
+['2010', 360, 357, 129, 0, 678],
+['2011', 325, 316, 96, 0, 581],
+['2012', 394, 344, 93, 0, 653],
+['2013', 404, 294, 102, 0, 622],
+['2014', 271, 307, 0, 501, 780],
+['2015', 402, 291, 0, 843, 1164],
+['2016', 367, 337, 0, 802, 1175],
+['2017', 407, 399, 0, 691, 1147],
+More [here](https://developers.google.com/chart/interactive/docs/gallery/combochart)
 
 ![Combo charts](./combochart_worldcup.png)
 
