@@ -53,6 +53,7 @@ Now represent the same information using a Line chart. If you are interested in 
 
 ## 1.5 Combo charts
 Modify the previous example to present a combo chart like the following figure. Notice that in this visualization we also present the total of candidates in each year. 
+``` javascript
  ['2007', 328, 589, 115, 0, 831],
 ['2008', 361, 605, 223, 0, 972],
 ['2009', 400, 365, 152, 0, 755], 
@@ -64,6 +65,7 @@ Modify the previous example to present a combo chart like the following figure. 
 ['2015', 402, 291, 0, 843, 1164],
 ['2016', 367, 337, 0, 802, 1175],
 ['2017', 407, 399, 0, 691, 1147],
+```
 More [here](https://developers.google.com/chart/interactive/docs/gallery/combochart)
 
 ![Combo charts](./combochart_worldcup.png)
