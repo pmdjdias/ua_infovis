@@ -107,6 +107,8 @@ Consider the `Censos_2011_Densidade_Populacional.xls` file containing, for each 
 Complete the `GCT_ex_11.htm` example to represent the information relative to the 20 provinces with larger population density (add 5 provinces from the file).
 Test the various interaction functionalities available in the example.
 
+Outdated: you need to get a google API key to get the example running in full see: https://developers.google.com/maps/documentation/javascript/get-api-key#restrict_key
+
 ## 3.2 Org charts / Tree maps
 Build an Org chart representing the internal structure of the DETI. The final visualization should use the abbreviates as labels and the size to map the number of persons in each group. Use the following data:
 ```
