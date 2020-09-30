@@ -2,7 +2,7 @@
 
 ## Outline
 * Presentation attributes
-* Basic Shapes
+* Basic Shapes 
 * Image Element
 * Path and Curves
 * Text
