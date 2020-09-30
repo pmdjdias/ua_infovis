@@ -12,7 +12,7 @@
 
 ## _fill_ and _stroke_
 
-Save the excerpt below in a `html` file
+Save the code below in a `html` file
 and load it.
 
 ``` html
