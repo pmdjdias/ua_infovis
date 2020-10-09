@@ -74,10 +74,10 @@ More [here](https://developers.google.com/chart/interactive/docs/gallery/comboch
 ## 2. World cup example
 Consider the file `world_cup.csv` and inspect the code available in `GCT_ex_07.htm` to load the data. Notice that this code is using the external library (`jquery` and `jquery.csv`) to load the data from the file.  
 
+![world_cup table](./WorldCup_Table.png)
+
 Run the example and try to understand the code. Namely the line where the data is loaded and selection of the columns to display in each axis.
 What data is displayed in the chart? How is this specified?
-
-![world_cup table](./WorldCup_Table.png)
 
 ## 2.1 Grouping data
 Imagine you would like to see the total attendance in each year, you would need to sum the attendance of all the games of a given year. This can be done in Google Charts using a function as follow:
