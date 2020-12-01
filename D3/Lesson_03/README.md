@@ -150,7 +150,7 @@ path {
     fill:none;
     stroke:black;
     stroke-width:2px;
-} 
+}  
 path.linha_alunos{
     stroke:DeepPink;
 }
