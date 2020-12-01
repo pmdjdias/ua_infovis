@@ -43,7 +43,7 @@ d3.tsv("world-cup-geo.tsv")
 	.catch(err => { console.log(err) });
 ```
 
-Finish the program inside the plot circles function or log the data on the console. Visualize the first line of the file (`console.table(data[0]);`) and see that all columns are string. You can extend the Promise return to pre-proces this data and convert it:
+Insert a debugger function inside the plot circles function or log the data on the console. Visualize the first line of the file (`console.table(data[0]);`) and see that all columns are string. You can extend the Promise return to pre-proces this data and convert it:
 ``` javascript
 let parseTime = d3.timeParse("%d-%m-%Y (%H:%M h)");
             	
