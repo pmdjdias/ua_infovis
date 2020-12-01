@@ -75,6 +75,7 @@ maximum values of the data distribution. D3 has a function for this, than return
 ``` javascript
 let y_extent = d3.extent(data, function(d) {return d.Numero_de_Alunos });
 ```
+
 Now we can create a scale for the `cy` position of the points (note the margin):
 ``` javascript
 let y_scale = d3.scaleLinear()
