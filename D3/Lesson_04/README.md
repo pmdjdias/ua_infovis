@@ -24,7 +24,7 @@ svg.append("path")
   	.attr("d", path(geo_data));
 ```
 The `path` function returns a path of each country. Verify this with the `debugger` function after the path line and see what happens when the argument is a GeoJSON object (`path(geo_data.features[0]))`).  
-Modify the scale and position of the map using the `transform` scale and translate functions in the mercator object. Adjust the scale to 170 (default scale value is 150, try woth values ranging between 100 and 500). Center the map in the middle of SVG.  
+Modify the scale and position of the map using the `transform` scale and translate functions in the mercator object. Adjust the scale to 170 (default scale value is 150, try with values ranging between 100 and 500). Center the map in the middle of SVG.  
 Modify the `fill`, `stroke` and `stroke-width` by your preferences. Using the `rgb(190,100,70)` and a 1 pixel black line one can obtain the following image:
 
 ![Geo map](./geo_vis.jpg)
