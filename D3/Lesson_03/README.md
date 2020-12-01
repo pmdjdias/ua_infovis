@@ -35,7 +35,7 @@ Add labels to each point, to get an image like this:
 ![Points and labels](./points_labels.jpg)
 
 ## Load file
-Most data used for visualization is stored in files. Embbed data woth the script is uncommon on real world, and now we will see how D3 handles this. Note that this only works on a web server. Create a new file with the following content:
+Most data used for visualization is stored in files. Embbed data with the script is uncommon on real world, and now we will see how D3 handles this. Note that this only works on a web server. Create a new file with the following content:
 ``` html
 <!DOCTYPE html >
 <html>
