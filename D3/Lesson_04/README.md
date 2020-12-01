@@ -61,9 +61,9 @@ d3.tsv("world_cup_geo.tsv")
 The `timeParse` function transforms the string in a `Date` object and the `+` signal casts to a float value. Reload the page and confirm the changes. More about time parsing [here](https://github.com/d3/d3-time-format/blob/master/README.md#locale_format).
 
 ## Nesting
-To recover the total os spectators by year/world cup it is necessary reorder and group the data. The `nest` function transforms data in a hierarchical way by grouping it by a set of rules. This function has three blocks:
+To recover the total os spectators by year/world cup it is necessary to reorder and group the data. The `nest` function transforms data in a hierarchical way by grouping it by a set of rules. This function has three blocks:
 * key: data grouping criteria
-* rollup: defines data agrregation rules
+* rollup: defines the data agrregation rules
 * entries: the data
 Add the following code in the `plot_circles` function to use the year as data grouping criteria.
 ``` javascript
@@ -85,11 +85,11 @@ let total = d3.sum(leaves, function (d) {
 		return d["attendance"];
 	});
 ```
-In each year the Wold Cup is held by different stadiums in a country, these stadium coordinates are on the defined on the file. Save them in an array with the following code:
+In each year the World Cup is held by different stadiums in a country, these stadium coordinates are on the defined on the file. Save them in an array with the following code:
 ``` javascript
 let coords = leaves.map( d => projection([+d.long, +d.lat]));
 ```
-Note that the map function return the array values after the projection transformation. With these values it is possiible to calculate the mean to position the circles representing the spectators quantity for each country.
+Note that the map function return the array values after the projection transformation. With these values it is possible to calculate the "mean" position for the circles representing the number of spectators for each country.
 ``` javascript
 let centerx = d3.mean(coords, d => d[0]);
 let centery = d3.mean(coords, d => d[1]);
