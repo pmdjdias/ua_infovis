@@ -89,7 +89,7 @@ Now we can use the scale on the position:
 Now create a scale for the `x` position, using values in the following range
 ``` javascript
 var x_extent = [0, data.length];
-``` javascript
+```
 
 ## Axes
 D3 also offers tools for visualizing axes. To visualize the x axis use the following code, that creates an axis with lines and labels  using a pre-defined scale:
