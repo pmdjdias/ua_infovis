@@ -85,7 +85,10 @@ Now we can use the scale on the position:
 ``` javascript
 .attr("cy", function (d) {return y_scale(d. Numero_de_Alunos);})
 ```
-Now create a scale for the `x` position. How can we define domain and range of an ordinal scale for this example?
+Now create a scale for the `x` position, using values in the following range
+``` javascript
+var x_extent = [0, data.length];
+``` javascript
 
 ## Axes
 D3 also offers tools for visualizing axes. To visualize the x axis use the following code, that creates an axis with lines and labels  using a pre-defined scale:
