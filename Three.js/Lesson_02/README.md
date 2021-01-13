@@ -20,7 +20,7 @@ threejs folder > examples > js > controls > OrbitControls.js
 ``` 
 No exemplo anterior substitua o controlo da câmara pela linha seguinte e veja o que acontece:
 ``` html
-var controls = new THREE.OrbitControls(camera);
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
 ``` 
 Não se esqueça de fazer o update dos controlos na função de desenho: 
 ``` html
