@@ -31,7 +31,8 @@ Pode adicionar um OrbitControls para controlar a posição e orientação do cub
 Crie um programa para visualizar uma esfera de raio 1 (use 32 segmentos em largura e altura). Aplique na esfera a textura de planisfério (earth_surface_2048.jpg). Visualize o modelo com uma rotação fixa no eixo dos Z (use 0.41 rad) e com uma animação (uma rotação a volta do eixo dos y de 0.0025 rad).
 Adicione agora iluminação na cena. Utilize um material do tipo MeshPhongMaterial com a textura (em vez de um MeshBasicMaterial). Adicione ainda uma luz ambiente com o valor 0x333333 e uma luz direcional com direção (1,0,0) e com o valor 0xfffff a representar o sol. 
 # Interação
-Adicione o código seguinte no programa rara responder ao evento keydown.
+Adicione o código seguinte no programa p
+ara responder ao evento keydown.
 ``` html
 document.addEventListener("keydown", onDocumentKeyDown, false);
 ``` 
