@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+	<script src="https://d3js.org/d3.v6.min.js"></script>
+
+    <script>
+        function draw(data) {
+        
+            // Create a svg canvas
+            let width = 500,
+            height = 400;
+
+            let svg = d3.select("body").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+            
+            let root = d3.hierarchy(data)
+                .sum(d => d.value)
+                .sort((a, b) => b.value - a.value);
+             
+            let treeLayout = d3.treemap()
+                .size([400, 350])
+                .paddingOuter(20)
+
+            treeLayout(root);
+
+            let color = d3.scaleOrdinal(d3.schemeCategory10);
+
+            let cells = svg.selectAll('g')
+                .data(d3.group(root, d => d.height))
+                .join('g')
+                    .selectAll("rect")
+                    .data(d => d[1])
+                    .join("rect")
+                        .attr('x', function(d) { return d.x0; })
+                        .attr('y', function(d) { return d.y0; })
+                        .attr('width', function(d) { return d.x1 - d.x0; })
+                        .attr('height', function(d) { return d.y1 - d.y0; })
+                        .attr("fill", function (d) {  return color(d.data.name); })
+                        .attr('opacity', '0.3');
+
+            let te = svg.selectAll('g')
+                .data(d3.group(root, d => d.height))
+                .join('g')
+                    .selectAll("text")
+                    .data(d => d[1])
+                    .join("text")
+                        .text(function (d) {
+                            return d.data.name;
+                        })
+                        .attr('x', function (d, i) {
+                            return d.x0 + (d.x1-d.x0)/2;
+                        })
+                        .attr('y', function (d) {
+                            if (d.children)
+                                return d.y0 + 25/2;
+                            else 
+                                return d.y0 + (d.y1-d.y0)/2;
+                        })
+                        .attr('font-size', '10px')
+                        .attr('text-anchor','middle')
+                        .attr('fill', 'white');
+
+        }
+    </script>
+</head>
+<body>
+    <script>
+        d3.json("DETI.json")
+            .then(draw)
+            .catch(err => {console.log(err)})
+    </script>
+</body>
+</html>

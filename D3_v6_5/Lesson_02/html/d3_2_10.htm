@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bar Chart - Lesson 2</title>
+    <script type="text/javascript" src="http://d3js.org/d3.v6.js"></script>
+</head>
+
+<body>
+    <button id="sort_button"> Sort </button>
+    <script type="text/javascript">
+        let w = 500;
+        let h = 120;
+
+        let svg = d3.select("body").append("svg")
+                .attr("width", w)
+                .attr("height", h);
+
+        let dataset =   [5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 
+                        11, 12, 15, 20, 18, 17, 16, 18, 23, 25];
+
+        let rects = svg.selectAll("rect")
+            .data(dataset)
+            .join("rect")
+                .attr("x", function (d, i) {
+                    return (i * (w / dataset.length))
+                })
+                .attr("y", function (d) {
+                    return h - 4*d;
+                })
+                .attr("width", w / dataset.length - 1)
+                .attr("height", function (d) {
+                    return 4*d;
+                })
+                .attr("fill", function (d) {
+                    return "rgb(0, 0, " + (d * 10) + ")"
+                });
+
+        svg.selectAll("text")
+            .data(dataset)
+            .join("text")
+                .text(function (d) {
+                    return d;
+                })
+                .attr("x", function (d, i) {
+                        return i * (w / dataset.length) + (w / dataset.length)/2;
+                })
+                .attr("y", function (d) {
+                    return h - (d * 4) + 15; // padding
+                })
+                .style("fill","white")
+                .attr("text-anchor", "middle");
+
+        rects.on("click", function(e, d) { // event, data
+            console.log("The value is "+ d);
+        });
+
+        //Define sort order flag
+        let sortOrder = false;
+            
+        //Define sort function
+        let sortBars = function() {
+            //Flip value of sortOrder
+            sortOrder = !sortOrder;
+
+            svg.selectAll("rect")
+                .sort(function(a, b) {
+                    if (sortOrder) {
+                        return d3.ascending(a, b);
+                    } else {
+                        return d3.descending(a, b);
+                    }
+                })
+                .transition()
+                    .duration(1000)
+                    .ease(d3.easeLinear)
+                    .delay(function (d) {
+                        return (d * 30);
+                    })
+                    .attr("x", function(d, i) {
+                        return i * (w / dataset.length);
+                    })
+            
+            svg.selectAll("text")
+                .sort(function(a, b) {
+                    if (sortOrder) {
+                        return d3.ascending(a, b);
+                    } else {
+                        return d3.descending(a, b);
+                    }
+                })
+                .transition()
+                    .duration(1000)
+                    .ease(d3.easeLinear)
+                    .delay(function (d) {
+                        return (d * 30);
+                    })
+                    .attr("x", function(d, i) {
+                        return i * (w / dataset.length) + (w / dataset.length)/2;
+                    })
+        };
+        d3.select("#sort_button").on("click", function(e,d) {
+            sortBars()
+        })
+
+    </script>
+</body>
+</html>

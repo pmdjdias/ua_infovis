@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using Data - Lesson 1</title>
+        <script type="text/javascript" src="http://d3js.org/d3.v6.js"></script>
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            let dataset = [ 5, 10, 15, 20, 25 ];
+		
+            d3.select("body").selectAll("p")
+                .data(dataset)
+                .join("p")
+                .text(function (d) {
+                    return "I can count up to " + d;
+                });
+        </script>
+    </body>
+
+</html>

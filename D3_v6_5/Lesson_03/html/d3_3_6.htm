@@ -1,0 +1,42 @@
+<!DOCTYPE html >
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="http://d3js.org/d3.v6.js"></script>
+    <script>
+        let width = 500;
+        let height = 300;
+        let margin = 50;
+        
+        function draw(data) {
+            let w = 500, h = 400;
+       
+            let svg = d3.select('body').append('svg')
+                .attr('width', w)
+                .attr('height', h);
+
+            let y_extent = d3.extent(data, d => d.Numero_de_Alunos);
+            let y_scale = d3.scaleLinear()
+                .range([height - margin, margin])
+                .domain([0, y_extent[1]]);
+
+            let circles = svg.selectAll("circle")
+                .data(data)
+                .join("circle")
+                    .attr("cx", (d, i) => i * 50 + margin)
+                    .attr("cy", d => y_scale(d.Numero_de_Alunos))
+                    .attr("r",  10);
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        d3.json("MIECT_Alunos_Ano.json")
+            .then(draw)
+            .catch(function(err){console.log(err)});
+    </script>
+</body>
+
+</html>

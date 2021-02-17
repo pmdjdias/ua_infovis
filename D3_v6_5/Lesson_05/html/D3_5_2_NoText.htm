@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script>
+        function draw(data) {
+            
+            // Create a svg canvas
+            let width = 500,
+            height = 200;
+
+            let svg = d3.select("body").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+            
+            let root = d3.hierarchy(data);
+            
+            let treeLayout = d3.tree()
+                .size([400, 180]);
+            
+            treeLayout(root);
+            
+            // Nodes
+            let nodes = svg.selectAll('circle')
+            .data(root.descendants())
+            .join('circle')
+                .attr('cx', function(d) {return d.x;})
+                .attr('cy', function(d) {return d.y;})
+                .attr('r', 4)
+                .style('fill', "red");
+
+            // Links
+            let links = svg.selectAll('line')
+            .data(root.links())
+            .join('line')	
+                .attr('x1', function(d) {return d.source.x;})
+                .attr('y1', function(d) {return d.source.y;})
+                .attr('x2', function(d) {return d.target.x;})
+                .attr('y2', function(d) {return d.target.y;})
+                .style('stroke','red')
+                .style('stroke-width',3);
+        
+        }
+    </script>
+</head>
+<body>
+    <script>
+        d3.json("DETI.json")
+            .then(draw)
+            .catch(err => {console.log(err)})
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+	<script src="https://d3js.org/d3.v6.min.js"></script>
+    <script>
+        function draw(data) {
+            
+            // Create a svg canvas
+            let width = 500,
+            height = 200;
+
+            let svg = d3.select("body").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+            
+            let simulation = d3.forceSimulation()
+                .force('charge', d3.forceManyBody())
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force("collide",d3.forceCollide(12))
+                
+            let link = svg.append("g")
+                    .attr("class", "links")
+                .selectAll("line")
+                .data(data.links)
+                .join("line")
+                    .attr("stroke", "black")
+                    .style("stroke-width", function (d) { return d.value; })
+            
+            let node = svg.append("g")
+                    .attr("class", "nodes")
+                .selectAll("circle")
+                .data(data.nodes)
+                .join("circle")
+                    .attr("r", 12)
+                    .attr("fill", function (d) {
+                        if (d.group == "1")
+                            return ("red");
+                        else
+                            return ("green");
+                    })
+                    .call(d3.drag()
+                        .on("start", dragstarted)
+                        .on("drag", dragged)
+                        .on("end", dragended)); 
+                
+            let text = svg.selectAll("text")
+                .data(data.nodes)
+                .join("text")
+                    .text(function(d) {return d.name})
+            
+            let ticked = function() {
+                link
+                    .attr("x1", function(d) { return d.source.x; })
+                    .attr("y1", function(d) { return d.source.y; })
+                    .attr("x2", function(d) { return d.target.x; })
+                    .attr("y2", function(d) { return d.target.y; })
+                node
+                    .attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; });
+                text
+                    .attr("x", function(d) { return d.x - 10; })
+                    .attr("y", function(d) { return d.y - 10; })
+            }  
+            
+            simulation
+                .nodes(data.nodes)
+                .on("tick", ticked);
+        
+            simulation.force("link", d3.forceLink().links(data.links))
+            
+            function dragstarted(e, d) {
+                if (!e.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+            
+            function dragged(e, d) {
+                d.fx = e.x;
+                d.fy = e.y;
+            }
+            
+            function dragended(e, d) {
+                if (!e.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+        }
+    </script>
+</head>
+<body>
+    <script>
+        d3.json("nos_modif.json")
+            .then(draw)
+            .catch(err => {console.log(err)})
+    </script>
+</body>
+</html>

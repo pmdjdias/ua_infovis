@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bar Chart - Lesson 2</title>
+    <script type="text/javascript" src="http://d3js.org/d3.v6.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        let w = 500;
+        let h = 50;
+
+        let svg = d3.select("body").append("svg")
+                .attr("width", w)
+                .attr("height", h);
+
+        let dataset = [5, 10, 15, 20, 25];
+
+        let circles = svg.selectAll("circle")
+            .data(dataset)
+            .join("circle");
+
+        circles.attr("cx", "10")
+            .attr("cy", "10")
+            .attr("r", "10");
+    </script>
+</body>
+</html>

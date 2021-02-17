@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using Data - Lesson 1</title>
+        <script type="text/javascript" src="http://d3js.org/d3.v6.js"></script>
+    </head>
+
+    <style type="text/css">
+        div.bar {
+            display: inline-block;
+            width: 20px;
+            height: 25px; /* Overriden by D3-assigned height on script */
+            margin-right: 2px;
+            background-color: teal;
+        }
+    </style>
+
+    <body>
+        <script type="text/javascript">
+            let dataset = []; 
+            for (var i = 0; i < 25; i++) { 
+                let newNumber = Math.random() * 30; 
+                dataset.push(newNumber); 
+            }
+
+            d3.select("body").selectAll("div")
+                .data(dataset)
+                .join("div")
+                    .attr("class", "bar")
+                    .style("margin-right", "12px")
+                    .style("height", function(d) {
+                        return (10 * d) + "px";
+                    });
+        </script>
+    </body>
+
+</html>

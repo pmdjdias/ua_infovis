@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Bar Chart - Lesson 2</title>
+    <script type="text/javascript" src="http://d3js.org/d3.v6.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        let w = 500;
+        let h = 120;
+
+        let svg = d3.select("body").append("svg")
+                .attr("width", w)
+                .attr("height", h);
+
+        let dataset =   [5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 
+                        11, 12, 15, 20, 18, 17, 16, 18, 23, 25];
+
+        let rects = svg.selectAll("rect")
+            .data(dataset)
+            .join("rect")
+                .attr("x", function (d, i) {
+                    return (i * (w / dataset.length))
+                })
+                .attr("y", function (d) {
+                    return h - 4*d;
+                })
+                .attr("width", w / dataset.length - 1)
+                .attr("height", function (d) {
+                    return 4*d;
+                })
+                .attr("fill", function (d) {
+                    return "rgb(0, 0, " + (d * 10) + ")"
+                });
+    </script>
+</body>
+</html>

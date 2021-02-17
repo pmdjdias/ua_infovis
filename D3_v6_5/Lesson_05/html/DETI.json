@@ -1,0 +1,26 @@
+{
+    "name": "DETI",
+    "children": [
+        {
+            "name": "Ensino",
+            "children": [
+                {
+                    "name": "Licenciaturas",
+                    "children": [
+                        {"name": "ECT", "value": 65},
+                        {"name": "EET", "value": 105},
+                        {"name": "TSI", "value": 30}
+                    ]
+                },
+                {
+                    "name": "Mestrados",
+                    "children": [
+                        {"name": "MIECT", "value": 65},
+                        {"name": "MIEET", "value": 105},
+                        {"name": "MSI", "value": 30}
+                    ]
+                }
+            ]
+        }
+    ]
+}

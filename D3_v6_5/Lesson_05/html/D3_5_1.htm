@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script>
+        function draw(data) {
+            
+            // Create a svg canvas
+            let width = 500,
+            height = 200;
+
+            let svg = d3.select("body").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+            
+            let simulation = d3.forceSimulation()
+                .force('charge', d3.forceManyBody())
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force("collide",d3.forceCollide(12))
+                
+            let link = svg.append("g")
+                    .attr("class", "links")
+                .selectAll("line")
+                .data(data.links)
+                .join("line")
+                    .attr("stroke", "black")
+            
+            let node = svg.append("g")
+                    .attr("class", "nodes")
+                .selectAll("circle")
+                .data(data.nodes)
+                .join("circle")
+                    .attr("r", 12)
+            
+            let ticked = function() {
+                link
+                    .attr("x1", function(d) { return d.source.x; })
+                    .attr("y1", function(d) { return d.source.y; })
+                    .attr("x2", function(d) { return d.target.x; })
+                    .attr("y2", function(d) { return d.target.y; })
+                node
+                    .attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; });
+            }  
+            
+            simulation
+                .nodes(data.nodes)
+                .on("tick", ticked);
+        
+            simulation.force("link", d3.forceLink().links(data.links))
+        }
+    </script>
+</head>
+<body>
+    <script>
+        d3.json("nos.json")
+            .then(draw)
+            .catch(err => {console.log(err)})
+    </script>
+</body>
+</html>
