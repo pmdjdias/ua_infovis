@@ -3,21 +3,22 @@
 
 <head>
     <meta charset="utf-8">
-	<script src="https://d3js.org/d3.v5.min.js"></script>
-    
+	<script src="https://d3js.org/d3.v6.min.js"></script>
+    <!-- <script src="https://bundle.run/geojson-rewind@0.3.1"></script> -->
     <script type="text/javascript">
     
     let width = 350,
         height = 300,
         margin = 50;
     
-    // save state of visual variables to brush and filter
+    // save state of visual marks to brush and filter
     let mapPaths;
     let barsRect, barScales;
     let scatterCircles, scatterScales;
 
     function drawMap(geo_data) {
-        
+        // console.log(JSON.stringify(geojsonRewind(geo_data, true)))
+
         // create svgs for map
         let svgMap = d3.select("body").append("svg")
             .attr("width", width)
@@ -28,18 +29,17 @@
                 .center([-8.645, 40.63]); // aprox. center of projection
 
         let path = d3.geoPath().projection(projection);
-
+        
         mapPaths = svgMap.selectAll("path")
             .data(geo_data.features) // draw feature by feature, do not load all feature collection
-            .enter()
-            .append("path")
+            .join("path")
                 .attr("d", d => path(d)) // draw feature by feature
-                .attr("fill", "teal")
-                .attr("stroke", "black")
-                .attr("stroke-width", 1)
-                .on("click", function(d) {
+                .style("fill", "teal")
+                .style("stroke", "black")
+                .style("stroke-width", 1)
+                .on("click", function(e,d) {
                     mapPaths.style("fill","teal");
-                    d3.select(this).style("fill","red");
+                    d3.select(e.currentTarget).style("fill","red");
                 });
     }
 
@@ -49,17 +49,16 @@
 
         barsRect = svgBars.selectAll("rect")
             .data(data)
-            .enter()
-            .append("rect")
+            .join("rect")
                 .attr("x",d => xBars(d.name))
                 .attr("y", d => height - yBars(d.staff))
                 .attr("width", (width/2 - margin)/data.length)
                 .attr("height", d => yBars(d.staff))
                 .style("fill","teal")
                 .style("stroke","black")
-                .on("click", function(d) { // selection bars
+                .on("click", function(e,d) { // selection bars
                     barsRect.style("fill","teal");
-                    d3.select(this).style("fill","red");
+                    d3.select(e.currentTarget).style("fill","red");
                 });
     }
 
@@ -69,16 +68,15 @@
 
         scatterCircles = svgScatterplot.selectAll("circle")
             .data(data)
-            .enter()
-            .append("circle")
+            .join("circle")
                 .attr("cx",d => xScatter(d.undergrad))
                 .attr("cy", d => yScatter(d.postgrad))
                 .attr("r", width/20)
                 .style("fill","teal")
                 .style("stroke","black")
-                .on("click", function(d) { // selection scatter
+                .on("click", function(e,d) { // selection scatter
                     scatterCircles.style("fill","teal");
-                    d3.select(this).style("fill","red");  
+                    d3.select(e.currentTarget).style("fill","red");  
                 });
     }
 
@@ -107,7 +105,7 @@
             .domain([0,d3.max(data, d=>d.undergrad)]);
         let yScatter = d3.scaleLinear()
             .range([height - margin, margin])
-            .domain([d3.max(data, d=>d.postgrad),0]);
+            .domain([d3.max(data, d => d.postgrad),0]);
         scatterScales = {"x":xScatter, "y": yScatter}
         
         drawBars(svgBars, barScales, data);

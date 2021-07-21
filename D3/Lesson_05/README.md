@@ -33,21 +33,21 @@ You can add interaction, adding this to node:
 
 And adding these functions:
 ``` javascript
-function dragstarted(d) {
-    if (!d3.event.active) {
+function dragstarted(e, d) {
+    if (!e.active) {
         simulation.alphaTarget(0.3).restart();
     }
     d.fx = d.x;
     d.fy = d.y;
 }
 
-function dragged(d) {
-    d.fx = d3.event.x;
-    d.fy = d3.event.y;
+function dragged(e, d) {
+    d.fx = e.x;
+    d.fy = e.y;
 }
 
-function dragended(d) {
-    if (!d3.event.active) {
+function dragended(e, d) {
+    if (!e.active) {
         simulation.alphaTarget(0);
     }
     d.fx = null;
@@ -85,47 +85,43 @@ For the lines one can modify the attributes (x1, y1) and (x2, y2) using source (
 // Links
 let links = svg.selectAll("line")
     .data(root.links())
-    .enter()
-    .append("line");
+    .join("line");
 ``` 
 You can append the name using `d.data.name`. Note that the hierarchy return some 0 values, to move it one must do translation and by grouping it. 
 
 ## Treemap
-Create a treemap layout from the DETI.json file using the structure od department. Repeat the code from hierarchy:
+Create a treemap layout from the DETI.json file using the structure od department. Change the code from hierarchy:
 ``` javascript
 let root = d3.hierarchy(data)
+    .sum(d => d.value)
+    .sort((a, b) => b.value - a.value);
 ```
 Then create the layout:
 ``` javascript
-let treemapLayout = d3. treemap()
-.size([width, height])
-       .paddingOuter(20 );
+let treemapLayout = d3.treemap()
+    .size([width, height])
+    .paddingOuter(20);
 ```
 Add the layout data to your hierarchy:
 ``` javascript
 treemapLayout(root);
 ```
-Now you can create the nodes using the code:
+
+Now you can create the nodes using the hierarchy, and grouping the hierarchy. First we create a group, and the inside of it we create the rectangles:
 ``` javascript
-let cells = svg.selectAll("rect")
-    .data(root.descendants())
-    .enter()
-    .append("rect")
+let cells =svg.selectAll('g')
+    .data(d3.group(root, d => d.height))
+    .join('g')
+        .selectAll("rect")
+        .data(d => d[1])
+        .join("rect")
 ```
-You must add the data from (d.x0,d.y0) and (d.x1 and d.y1) to draw the rectangles. Add the style to ease the visualization of all treemap leaves:
-``` css
-rect {
-    fill: cadetblue;
-    opacity: 0.3;
-    stroke: white;
-}
-```
-To add a different color for the leaves, you can bind a pre-made D3 color scale:
+You must add the data from (d.x0,d.y0) and (d.x1 and d.y1) to draw the rectangles. To add a different color for the leaves, you can bind a pre-made D3 color scale:
 ``` javascript
 let color = d3.scaleOrdinal(d3.schemeCategory10);
 
 // Add this to the rects
-.attr("fill", function (d) {  return color(d.data.name); })
+.attr("fill", function (d) { return color(d.data.name); })
 ``` 
 Now you can add centered text in the leaves (d.children) to obtain the following image:
 

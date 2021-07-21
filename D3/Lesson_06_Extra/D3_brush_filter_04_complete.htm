@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="https://d3js.org/d3.v6.min.js"></script>
     
     <script type="text/javascript">
     
@@ -32,7 +32,7 @@
                 .attr("fill", "teal")
                 .attr("stroke", "black")
                 .attr("stroke-width", 1)
-                .on("click", function(d) {
+                .on("click", function(e, d) {
                     handleSelection(d.properties.name); // delegate event
                 });
     }
@@ -50,7 +50,7 @@
                 .attr("height", d => yBars(d.staff))
                 .style("fill","teal")
                 .style("stroke","black")
-                .on("click", function(d) { 
+                .on("click", function(e, d) { 
                     handleSelection(d.name); // delegate event
                 });
     }
@@ -67,13 +67,13 @@
                 .attr("r", width/20)
                 .style("fill","teal")
                 .style("stroke","black")
-                .on("click", function(d) {                     
+                .on("click", function(e, d) {          
                     handleSelection(d.name); // delegate event
                 });
     }
 
     function handleSelection(key) {
-
+        
         // reset visual display
         mapPaths.style("fill","teal");
         scatterCircles.style("fill","teal");           
@@ -115,6 +115,7 @@
             .domain([d3.max(data, d=>d.postgrad),0]);
         scatterScales = {"x":xScatter, "y": yScatter}
         
+        console.log(data)
         drawBars(svgBars, barScales, data);
         drawScatter(svgScatterplot, scatterScales, data);
 
@@ -131,7 +132,7 @@
             .attr("max", max)
             .attr("value", 1)
             .attr("step", 1)
-            .on("input", function(d) {
+            .on("input", function(e, d) {
                 label.text(this.value); // use `this` on the place of slider 
                 let dataFiltered = data.filter(d => d.events > this.value); // filter using value
                 drawBars(svgBars, barScales, dataFiltered);

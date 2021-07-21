@@ -3,22 +3,23 @@
 
 <head>
     <meta charset="utf-8">
-    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://d3js.org/d3.v6.js"></script>
     <style>
     </style>
 
     <script type="text/javascript">
         function draw(geo_data) {
+            
             let margin = 75,
                 width = 1400 - margin,
                 height = 600 - margin;
 
             let svg = d3.select("body")
                 .append("svg")
-                .attr("width", width + margin)
-                .attr("height", height + margin)
+                    .attr("width", width + margin)
+                    .attr("height", height + margin)
                 .append('g')
-                .attr('class', 'map');
+                    .attr('class', 'map');
 
             let projection = d3.geoMercator()
                 .scale(170)
@@ -33,38 +34,24 @@
                 .attr("stroke-width", 1);
 
             function plot_circles(data) {
-                //console.table(data[0]);
-                //console.log(data[0].date);
-                let nested = d3.nest()
-                    .key(function (d) {
-                        //console.log( d["date"].getUTCFullYear());
-                        //debugger;
-                        return d["date"].getUTCFullYear();
-                    })
-                    .rollup(function (leaves) {
-                        //console.table(leaves[0]);
-                        //debugger;
-                        let total = d3.sum(leaves, function (d) {
-                            return d["attendance"];
-                        });
+                // let groups = d3.group(data, d => d["date"].getUTCFullYear());
+                let grouped = d3.rollup(data, 
+                    function(group) {
+                        let total = d3.sum(group, g => +g["attendance"]);
+                        
+                        let coords = group.map( d => projection([+d.long, +d.lat]));
+                        let centerX = d3.mean(coords, d => d[0]);
+                        let centerY = d3.mean(coords, d => d[1]);
 
-                        let coords = leaves.map(function (d) {
-                            return projection([+d.long, +d.lat]);
-                        });
-
-                        let centerx = d3.mean(coords, function (d) { return d[0]; });
-                        let centery = d3.mean(coords, function (d) { return d[1]; });
-
-                        return {
-                            "attendance": +total,
-                            "x": centerx,
-                            "y": centery
-                        };
-                    })
-                    .entries(data);
-
-                //console.table(nested);
-                //debugger
+                        return { 
+                            "attendance" : total,
+                            "x": centerX,
+                            "y": centerY
+                        }
+                    },
+                    d => d["date"].getUTCFullYear()
+                );
+                
             }
 
             let parseTime = d3.timeParse("%d-%m-%Y (%H:%M h)");

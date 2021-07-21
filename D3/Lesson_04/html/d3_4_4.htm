@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://d3js.org/d3.v6.js"></script>
     <style>
     </style>
 
@@ -34,19 +34,13 @@
                 .attr("stroke-width", 1);
 
             function plot_circles(data) {
-                //console.table(data[0]);
-                //console.log(data[0].date);
-                let nested = d3.nest()
-                    .key(function (d) {
-                        //console.log( d["date"].getUTCFullYear());
-                        //debugger;
-                        return d["date"].getUTCFullYear();
-                    })
-                    .rollup(function (leaves) {
-                        //console.table(leaves[0]);
-                        //debugger;
-                    })
-                    .entries(data);
+                // let groups = d3.group(data, d => d["date"].getUTCFullYear());
+                let grouping = d3.rollup(data, 
+                    function(group) {
+                        console.log(group)
+                    },
+                    d => d["date"].getUTCFullYear()
+                );
             }
 
             let parseTime = d3.timeParse("%d-%m-%Y (%H:%M h)");

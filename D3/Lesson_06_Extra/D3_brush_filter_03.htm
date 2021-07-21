@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="https://d3js.org/d3.v6.min.js"></script>
     
     <script type="text/javascript">
     
@@ -32,7 +32,7 @@
                 .attr("fill", "teal")
                 .attr("stroke", "black")
                 .attr("stroke-width", 1)
-                .on("click", function(d) {
+                .on("click", function(e,d) {
                     mapPaths.style("fill","teal");
                     d3.select(this).style("fill","red");
                 });
@@ -51,7 +51,7 @@
                 .attr("height", d => yBars(d.staff))
                 .style("fill","teal")
                 .style("stroke","black")
-                .on("click", function(d) { // selection bars
+                .on("click", function(e, d) { // selection bars
                     barsRect.style("fill","teal");
                     d3.select(this).style("fill","red");
                 });
@@ -69,7 +69,7 @@
                 .attr("r", width/20)
                 .style("fill","teal")
                 .style("stroke","black")
-                .on("click", function(d) { // selection scatter
+                .on("click", function(e, d) { // selection scatter
                     scatterCircles.style("fill","teal");
                     d3.select(this).style("fill","red");  
                 });

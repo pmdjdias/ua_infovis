@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="http://d3js.org/d3.v5.js"></script>
-    <!--script type="text/javascript" src="../d3/d3.min.js"></script-->
+    <title>Cartography - Lesson 4</title>
+    <script type="text/javascript" src="http://d3js.org/d3.v6.js"></script>
 
     <style type="text/css">
         path {
@@ -55,9 +55,9 @@
 </head>
 <body>
     <script type="text/javascript">
-    d3.json("world_countries.json")
-        .then(draw)
-        .catch( err => {console.log(err)});
+        d3.json("world_countries.json")
+            .then(draw)
+            .catch( err => {console.log(err)});
     </script>
 </body>
 </html>

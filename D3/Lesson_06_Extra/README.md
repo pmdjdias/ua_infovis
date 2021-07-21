@@ -7,8 +7,8 @@ Look for the `click` events and pay close attention for the how the drawing is m
 
 ``` javascript
 let svgBars = d3.select("body").append("svg")
-            .attr("width", width)
-            .attr("height", height);
+    .attr("width", width)
+    .attr("height", height);
 
 let xBars = d3.scaleBand()
     .rangeRound([margin, width-margin])
@@ -31,7 +31,7 @@ Starting with brushing, we will select the same object on all visualizations. Th
 Create a handler for the event of selection, than update using the key for each entrance, in this way:
 ``` javascript
 // map example
-.on("click", function(d) {
+.on("click", function(e, d) {
     handleSelection(d.properties.name); // delegate event
 });
 
@@ -62,27 +62,28 @@ d3.json("map.json")
 
         // create svg for map
         svgMap = d3.select("body").append("svg")
-                    .attr("width", width)
-                    .attr("height", height);
+            .attr("width", width)
+            .attr("height", height);
 
         drawMap(svgMap, data);
     })
     .catch(err => {console.log(err)});        
 ```
 
-And for the filters, minor modifications must be made to for the update lifecycle. More on `selection.join` and how can one use it to change the life cycle [here](https://observablehq.com/@d3/selection-join).
+And for the filters, minor modifications must be made to update the chart lifecycle.
+
 ``` javascript
 // join
 barsRect = svgBars.selectAll("rect")
     .data(data)
-    .join("rect") // changed for life cycle
+    .join("rect") 
         .attr("x",d => xBars(d.name))
         .attr("y", d => height - yBars(d.staff))
         .attr("width", (width/2 - margin)/data.length)
         .attr("height", d => yBars(d.staff))
         .style("fill","teal")
         .style("stroke","black")
-        .on("click", function(d) { // selection bars
+        .on("click", function(e, d) { // selection bars
             barsRect.style("fill","teal");
             d3.select(this).style("fill","red");
         });
@@ -109,7 +110,7 @@ slider
     .attr("max", max)
     .attr("value", 1)
     .attr("step", 1)
-    .on("input", function(d) {
+    .on("input", function(e, d) {
         label.text(this.value); // use `this` on the place of slider 
         let dataFiltered = data.filter(d => d.events > this.value); // filter using value
         drawBars(svgBars, barScales, dataFiltered);

@@ -1,7 +1,7 @@
 # Code Style Guide
 
 Partial code's evaluation for the pratical work will be done using this style guide. It was based on the [Idiomatic.js](https://github.com/rwaldron/idiomatic.js) manifesto and the [JQuery](https://contribute.jquery.org/style-guide/js/) style guide.  
-__Summary: Be consistent, do not first comma format, chain with context, credit everything you did not write and modularize the code__
+__Summary: Be consistent, do not first comma format, chain with context, credit everything you did not write and modularize the code.__
 
 ## 1. Whitespaces and Indentation
 * Never mix spaces and tabs. Choose one and keep consistency through the entire project.  
