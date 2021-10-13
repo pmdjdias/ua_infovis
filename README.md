@@ -1,6 +1,6 @@
 # Information Visualization Course - Universidade de Aveiro
 
-Welcome to Information Visualization Course repository! Here you will find the sources and notes of the lab classes. This course has the lab classes, homework and implementation assigments based on web technologies and the repo organizes the material used in the classes. 
+Welcome to Information Visualization Course repository! Here you will find the sources and notes of the lab classes. This course has the lab classes, homework and implementation assigments based on web technologies and the repository organizes the material used in the classes. 
 
 ## Lab Classes and sources
 In [this page](./webtech.md) there are some pointers and reminders for web development and ways to serve files.  
