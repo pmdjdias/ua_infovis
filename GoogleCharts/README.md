@@ -47,7 +47,7 @@ Consider the file `DETI_Dados_Candidatos.xlsx` that contains the information rel
 ['2017', 407, 399, 0, 691] ]
 ```
 
-First represent this data using a Bar Chart. In this case since we have several courses a legend should be presented with the chart.	
+First represent this data using a ColumnChart. In this case since we have several courses a legend should be presented with the chart.	
 
 Now represent the same information using a Line chart. If you are interested in the evolution of the number of student in each course, which chart seems more adequate, a column or a line chart? On the other side which chart would you use to compare the number of student between courses? More [here](https://developers.google.com/chart/interactive/docs/gallery/linechart).
 
