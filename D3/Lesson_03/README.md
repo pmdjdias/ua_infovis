@@ -149,7 +149,7 @@ d3.select("svg")
     .call(x_axis);
 ```
 This code groups the axis with a transform to draw it in the right position. Comment this line and see what happens. In the same way add an y axis using the `d3.axisLeft` function. Note that this axis is inverted in SVG. How to solve this using the scale?
-To style the axes it you can add this CSS:
+To style the axes, you can add this CSS:
 ``` css
 .axis path{
     fill:none;
