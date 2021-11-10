@@ -81,7 +81,7 @@ Add labels to each point, to get an image like this:
 ![Points and labels](./points_labels.jpg)
 
 ## Load file
-Most data used for visualization is stored in files. Embbed data woth the script is uncommon on real world, and now we will see how D3 handles this. Note that this only works on a web server. Create a new file with the following content:
+Most data used for visualization is stored in files. Embbed data with the script is uncommon on real world, and now we will see how D3 handles this. Note that this only works on a web server. Create a new file with the following content:
 ``` html
 <!DOCTYPE html >
 <html>
@@ -149,7 +149,7 @@ d3.select("svg")
     .call(x_axis);
 ```
 This code groups the axis with a transform to draw it in the right position. Comment this line and see what happens. In the same way add an y axis using the `d3.axisLeft` function. Note that this axis is inverted in SVG. How to solve this using the scale?
-To style the axes it you can add this CSS:
+To style the axes, you can add this CSS:
 ``` css
 .axis path{
     fill:none;
