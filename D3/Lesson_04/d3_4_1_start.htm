@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cartography - Lesson 4</title>
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <style>
+    </style>
+    
+    <script type="text/javascript">  
+        function draw(geo_data) {
+            let margin = 75,
+                width = 1400 - margin,
+                height = 600 - margin;
+
+            let svg = d3.select("body").append("svg")
+                .attr("width", width + margin)
+                .attr("height", height + margin)
+                .append('g')
+                    .attr('class', 'map');
+
+        };
+    </script>
+</head>
+<body>
+    <script type="text/javascript">
+        d3.json("world_countries.json")
+            .then(draw)
+            .catch(err => { console.log(err) });
+    </script>
+</body>
+</html>
+
