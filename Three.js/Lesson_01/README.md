@@ -1,78 +1,102 @@
 # Lesson 1 - three.js Introduction
 
 ## Outline
-* Configuração do ambiente de desenvolvimento
-* Primeiro exemplo, blocos para a visualização
-* Visualização de uma malha poligonal / cor
-* Atualização do viewport
-* Outras primitivas 
+* Configuration of development environment 
+* First example, Visualization pipeline
+* Visualization of a poligonal mesh with color
+* Viewport Update
+* Other primitives in three.js
  
 
-## Configuração three.js 
-O three.js é uma biblioteca construída sobre o webGL para abstrair alguma da complexidade associada a essa ferramenta e reduzindo a quantidade de código a escrever. Sendo assim a configuração do ambiente é semelhante ao webGL.
-Para usar o three js pode incluir a linha seguinte no ficheiro html :
+## three.js configuration 
+Three.js is a library built on webGL to abstract some of the difficulties to low-level graphics and reducing the quantity of code to produce. Its configuration is similar to the one used by webGL.
+To use three.js, it is necessary to include the following line in you javascript code:
 
 
 ``` html
 <script src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
 ```
 
-Em alternativa pode fazer o download do three.js em http://threejs.org/ e fazer uma instalação local usando o link:
+It is also possible to downlaod  three.js from http://threejs.org/ ans use a local copy with the following link:
 
 ``` html
-<script src="js/three.min.js"></script>
+<script src="js/three.js"></script>
 ```
 
-Pode visualizar alguns exemplos em: http://threejs.org/examples/
+You can explore some three.js examples at the following site : http://threejs.org/examples/
 
-## Primeiro exemplo 
-Crie um exemplo em three.js baseado no tutorial disponível em:
+## Firts example 
+Create your first three.js example based on the tutorial available at:
 https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene
-Note os vários passos necessários para criar e visualizar uma cena:
+See the all teh necessary steps to create and visualize a scene:
 
-1.	Definição da cena, da câmara e do renderer onde a cena é desenhada:
+1.	Definition of the scene, camera and renderer:
 ``` html
-var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-var renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 ```
-2.	Criação de um objeto e da posição da câmara:
+2.	Definition of an object/geometry and camera position:
 ``` html
-var geometry = new THREE.BoxGeometry(1,1,1);
-var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } ); 
-var cube = new THREE.Mesh( geometry, material ); 
+const geometry = new THREE.BoxGeometry(1,1,1);
+const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } ); 
+const cube = new THREE.Mesh( geometry, material ); 
 scene.add( cube ); 
 camera.position.z = 5;
 ```
-3.	Renderização da cena: 
+3.	Scene rendering: 
 ``` html
 function render() {
 	requestAnimationFrame(render);
 	renderer.render(scene, camera);
 }
+render()
 ```
-4.	Animação da cena: 
+4.	Scene animationa: 
 ``` html
 cube.rotation.x += 0.1;
 cube.rotation.y += 0.1;
 ```
-## Adição de cor
-Para permitir o mapeamento de uma cor diferente em cada vértice é necessário associar uma cor a cada vértice. Tal pode ser feito da forma seguinte:
+
+## 2D primitives
+Modify the previous example to visualize a black 2D triangle over a red Background (function setClearColor of the renderer). Use the following coordinated for the vertices 1,-1,0 / 1,-1,0 / 1,1,0).
+To create  the mesh, you can use the following code:
 
 ``` html
-geometry.faces[0].vertexColors[0] = new THREE.Color(0xFF0000)
+var geometry = new THREE.BufferGeometry();
 
+const vertices = new Float32Array( [
+	-1.0, -1.0,  -5.0,
+	1.0, -1.0,  -5.0,
+	1.0,  1.0,  -5.0,
+] );
+
+geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
 ```
-Sendo depois criado um material baseado nessa informação:
+
+Create another material so that the traingle is black over a red background (use the setClearColor function of the Renderer).
+Modify the code to obtain the same scene without modifying the camera posistion.
+
+## Addition of color
+To allow the mapping of a different color in each vertices, it is necessary to associate a color to each vertice. This can be done as follow:
+
 ``` html
-var geometryMaterial = new THREE.MeshBasicMaterial({
-vertexColors:THREE.VertexColors});
+var colors = new Uint8Array( [
+	 255,  0,  0,  
+	 0,  255,  0,  
+	 0,  0,  255,  
+] );
+
+geometry.addAttribute( 'color', new THREE.BufferAttribute( colors, 3, true) );
 ```
-Modifique o exemplo anterior para que as cores dos vértices sejam azul, amarelo e vermelho.
-Modifique depois o exemplo para criar a figura que segue usando as coordenadas 2D seguintes:
+A material is also necessary (see following code):
+``` html
+var geometryMaterial = new THREE.MeshBasicMaterial( {vertexColors: THREE.VertexColorsDoubleSide} );
+```
+Modify the example to create a scene similar to Figure 1 using the following 2D coordinates:
 ``` html
 (0.0,  0.0,  0.0) ( 0.5,  0.75, 0.0) ( 1.0,  0.0,  0.0);
 (0.0,  0.0,  0.0) (-0.35,-1.0,  0.0) (-0.7,  0.25, 0.0);
@@ -80,23 +104,23 @@ Modifique depois o exemplo para criar a figura que segue usando as coordenadas 2
 (0.15,-0.95, 0.0) ( 0.90,-0.7,  0.0) ( 0.65, 0.10, 0.0); 
 ```
 
-Se não conseguir visualizar bem os triângulos, ative no material a opção side: THREE.DoubleSide. Para que serve esta opção? Como pode resolver o problema de outra forma?
-Para o último triângulo deve criar outro modelo utilizando a propriedade wireframe do MeshBasicMaterial.
+If you cannot see some triangle, use the side flag in the material: THREE.DoubleSide.
+What is this option used for? How can you solve the problem in another way?
+For the last triangle, it is necessary to create another model with the wireframe property of the MeshBasicMaterial.
 
 ![4Triângulos](./figura1.png)
 
-## Atualização do Viewport
-Voltando ao exemplo inicial (cubo a rodar). Visualize o exemplo e tente redimensionar a janela do navegador. O que acontece? Isso ocorre porque as caraterísticas da janela de visualização (viewport) não são atualizada quando se muda o tamanho do navegador.
-Para resolver este problema, crie uma função a ser chamada quando a janela é redimensionada. Essa função deve aceder ao tamanho da janela (window.innerWidth
- e window.innerHeight) e atualiza o tamanho do renderer (renderer.setSize()),  assim como a razão de aspeto da câmara (camera.aspect=…) atualizando a mesma (camera.updateProjectionMatrix()).
-Coloque o código necessário na função seguinte para permitir o correto redimensionamento do viewport e observe o resultado.
+## Viewport Update
+Go back to the first example (rotation cube). Visualize the example and  change the dimensions of the browser window. What happens? This is due to the fact that the visualization window (viewport) is not update when the browser window size changes.
+To solve this problem, create a new function to be called when the browser window size is update.This function need to access the window size (window.innerWidth and window.innerHeight) and update the  renderer size accordingly (renderer.setSize()). It also needs to modify the aspect camera ratio as well (camera.aspect=…) and update this change  (camera.updateProjectionMatrix()).
+Add the code necessary in the following function to ensure the correct resizing of the viewport and observe the results.
 
 ``` html
 window.addEventListener('resize', function () {				       
-	… código para atualizar o viewport
+	… code to update the viewport correctly
 		});
 ```
-## Outras primitivas
-Modifique o código para visualizar o cube em wireframe.
-Consulte outras geometrias disponíveis (Extras / Geometries) e tente visualizar outras geometrias alterando os seus parâmetros. 
+## Other primitives
+Modify the example to show a cube in wireframe.
+Investigate other available geometries (Extras / Geometries) and visualize some of them changing some of their parameters. 
 
