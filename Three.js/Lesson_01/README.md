@@ -1,7 +1,7 @@
 # Lesson 1 - three.js Introduction
 
 ## Outline
-* Configuration of development environment 
+* Configuration of environment 
 * First example, Visualization pipeline
 * Visualization of a poligonal mesh with color
 * Viewport Update
@@ -9,8 +9,8 @@
  
 
 ## three.js configuration 
-Three.js is a library built on webGL to abstract some of the difficulties to low-level graphics and reducing the quantity of code to produce. Its configuration is similar to the one used by webGL.
-To use three.js, it is necessary to include the following line in you javascript code:
+Three.js is a library built on webGL to abstract some of the difficulties related to low-level graphics and to reduce the quantity of code to produce the visualizations. Its configuration is similar to the one used by webGL.
+To use three.js, it is necessary to include the following lines in you javascript code:
 
 
 ``` html
@@ -53,35 +53,36 @@ function render() {
 	requestAnimationFrame(render);
 	renderer.render(scene, camera);
 }
-render()
+render();
 ```
-4.	Scene animationa: 
+4.	Scene animation: 
 ``` html
-cube.rotation.x += 0.1;
-cube.rotation.y += 0.1;
+cube.rotation.x += 0.01;
+cube.rotation.y += 0.01;
 ```
 
 ## 2D primitives
-Modify the previous example to visualize a black 2D triangle over a red Background (function setClearColor of the renderer). Use the following coordinated for the vertices 1,-1,0 / 1,-1,0 / 1,1,0).
+Modify the previous example to visualize a black 2D triangle over a red Background.
+Use the following coordinates for the vertices (-1,-1,0) (1,-1,0) ans (1,1,0).
 To create  the mesh, you can use the following code:
 
 ``` html
 var geometry = new THREE.BufferGeometry();
 
 const vertices = new Float32Array( [
-	-1.0, -1.0,  -5.0,
-	1.0, -1.0,  -5.0,
-	1.0,  1.0,  -5.0,
+	-1.0, -1.0,  0.0,
+	1.0, -1.0,  0.0,
+	1.0,  1.0,  0.0,
 ] );
 
 geometry.setAttribute( 'position', new THREE.BufferAttribute( vertices, 3 ) );
 ```
 
-Create another material so that the traingle is black over a red background (use the setClearColor function of the Renderer).
+Create another material so that the triangle is black over a red background (use the setClearColor function of the Renderer fro backgroundColor).
 Modify the code to obtain the same scene without modifying the camera posistion.
 
 ## Addition of color
-To allow the mapping of a different color in each vertices, it is necessary to associate a color to each vertice. This can be done as follow:
+To allow the mapping of a different colors in each vertices, it is necessary to associate a color to each vertice. This can be done as follow:
 
 ``` html
 var colors = new Uint8Array( [
@@ -94,9 +95,9 @@ geometry.addAttribute( 'color', new THREE.BufferAttribute( colors, 3, true) );
 ```
 A material is also necessary (see following code):
 ``` html
-var geometryMaterial = new THREE.MeshBasicMaterial( {vertexColors: THREE.VertexColorsDoubleSide} );
+const geometryMaterial = new THREE.MeshBasicMaterial( {vertexColors: THREE.VertexColors} );
 ```
-Modify the example to create a scene similar to Figure 1 using the following 2D coordinates:
+Modify the example to create a scene similar to the figure below using the following 2D coordinates:
 ``` html
 (0.0,  0.0,  0.0) ( 0.5,  0.75, 0.0) ( 1.0,  0.0,  0.0);
 (0.0,  0.0,  0.0) (-0.35,-1.0,  0.0) (-0.7,  0.25, 0.0);
@@ -104,8 +105,8 @@ Modify the example to create a scene similar to Figure 1 using the following 2D 
 (0.15,-0.95, 0.0) ( 0.90,-0.7,  0.0) ( 0.65, 0.10, 0.0); 
 ```
 
-If you cannot see some triangle, use the side flag in the material: THREE.DoubleSide.
-What is this option used for? How can you solve the problem in another way?
+If you cannot see some triangle, use the side flag in the material with the argument THREE.DoubleSide.
+What is this option used for? This issue is related that only triangles with normal towards camera are rendered due to Back Face Culling. How can you solve the problem in another way?
 For the last triangle, it is necessary to create another model with the wireframe property of the MeshBasicMaterial.
 
 ![4Triângulos](./figura1.png)
@@ -122,5 +123,7 @@ window.addEventListener('resize', function () {
 ```
 ## Other primitives
 Modify the example to show a cube in wireframe.
-Investigate other available geometries (Extras / Geometries) and visualize some of them changing some of their parameters. 
+Investigate other available geometries (Extras / Geometries) and visualize at least 4 other geometries in the same scene changing some of their default parameters. 
+Write a report following the template available about the experiences done in this class. It should contain examples of the visualizations produced in each exercise, as well your comments about them.
+
 
