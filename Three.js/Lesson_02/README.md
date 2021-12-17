@@ -1,37 +1,42 @@
-# Lesson 2 - Aula 2- Projeções, iluminação e transformações
+# Lesson 2 - Projections, lighting and transformations
 
 ## Outline
-*	Tipos de câmaras: projeção perspetiva e paralela ortogonal
-*	Interação com câmara
-*	Iluminação e sombreamento
-*	Transformações
+* Camera models perspective and orthogonal projection
+* Interaction with camera
+* Lighting and shading
+* Transformations
 
-# Tipo de Câmaras
-Modifique o primeiro exemplo da última aula para visualizar o cubo em wireframe, para tal deve ativar a propriedade adequada do material (pode ir buscar o código em https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene). Desative a rotação do cubo.
 
-Em vez de utilizar uma câmara perspetiva, utilize agora uma câmara do tipo OrthographicCamera. Note que nesta câmara são especificados os limites superiores em x e y da cena e não o ângulo de abertura da câmara como no caso da câmara perspetiva. Modifique os parâmetros para que a zona de visualização do mundo seja entre -3 e 3 no eixo das abcissas, e respeite a razão de aspeto da janela. Compare o resultado com as duas câmaras é o que esperava?
+# Camera models
+Modify the first example from the last lesson to visualize the cube in wireframe (you can get the code at https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene). You must activate the appropriate material property . Disable the cube rotation.
 
-Opcional: Acrescente uma função para garantir que o cubo não é deformado quando o tamanho da janela é modificado (adapte o exemplo 1.5 da última aula).
+Instead of using a perspective camera, now use an Orthographic Camera. Note that in this type of camera the upper limits are specified in x and y coordinates on the scene and not with the field of view angle as in the  perspective camera. Modify the parameters so that the world view is between -3 and 3 on the x-axis while respecting the window's aspect ratio.
+Compare the result with the two type of cameras. Is this what you expected?
+
+Optional/HomeWork: Add a function to ensure that the cube aspect ratio does not change when the window is resized (adapt from the Viewport Update in last lesson).
 
 # Orbit control
-O three.js disponibiliza algumas classes para permitir um fácil controlo da câmara como é o caso do OrbitControls.js. Note que para usar esses controlos é preciso uma cópia local do script onde esses controlos estão definidos. Pode fazer o download do three.js em http://threejs.org/ sendo que a biblioteca a usar está na pasta:
+three.js provides classes to allow an easy control of the camera pose, see for example the OrbitControls. Note that to use these controls you need to import (as a local copy for example) the scripts where these controls are defined (OrbitControls.js fro example). You can download three.js from http://threejs.org/ and the ObritControl JS code is in the following folder:
+
 ``` html
 threejs folder > examples > js > controls > OrbitControls.js
 ``` 
-No exemplo anterior substitua o controlo da câmara pela linha seguinte e veja o que acontece:
+In the previous example, replace the camera control with the following line and see what happens:
+
 ``` html
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 ``` 
-Não se esqueça de fazer o update dos controlos na função de desenho: 
+Do not forget to update the camera controls in the render function: 
 ``` html
 controls.update();
 ```
-Existem outros controlos. Experimente alguns, por exemplo o: TrackballControls 
+Other camera controls are available. Try some of them, for example the TrackballControls or FlyControls.
 
-# Iluminação e materiais
-Vamos agora adicionar luzes na cena. 
-Volte a ativar a rotação e visualizar o cubo sem ser em wireframe. 
-Crie uma DirectionalLight na posição 0,5,0 com a cor 0xffffff e intensidade 1.0. Não se esqueça de a adicionar a cena. Vê alguma alteração na cena? Para que o objeto interaja com a luz é necessário utilizar um material de um tipo diferente, utilize um material do tipo MeshPhongMaterial e observe novamente.
+# Lighting and materials
+Let's now add lights to the scene.
+Turn the rotation back on and visualize the cube without the wireframe option.
+Create a DirectionalLight at position 0.5.0 with color 0xffffff and intensity 1.0. Do not forget to add it to the scene. Do you see any changes in the scene? In order for the object to interact with light it is necessary to use a material of a different type from MeshBasicMaterial. Replace the MeshBasicMaterial with a MeshPhongMaterial material and observe what happens.
+
 ``` html
 var material = new THREE.MeshPhongMaterial({
             color: '#006063',
@@ -39,56 +44,57 @@ var material = new THREE.MeshPhongMaterial({
 		shininess: 100
             });
 ``` 
-Adicione uma luz ambiente, note (note que a componente de luz ambiente (color) do material só é usada se uma luz ambiente está definida), por exemplo: 
+Add an ambient light, note (note that the ambient light component (color) of the material is only used if there is ambient light in the scene). You may use the following code:
 ``` html
 var alight = new THREE.AmbientLight(0xffffff);
 scene.add(alight);
 ``` 
 
-# Sombreamento
-Modifique o exemplo base (cubo a rodar) para representar não um cubo mas uma esfera (primitiva sphereGeometry) de raio 1. 
-Modifique os parâmetros 2 e 3 com a opção wireframe ativa. Ao que correspondem os parâmetros widthSegments e heightSegments? Desative o wireframe e coloque o número de segmentos a 10. 
+# Shading
+Modify the original rotating cube example to represent not a cube but a sphere (primitive sphereGeometry) of radius 1.
+Modify parameters 2 and 3 with the wireframe option active. What do the widthSegments and heightSegments parameters correspond to? Disable wireframe and set the number of segments to 10.
 
-Crie agora outra esfera com as mesmas caraterísticas e coloque uma esfera em x=-2.5 e a outra em x =2.5 (use o método position.x).
+Now create another sphere with the same characteristics and place one sphere at x=-2.5 and the other at x=2.5 (use the position.x method).
 
-Adicione a luz ambiente e a luz direcional do exemplo 2.3 entre as duas esferas com y=5. Aplique dois materiais iguais do tipo MeshPhongMaterial as duas esferas (use o exemplo anterior). Modifique a opção de flatShading de um dos materiais alternando entre true e false e veja o resultado. 
+Add the ambient light and directional light from the previous exercize located between the two spheres with y=5. Apply the same MeshPhongMaterial to the two spheres (use the previous example). Modify the flatShading option of one of the materials by toggling between true and false and observe the result.
 
-Opcional : Aplique a esfera 1 um material do tipo MeshLambertMaterial com as mesmas caraterísticas da esfera 2. No material do tipo Lambertiano, retire as componentes specular e shininess. O que observa? Os materiais lambertianos dispersam a luz de igual forma em todas as direções pelo que o coeficiente especular e o brilho são ignorados.
+Optional/HomeWork: Apply to the first sphere a MeshLambertMaterial type material with the same characteristics as sphere 2. In the Lambertian-type material, remove the specular and shininess components. What do you observe? Lambertian materials scatter light evenly in all directions so the specular coefficient and brightness are ignored.
 
-Pode ainda modificar as propriedades das esferas a seu gosto usando alguns valores da tabela seguinte (note que o brilho deve ser multiplicado por 256). Veja o exemplo:
+Modify the properties of the spheres tousing some values from the following table (note that the brightness must be multiplied by 256) to see the effects of differente material. See the example:
+
 ``` html
-var esmeralda = new THREE.MeshPhongMaterial({
+var emerald = new THREE.MeshPhongMaterial({
 shading: THREE.SmoothShading	});
-esmeralda.color = new THREE.Color(0.07568, 0.61424, 0.07568);
-esmeralda.specular= new THREE.Color(0.633, 0.7278, 0.633);
-esmeralda.shininess = 0.6 * 256;
+emerald.color = new THREE.Color(0.07568, 0.61424, 0.07568);
+emerald.specular= new THREE.Color(0.633, 0.7278, 0.633);
+emerald.shininess = 0.6 * 256;
 ``` 
-Nome             |	Ambiente                      |Difuso	                        |Especular	                        |Brilho
+Name             |Ambient                             |Diffuse	                        |Specular	                        |Shininess
 -----------------|------------------------------------|-----------------------------------|-----------------------------------|----------:
-esmeralda        |0.0215	0.1745	0.0215      |0.07568	0.61424	0.07568     |0.633	0.727811	0.633       |0.6
-ouro             |0.24725	0.1995	0.0745      |0.75164	0.60648	0.22648     |0.628281	0.555802	0.366065    |0.4
-prata            |0.19225	0.19225	0.19225     |0.50754	0.50754	0.50754     |0.508273	0.508273	0.508273    |0.4
-plástico preto   |0.0	0.0	0.0                     |0.01	0.01	0.01                    |0.50	0.50	0.50                    |0.25
-plástico vermelho|0.0	0.0	0.0                     |0.5	0.0	0.0                     |0.7	0.6	0.6                     |0.25
-plástico branco  |0.0	0.0	0.0                     |0.55	0.55	0.55                    |0.70	0.70	0.70                    |0.25
-borracha preta   |0.02	0.02	0.02                    |0.01	0.01	0.01                    |0.4	0.4	0.4                     |0.0781
-borracha vermelha|0.05	0.0	0.0                     |0.5	0.4	0.4                     |0.7	0.04	0.04                    |0.0781
-borracha branca  |0.05	0.05	0.05                    |0.5	0.5	0.5                     |0.7	0.7	0.7                     |0.0781
+emerald          |0.0215	0.1745	0.0215      |0.07568	0.61424	0.07568     |0.633	0.727811	0.633       |0.6
+Gold             |0.24725	0.1995	0.0745      |0.75164	0.60648	0.22648     |0.628281	0.555802	0.366065    |0.4
+Silver           |0.19225	0.19225	0.19225     |0.50754	0.50754	0.50754     |0.508273	0.508273	0.508273    |0.4
+Black plastic    |0.0	0.0	0.0                     |0.01	0.01	0.01                    |0.50	0.50	0.50                    |0.25
+Red plastic      |0.0	0.0	0.0                     |0.5	0.0	0.0                     |0.7	0.6	0.6                     |0.25
+White plastic    |0.0	0.0	0.0                     |0.55	0.55	0.55                    |0.70	0.70	0.70                    |0.25
+Black rubber     |0.02	0.02	0.02                    |0.01	0.01	0.01                    |0.4	0.4	0.4                     |0.0781
+Red rubber       |0.05	0.0	0.0                     |0.5	0.4	0.4                     |0.7	0.04	0.04                    |0.0781
+White rubber     |0.05	0.05	0.05                    |0.5	0.5	0.5                     |0.7	0.7	0.7                     |0.0781
 
-Se o desejar pode utilizar os endereços seguinte para visualizar outros efeitos de iluminação ou outros materiais usando:
+You may use the following sites to visualize other lighting effects or other materials using:
 
 http://www.realtimerendering.com/teapot/
 
 http://www.lighthouse3d.com/2014/01/webgl-basic-material-list-from-teapots-c/
 
-Opcional: Acrescente as seguintes luzes no ambiente, todas a apontar para a origem
-Luz direcional vermelha na posição (-5,0,0) 
-Luz direcional azul na posição (5,0,0) 
-Luz tipo spotlight verde na posição (0,0,-5)
+Optional/HomeWork: Add the following ambient lights, all pointing to the origin of the scene
+Red directional light in position (-5,0,0)
+Blue directional light in position (5,0,0)
+Green spotlight light in position (0,0,-5)
 
-# Transparência
-Acrescente no exemplo 2.4 uma esfera (ou um cubo) a volta das duas esferas do exemplo anterior (defina o modelo com um tamanho ligeiramente maior).
-Utilize o material seguinte para esses dois modelos e observe o efeito, modifique o parâmetro opacity para ajustar a transparência. 
+# Transparency
+In the previous example (two spheres located at x=-2.5 and x=2.5) add spheres (or cubes) with a slightly larger size around original spheres.
+Use the following material for these two models and observe the effect. Modify the opacity parameter to adjust the transparency.
 ``` html
 var glassMaterial = new THREE.MeshPhongMaterial( { 
 color: 0x222222, 
@@ -99,14 +105,13 @@ transparent: true
 } );
 ``` 
 
-# Transformações (escala e rotação)
-Crie uma nova cena constituída por um paralelepípedo de tamanho (2,1,4) (use a propriedade scale) na posição (0,0,0) e quatro esferas (raio 0.5) centradas nos seus vértices inferiores (ver figura). Em vez de adicionar várias malhas separadas, pode adicionar as várias malhas num único THREE.Object3D() através do comando add. 
-Visualize na consola as matrizes de transformação do paralelepípedo e de uma das esferas acedendo a matriz (matrix) com as transformações dos objetos.
+# Transformations (scale and rotation)
+Create a new scene consisting of a box of size (2,1,4) (use the scale property) at position (0,0,0) and four spheres (radius 0.5) centered on its lower vertices (see figure below). Instead of adding multiple separate meshes, you can add multiple meshes into a single THREE.Object3D() via the add command.
+View the transformation matrices of the parallelepiped and of one of the spheres on the console, accessing the matrix (matrix) with the transformations of the objects.
 
-   
 ![paralelepípedo1](./paralelepípedo1.png)
 
-# Transformações (rotações)
-Crie um objeto que represente um sistema de coordenadas usando três cilindros (CylinderGeometry) vermelhos, verdes e azuis para cada eixo. Os três cilindros devem pertencer a um único objeto com o nome eixo. Adicione este objeto a cena anterior e substitua as esferas por cilindros com raios 0.5 e altura 0.2.
+# Transformations (rotations)
+Create an object that represents a coordinate system using three red, green, and blue cylinders (CylinderGeometry) for each axis. The three cylinders must belong to a single object named axis. Add this object to the previous scene and replace the spheres with cylinders with radius 0.5 and height 0.2.
 
 ![paralelepípedo2](./paralelepípedo2.png)

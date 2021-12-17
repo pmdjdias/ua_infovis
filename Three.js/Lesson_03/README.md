@@ -1,42 +1,43 @@
-# Lesson 3 - Textura e Interação
+# Lesson 3 - texture and Interaction
 
 ## Outline
-* Textura
-* Combinação de textura e iluminação
-* Interação com teclado
+* Tecture
+* Combining texture and Illumination
+* Keyboard Interaction
 
-#	Utilização de uma textura num plano
-Modifique o programa exemplo base (o cubo) para permitir visualizar um plano (PlaneGeometry). 
-Utilize o atributo map do Material para aplicar a imagem Lena.jpg como textura do plano. Para ler a imagem, pode usar o código seguinte:
+# Using a texture in a plane
+Modify the rotating cube example ( https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene) to show a plane (PlaneGeometry).
+Use the Material's map attribute to apply the Lena.jpg image as the plane texture. To read the image, you can use the following code:
 ``` html
 var texloader = new THREE.TextureLoader();
 var tex=texloader.load("../images/lena.jpg");
-``` 
-Note que muitos navegadores, por razões de segurança, limitam o acesso a ficheiro locais pelo que neste exemplo pode haver problemas ao carregar a imagem. Pode se resolver esse problemas colocando todos os ficheiros num servidor local ou habilitando o navegador a aceder a ficheiros locais. O Firefox, não tem esse problema, mas no chrome, deve ser invocado o navegador com o comando seguinte: chrome -allow-file-access-from-files. Em alternativa, pode se usar um servidor, por exemplo em python. Para configurar um servidor em python, basta instalar o python (http://python.org) e correr o código seguinte numa linha de comandos: python -m SimpleHTTPServer 8000 acedendo depois ao endereço http://localhost:8000.
+```
+Remember that most browser limit access to local files so you need to use a local server or enabling the browser to access local files. 
+You mightuse configure a server in python: python -m SimpleHTTPServer 8000 then access the address http://localhost:8000, or an extension on your editor (Live extension of VS Code for example)
 
-Tente alterar o tamanho do Plano, o que é que acontece a textura?
+Modify the size of the plane, what happens to the texture?
 
-#	Textura num cubo
-Voltando ao exemplo do cubo. Utilize a imagem lena.jpg como textura para o cubo. Como é mapeada a imagem para o cubo.
-Modifique o programa para mapear uma imagem diferente para cada face do cubo (use as imagens Im1.jpg, Im2.jpg... Im6.jpg), Para tal crie um agregado para os materiais (var materials = []) na qual são colocadas todas as texturas usando o comando push. Modifique o comando de criação da malha para usar texturas múltiplas associadas a cada face da malha obtendo o resultado da figura seguinte.
+#	Texture on a cube
+Use the lena.jpg image as the texture for the cube. How is the image mapped to the cube.
+Modify the program to map a different image to each face of the cube (use the images Im1.jpg, Im2.jpg... Im6.jpg). To use several texture, you need to aggregate all the textures in a materials variable (var materials = [])  using the push command. Modify the example to use multiple textures  obtaining the result of the following figure.
 ``` html
 var cube = new THREE.Mesh(geometry, materials);
 ``` 
-Pode adicionar um OrbitControls para controlar a posição e orientação do cubo (ver 2.2 da última aula).
+Use OrbitControls to control the position and orientation of the cube (see lesson 2).
 
  
 ![cuboTextura](./cuboTextura.png)
 
-# Textura e iluminação
-Crie um programa para visualizar uma esfera de raio 1 (use 32 segmentos em largura e altura). Aplique na esfera a textura de planisfério (earth_surface_2048.jpg). Visualize o modelo com uma rotação fixa no eixo dos Z (use 0.41 rad) e com uma animação (uma rotação a volta do eixo dos y de 0.0025 rad).
-Adicione agora iluminação na cena. Utilize um material do tipo MeshPhongMaterial com a textura (em vez de um MeshBasicMaterial). Adicione ainda uma luz ambiente com o valor 0x333333 e uma luz direcional com direção (1,0,0) e com o valor 0xfffff a representar o sol. 
-# Interação
-Adicione o código seguinte no programa p
-ara responder ao evento keydown.
+# texture and Lighting
+Create a program to visualize a sphere of radius 1 (use 32 segments in width and height). Apply the planisphere texture (earth_surface_2048.jpg) to the sphere. View the model with a fixed rotation on the Z axis (use 0.41 rad) and with an animation (a rotation around the y axis of 0.0025 rad).
+Now add lighting to the scene. Use a MeshPhongMaterial type material with the texture (instead of a MeshBasicMaterial). Add an ambient light with the value 0x333333 and a directional light with direction (1,0,0) and with the value 0xfffff representing the sun.
+
+# Interaction
+Add the following code to respond to the keydown event.
 ``` html
 document.addEventListener("keydown", onDocumentKeyDown, false);
 ``` 
-Adicione também uma função para indicar qual a tecla que foi premida na consola. Pode usar o código seguinte:
+Use the following function to see which key was pressed on the console:
 ``` html
 function onDocumentKeyDown(event){ 
 // Get the key code of the pressed key 
@@ -44,16 +45,17 @@ var keyCode = event.which;
 console.log("tecla " + keyCode);
 }
 ``` 
-# Ativação iluminação
-Modifique o código para permitir ligar / desligar a luz direcional através da tecla L (pode ser feito removendo a luz da cena, ou alterando o material para um MeshBasicMaterial, veja a diferença entre estes dois métodos).
 
-Adicione ainda a opção de aumentar/diminuir a intensidade da luz através das teclas + e -. Use o código da alínea 3.4 para ver o código das teclas a usar.
+# Lighting activation
+Modify the code to allow turning on/off the directional light via the L key (this can be done by removing the light from the scene, or changing the material to a MeshBasicMaterial, see the difference between these two methods).
 
-#	Alterar rotações e posições
-Utilize as teclas de direção para aumentar/diminuir a velocidade de rotação a volta dos eixos yy [esquerda e direita] e xx [cime e baixo] e as teclas page Up/Down para inclinar mais ou menos o modelo a volta do eixo zz.
+Add the possibility to increase/decrease the light intensity using the + and - keys. Use the funtion of the previous section to find out the code of the keys to use.
 
-# Concatenação de transformações / adição da lua
-Adicione um novo modelo para representar a lua usando a texture moon_1024.jpg. e considere as constantes seguintes:
+#	Modify position and rotation
+Use the arrow keys to increase/decrease the rotation speed around the yy [left and right] and xx [up and down] axes and the page Up/Down keys to more or less incline the model around the zz axis.
+
+# Concatenation of transformations / addition of the moon
+Add a new model to represent the moon using the texture moon_1024.jpg. Consider the following constants:
 ``` html
 DISTANCE_FROM_EARTH = 356400;
 PERIOD = 28;
@@ -61,8 +63,7 @@ INCLINATION = 0.089;
 SIZE_IN_EARTHS = 1 / 3.7;
 EARTH_RADIUS = 6371;
 ``` 
-
-Para permitir a lua rodar a volta da terra, note que tem que criar a lua como um filho da terra para ser influenciada pelas transformações da terra (as transformações aplicadas a terra são automaticamente aplicadas a lua, multiplicando as matrizes de transformações dos dois objetos). Para tal o modelo da lua deve ser adicionado (add) ao modelo da terra. Considere as transformações seguintes para inicializar a lua na posição correta e aplicar a animação correta a mesma:
+To allow the moon to rotate around the earth, note that you have to create the moon as a child of the earth to be influenced by the earth's transformations (transformations applied to earth are automatically applied to the moon, multiplying the transformation matrices of the two objects) . For this, the moon model must be added (add) to the earth model. Consider the following transformations to initialize the moon in the correct position and apply the correct animation:
 
 ``` html
 var distance = DISTANCE_FROM_EARTH / EARTH_RADIUS;
