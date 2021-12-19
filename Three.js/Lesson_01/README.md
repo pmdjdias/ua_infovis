@@ -25,7 +25,7 @@ It is also possible to downlaod  three.js from http://threejs.org/ and use a loc
 
 You can explore some three.js examples at the following site : http://threejs.org/examples/
 
-## Firts example 
+## First example 
 Create your first three.js example based on the tutorial available at:
 https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene
 See the all teh necessary steps to create and visualize a scene:
