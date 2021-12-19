@@ -17,7 +17,7 @@ To use three.js, it is necessary to include the following lines in you javascrip
 <script src="https://rawgithub.com/mrdoob/three.js/master/build/three.js"></script>
 ```
 
-It is also possible to downlaod  three.js from http://threejs.org/ ans use a local copy with the following link:
+It is also possible to downlaod  three.js from http://threejs.org/ and use a local copy with the following link:
 
 ``` html
 <script src="js/three.js"></script>
