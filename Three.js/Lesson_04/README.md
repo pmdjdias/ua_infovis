@@ -68,12 +68,17 @@ function onMouseDown(e) {
 Place another model in the scene (another cube for example) and modify the code to distinguish which model was selected. You may also change the color of the selected object: when clicking on one of the 3D objects, it turns red, for example.
 
 Add a OrbitControls or TrackballControls and see what happens when the cubes are aligned. Ensure that the code allows selecting the two cubes when 
-they are aligned (you can use rayCaster's IntersectObjects method with scene.children variable).
+they are aligned (you can use rayCaster's IntersectObjects method with scene.children variable and then acess all the selected objects trough the returning variable) as sehown below:
+``` html
+intersects = raycaster.intersectObjects(scene.children);
+for (var i=0; i<intersects.length; i++) {
+  // Change the material of the selected objects
+}
 
 # Control of the Camera position
 The method used previously in the first exercize only allows you to turn an object on itself (try using the same code with the two cubes with x= -2 and x=2 and see the result).
 To allow changing the point of view, it is necessary to act on the position and orientation of the camera and not on the position and orientation of the object.
-Modify the code from the first example move the camera over a sphere centered on the origin with radius 5. It should allow updating the position of the camera on the sphere according to the variables pi and theta. Note that in addition to the position (camera.position.set(x,y,z)) you must also set the camera's orientation (camera.lookAt()). To calculate Cartesian coordinates (x,y,z) from spherical coordinates (rho, phi, theta).
+Modify the code from the first example to move the camera over a sphere centered on the origin with radius 5. It should allow updating the position of the camera on the sphere according to the variables phi and theta. Note that in addition to the position (camera.position.set(x,y,z)) you must also set the camera's orientation (camera.lookAt()). To calculate Cartesian coordinates (x,y,z) from spherical coordinates (rho, phi, theta).
 You can use the following code:
 ``` html
 theta = …
