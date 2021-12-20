@@ -18,7 +18,6 @@ Analyze the following code and use it to allow the rotation of the cube accordin
     var mouseDown = function (e) {
         drag = true;
         old_x = e.pageX, old_y = e.pageY;
-        e.preventDefault();
         return false;
     }
 
@@ -31,9 +30,8 @@ Analyze the following code and use it to allow the rotation of the cube accordin
         var dX = e.pageX - old_x,
         dY = e.pageY - old_y;
         theta += dX * 2 * Math.PI / window.innerWidth;
-	  phi += dY * 2 * Math.PI / window.innerHeight;
+	phi += dY * 2 * Math.PI / window.innerHeight;
         old_x = e.pageX, old_y = e.pageY;
-        e.preventDefault();
     }
 
     renderer.domElement.addEventListener("mousedown", mouseDown);
@@ -43,46 +41,29 @@ Analyze the following code and use it to allow the rotation of the cube accordin
 
 # Object Selection
 three.js provides two classes (Projector e Raycaster) that can be used to perform raycasting to intercept/Select objects on the scene.
-The Projector class computes a 3D ray on the scene from all 3D coordinates that are projected on the pixel on the screen (it requires the 2D coordinate of the pixel and the camera information(). To use the projector, you need to include the following code: 
+The Projector class computes a 3D ray on the scene from all 3D coordinates that are projected on the pixel on the screen (it requires the 2D coordinate of the pixel and the camera information()(. To use the projector, you need to include the following code: 
 ``` html
-<script src="js/examples/js/renderers/Projector.js"></script>
+<script src="https://threejs.org/examples/js/Projector.js"></script>
 ``` 
 The Raycaster is used to determine the objects that intersect the 3D ray generated from a pixel using the camera position and orientation.
 Analyze the following code and use it to select objects from the scene by clicking on pixels of the window.
 ``` html
 //mouse event variables
-var projector = new THREE.Projector(),
-mouse_vector = new THREE.Vector3(),
-mouse = { x: 0, y: 0, z: 1 },
-ray = new THREE.Raycaster(new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, 0)),
-intersects = []; 
-
+var raycaster = new THREE.Raycaster(); // create once
+var mouse = new THREE.Vector2(); // create once
+intersects = [];
 function onMouseDown(e) {
-    // To prevent calling another function
-    e.preventDefault();
-
-    // Transformation between window and three.js coordinates
-    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-
-    // 3D vector indicating the ray direction
-    mouse_vector.set(mouse.x, mouse.y, mouse.z);
-
-    // Define a point in 3D space according to mouse click
-    mouse_vector.unproject(camera);
-                    
-    var direction = mouse_vector.sub(camera.position).normalize();
-
-    // Calls the raycaster with the camera position and direction
-    ray.set(camera.position, direction);
-    // Checks if the ray intersected an object in the scene
-    intersects = ray.intersectObject(cube);
-
-    if (intersects.length) {
-        alert("hit");
-        }
+	//compute transform betweem mouse and three.jscoordinate systems
+	mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+	mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+	//Calls raycaster function with camera position and orientation
+	raycaster.setFromCamera( mouse, camera );
+	//Check if the ray intercept an object on the scene
+	intersects = raycaster.intersectObject(cube);
+	if (intersects.length) {
+		alert("hit");
+	}
 }
-renderer.domElement.addEventListener('mousedown', onMouseDown);
 ``` 
 Place another model in the scene (another cube for example) and modify the code to distinguish which model was selected. You may also change the color of the selected object: when clicking on one of the 3D objects, it turns red, for example.
 
