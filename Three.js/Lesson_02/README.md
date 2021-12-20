@@ -8,8 +8,7 @@
 
 
 # Camera models
-Modify the first example from the last lesson to visualize the cube in wireframe (you can get the code at https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene). You must activate the appropriate material property . 
-Disable the cube rotation.
+Modify the first example from the last lesson to visualize the cube in wireframe (you can get the code at https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene). You must activate the appropriate material property. Also disable the cube rotation.
 
 Instead of using a perspective camera, now use an Orthographic Camera. Note that in this type of camera the upper limits are specified in x and y coordinates on the scene and not with the field of view angle as in the  perspective camera. Modify the parameters so that the world view is between -3 and 3 on the x-axis while respecting the window's aspect ratio.
 Compare the result with the two type of cameras. Is this what you expected?
