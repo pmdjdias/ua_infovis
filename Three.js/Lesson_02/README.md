@@ -1,7 +1,7 @@
 # Lesson 2 - Projections, lighting and transformations
 
 ## Outline
-* Camera models perspective and orthogonal projection
+* Camera models: perspective and orthogographic cameras
 * Interaction with camera
 * Lighting and shading
 * Transformations
