@@ -52,7 +52,7 @@ Modify the code to allow turning on/off the directional light via the L key (thi
 Add the possibility to increase/decrease the light intensity using the + and - keys. Use the funtion of the previous section to find out the code of the keys to use.
 
 #	Modify position and rotation
-Use the arrow keys to increase/decrease the rotation speed around the yy [left and right] and xx [up and down] axes and the page Up/Down keys to more or less incline the model around the zz axis.
+Use the arrow keys to increase/decrease the rotation speed around the xx [left and right] and yy [up and down] axes and the page Up/Down keys to increase&decrease the inclination of the model around the zz axis.
 
 # Concatenation of transformations / addition of the moon
 Add a new model to represent the moon using the texture moon_1024.jpg. Consider the following constants:
