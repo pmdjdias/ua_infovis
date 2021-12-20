@@ -30,7 +30,7 @@ Do not forget to update the camera controls in the render function:
 ``` html
 controls.update();
 ```
-Other camera controls are available. Try some of them, for example the TrackballControls or FlyControls.
+Other camera controls are available. Try some of them, for example the TrackballControls, FirstPersonControls or FlyControls.
 
 # Lighting and materials
 Let's now add lights to the scene.
