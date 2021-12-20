@@ -24,7 +24,7 @@ three.js provides classes to allow an easy control of the camera pose, see for e
 In the previous example, replace the camera control with the following line and see what happens:
 
 ``` html
-var controls = new THREE.OrbitControls(camera, renderer.domElement);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
 ``` 
 Do not forget to update the camera controls in the render function: 
 ``` html
@@ -35,10 +35,10 @@ Other camera controls are available. Try some of them, for example the Trackball
 # Lighting and materials
 Let's now add lights to the scene.
 Turn the rotation back on and visualize the cube without the wireframe option.
-Create a DirectionalLight at position 0.5.0 with color 0xffffff and intensity 1.0. Do not forget to add it to the scene. Do you see any changes in the scene? In order for the object to interact with light it is necessary to use a material of a different type from MeshBasicMaterial. Replace the MeshBasicMaterial with a MeshPhongMaterial material and observe what happens.
+Create a DirectionalLight (https://threejs.org/docs/#api/en/lights/DirectionalLight) at position 0.5.0 with color 0xffffff and intensity 1.0. Do not forget to add it to the scene. Do you see any changes in the scene? In order for the object to interact with light it is necessary to use a material of a different type from MeshBasicMaterial. Replace the MeshBasicMaterial with a MeshPhongMaterial material and observe what happens.
 
 ``` html
-var material = new THREE.MeshPhongMaterial({
+const material = new THREE.MeshPhongMaterial({
             color: '#006063',
 		specular: '#a9fcff',
 		shininess: 100
@@ -46,7 +46,7 @@ var material = new THREE.MeshPhongMaterial({
 ``` 
 Add an ambient light, note (note that the ambient light component (color) of the material is only used if there is ambient light in the scene). You may use the following code:
 ``` html
-var alight = new THREE.AmbientLight(0xffffff);
+const alight = new THREE.AmbientLight(0xffffff);
 scene.add(alight);
 ``` 
 
@@ -63,7 +63,7 @@ Optional/HomeWork: Apply to the first sphere a MeshLambertMaterial type material
 Modify the properties of the spheres tousing some values from the following table (note that the brightness must be multiplied by 256) to see the effects of differente material. See the example:
 
 ``` html
-var emerald = new THREE.MeshPhongMaterial({
+const emerald = new THREE.MeshPhongMaterial({
 shading: THREE.SmoothShading	});
 emerald.color = new THREE.Color(0.07568, 0.61424, 0.07568);
 emerald.specular= new THREE.Color(0.633, 0.7278, 0.633);
@@ -96,7 +96,7 @@ Green spotlight light in position (0,0,-5)
 In the previous example (two spheres located at x=-2.5 and x=2.5) add spheres (or cubes) with a slightly larger size around original spheres.
 Use the following material for these two models and observe the effect. Modify the opacity parameter to adjust the transparency.
 ``` html
-var glassMaterial = new THREE.MeshPhongMaterial( { 
+const glassMaterial = new THREE.MeshPhongMaterial( { 
 color: 0x222222, 
 specular: 0xFFFFFF,
 shininess: 100, 
