@@ -67,8 +67,7 @@ To allow the moon to rotate around the earth, note that you have to create the m
 
 ``` html
 var distance = DISTANCE_FROM_EARTH / EARTH_RADIUS;
-moon.position.set(Math.sqrt(distance / 2), 0,
--Math.sqrt(distance / 2));
+moon.position.set(Math.sqrt(distance / 2), 0,-Math.sqrt(distance / 2));
 
 // Rotate the moon so it shows its moon-face toward earth
 moon.rotation.y = Math.PI;
