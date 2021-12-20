@@ -88,7 +88,6 @@ http://www.realtimerendering.com/teapot/
 http://www.lighthouse3d.com/2014/01/webgl-basic-material-list-from-teapots-c/
 
 Optional/HomeWork: Add the following lights, all pointing to the origin of the scene: 
-
 Red directional light in position (-5,0,0)
 Blue directional light in position (5,0,0)
 Green spotlight light in position (0,0,-5)
