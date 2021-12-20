@@ -91,7 +91,7 @@ var colors = new Uint8Array( [
 	 0,  0,  255,  
 ] );
 
-geometry.addAttribute( 'color', new THREE.BufferAttribute( colors, 3, true) );
+geometry.setAttribute( 'color', new THREE.BufferAttribute( colors, 3, true) );
 ```
 A material is also necessary (see following code):
 ``` html
