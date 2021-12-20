@@ -90,7 +90,7 @@ http://www.lighthouse3d.com/2014/01/webgl-basic-material-list-from-teapots-c/
 Optional/HomeWork: Add the following lights, all pointing to the origin of the scene: 
 Red directional light in position (-5,0,0)
 Blue directional light in position (5,0,0)
-Green spotlight light in position (0,0,-5)
+Green spotlight light in position (0,0,-5) with angle Math.PI/20 and target object in (-2.5,0,0)
 
 # Transparency
 In the previous example (two spheres located at x=-2.5 and x=2.5) add spheres (or cubes) with a slightly larger size around original spheres.
@@ -113,5 +113,6 @@ View the transformation matrices of the parallelepiped and of one of the spheres
 
 # Transformations (rotations)
 Create an object that represents a coordinate system using three red, green, and blue cylinders (CylinderGeometry) for each axis. The three cylinders must belong to a single object named axis. Add this object to the previous scene and replace the spheres with cylinders with radius 0.5 and height 0.2.
+You may also see the axisHelper geometry as an alternative for visualization of the axes.
 
 ![paralelepípedo2](./paralelepípedo2.png)
