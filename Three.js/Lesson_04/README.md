@@ -78,7 +78,7 @@ for (var i=0; i<intersects.length; i++) {
 # Control of the Camera position
 The method used previously in the first exercize only allows you to turn an object on itself (try using the same code with the two cubes with x= -2 and x=2 and see the result).
 To allow changing the point of view, it is necessary to act on the position and orientation of the camera and not on the position and orientation of the object.
-Modify the code from the first example to move the camera over a sphere centered on the origin with radius 5. It should allow updating the position of the camera on the sphere according to the variables phi and theta. Note that in addition to the position (camera.position.set(x,y,z)) you must also set the camera's orientation (camera.lookAt()). To calculate Cartesian coordinates (x,y,z) from spherical coordinates (rho, phi, theta).
+Modify the code from the first example to move the camera over a sphere centered on the origin with radius 5. It should allow updating the position of the camera on the sphere according to the variables phi and theta. Note that in addition to the position (camera.position.set(x,y,z)) you must also set the camera´s orientation (camera.lookAt()). To calculate Cartesian coordinates (x,y,z) from spherical coordinates (rho, phi, theta).
 You can use the following code:
 ``` html
 theta = …
@@ -91,11 +91,16 @@ camera.updateMatrix();
 Use the +/- keys on the keyboard (see the last lesson) to allow “zoom in” and “zoom out”.
 
 # Texto 
-Use Three.js' TextGeometry to place a text on top of the cubes indicating “cube1” or “cube2”. Use the font "helvetiker" (you can use the file provided in the examples/fonts folder of three.js (helvetiker_regular.typeface.json) To define the text object you can use the following code to create the text geometry for cube 1 .
+Use Three.js' TextGeometry (https://threejs.org/docs/#examples/en/geometries/TextGeometry) to place a text on top of the cubes indicating “cube1” or “cube2”. Use the font "helvetiker" (you can use the file provided in the examples/fonts folder of three.js (helvetiker_regular.typeface.json) To define the text object you can use the following code to create the text geometry for cube 1. You need to add the follwoong js files:
+``` html
+<script src="https://threejs.org/examples/js/loaders/FontLoader.js"></script>
+<script src="https://threejs.org/examples/js/geometries/TextGeometry.js"></script>
+```
+And use the following code to create the text
 ``` html
 var textMesh1;
 var loader = new THREE.FontLoader();
-loader.load("../../js/helvetiker_regular.typeface.json", function (font) {
+loader.load("https://threejs.org/examples/fonts/helvetiker_regular.typeface.json", function (font) {
     textGeometry1 = new THREE.TextGeometry("Cube 1", {
         font: font,
         size: 0.22,
