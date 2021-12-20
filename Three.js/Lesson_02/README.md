@@ -34,12 +34,12 @@ Other camera controls are available. Try some of them, for example the Trackball
 
 # Lighting and materials
 Let's now add lights to the scene.
-Turn the rotation back on and visualize the cube without the wireframe option.
+Get back to the perspective camera, disable the wireframe and turn the rotation of the cube back on.
 Create a DirectionalLight (https://threejs.org/docs/#api/en/lights/DirectionalLight) at position 0.5.0 with color 0xffffff and intensity 1.0. Do not forget to add it to the scene. Do you see any changes in the scene? In order for the object to interact with light it is necessary to use a material of a different type from MeshBasicMaterial. Replace the MeshBasicMaterial with a MeshPhongMaterial material and observe what happens.
 
 ``` html
 const material = new THREE.MeshPhongMaterial({
-            color: '#006063',
+            	color: '#006063',
 		specular: '#a9fcff',
 		shininess: 100
             });
