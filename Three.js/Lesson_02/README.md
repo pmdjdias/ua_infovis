@@ -60,7 +60,7 @@ Add the ambient light and directional light from the previous exercize located b
 
 Optional/HomeWork: Apply to the first sphere a MeshLambertMaterial type material with the same characteristics as sphere 2. In the Lambertian-type material, remove the specular and shininess components. What do you observe? Lambertian materials scatter light evenly in all directions so the specular coefficient and brightness are ignored.
 
-Modify the properties of the spheres tousing some values from the following table (note that the brightness must be multiplied by 256) to see the effects of differente material. See the example:
+Modify the properties of the spheres by selecting some values from the following table (note that the brightness must be multiplied by 256) to see the effects of different materials. See the example:
 
 ``` html
 const emerald = new THREE.MeshPhongMaterial({
