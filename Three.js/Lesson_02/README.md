@@ -16,7 +16,7 @@ Compare the result with the two type of cameras. Is this what you expected?
 Optional/HomeWork: Add a function to ensure that the cube aspect ratio does not change when the window is resized (adapt from the Viewport Update in last lesson).
 
 # Orbit control
-three.js provides classes to allow an easy control of the camera pose, see for example the OrbitControls. Note that to use these controls you need to addth erealted script in your code either as a local copy or by adding the following code:
+three.js provides classes to allow an easy control of the camera pose, see for example the OrbitControls. Note that to use these controls you will have to include the file separately in your HTML (files in the /examples directory). You might also add the following script:
 
 ``` html
 <script src="https://rawgithub.com/mrdoob/three.js/master/build/js/OrbitControls.js"></script>
