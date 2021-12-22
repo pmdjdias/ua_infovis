@@ -116,3 +116,5 @@ Create an object that represents a coordinate system using three red, green, and
 You may also see the axisHelper geometry as an alternative for visualization of the axes.
 
 ![paralelepípedo2](./paralelepípedo2.png)
+
+Now add an animation to move the "car" along a predefined circuit (for example perform a rotation of radius 1 around the point (0,0,-1)).
