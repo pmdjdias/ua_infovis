@@ -1,7 +1,7 @@
 # Lesson 3 - texture and Interaction
 
 ## Outline
-* Tecture
+* Texture
 * Combining texture and Illumination
 * Keyboard Interaction
 
