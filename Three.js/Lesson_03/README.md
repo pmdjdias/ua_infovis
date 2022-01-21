@@ -13,7 +13,7 @@ var texloader = new THREE.TextureLoader();
 var tex=texloader.load("../images/lena.jpg");
 ```
 Remember that most browser limit access to local files so you need to use a local server or enabling the browser to access local files. 
-You mightuse configure a server in python: python -m SimpleHTTPServer 8000 then access the address http://localhost:8000, or an extension on your editor (Live extension of VS Code for example)
+You might use a server in python: python -m SimpleHTTPServer 8000 and then access the address http://localhost:8000, or an extension on your editor (Live extension of VS Code for example)
 
 Modify the size of the plane, what happens to the texture?
 
