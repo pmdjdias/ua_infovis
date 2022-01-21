@@ -52,7 +52,7 @@ console.log("tecla " + keyCode);
 # Lighting activation
 Modify the code to allow turning on/off the directional light via the L key (this can be done by removing the light from the scene, or changing the material to a MeshBasicMaterial, see the difference between these two methods).
 
-Add the possibility to increase/decrease the light intensity using the + and - keys. Use the funtion of the previous section to find out the code of the keys to use.
+Add the possibility to increase/decrease the light intensity using the + and - keys. Use the function of the previous section to find out the ASCII-code of the keys to use.
 
 #	Modify position and rotation
 Use the arrow keys [left and right] to increase/decrease the rotation speed around the yy axis axes and the Up/Down keys to increase/decrease the inclination of the model around the zz axis.
