@@ -21,7 +21,10 @@ Modify the size of the plane, what happens to the texture?
 Use the lena.jpg image as the texture for the cube. How is the image mapped to the cube.
 Modify the program to map a different image to each face of the cube (use the images Im1.jpg, Im2.jpg... Im6.jpg). To use several texture, you need to aggregate all the textures in a materials variable (var materials = [])  using the push command. Modify the example to use multiple textures  obtaining the result of the following figure.
 ``` html
-var cube = new THREE.Mesh(geometry, materials);
+const materials = [];
+materials.push(new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('Image.jpg') }));
+
+const cube = new THREE.Mesh(geometry, materials);
 ``` 
 Use OrbitControls to control the position and orientation of the cube (see lesson 2).
 
