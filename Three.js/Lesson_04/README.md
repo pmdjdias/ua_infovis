@@ -76,7 +76,7 @@ for (var i=0; i<intersects.length; i++) {
 }
 
 # Control of the Camera position
-The method used previously in the first exercize only allows you to turn an object on itself (try using the same code with the two cubes with x= -2 and x=2 and see the result).
+The method used previously in the first exercize only allows you to turn an object on itself (try using the same code with the two cubes with x=-2 and x=2 and see the result).
 To allow changing the point of view, it is necessary to act on the position and orientation of the camera and not on the position and orientation of the object.
 Modify the code from the first example to move the camera over a sphere centered on the origin with radius 5. It should allow updating the position of the camera on the sphere according to the variables phi and theta. Note that in addition to the position (camera.position.set(x,y,z)) you must also set the camera´s orientation (camera.lookAt()). To calculate Cartesian coordinates (x,y,z) from spherical coordinates (rho, phi, theta).
 You can use the following code:
