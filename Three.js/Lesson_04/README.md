@@ -68,7 +68,7 @@ function onMouseDown(e) {
 Place another model in the scene (another cube for example) and modify the code to distinguish which model was selected. You may also change the color of the selected object: when clicking on one of the 3D objects, it turns red, for example.
 
 Add a OrbitControls or TrackballControls and see what happens when the cubes are aligned. Ensure that the code allows selecting the two cubes when 
-they are aligned (you can use rayCaster's IntersectObjects method with scene.children variable and then acess all the selected objects trough the returning variable) as sehown below:
+they are aligned (you can use rayCaster's IntersectObjects method with scene.children variable and then acess all the selected objects trough the returning variable) as shown below:
 ``` html
 intersects = raycaster.intersectObjects(scene.children);
 for (var i=0; i<intersects.length; i++) {
