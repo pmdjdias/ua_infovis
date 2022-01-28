@@ -74,6 +74,7 @@ intersects = raycaster.intersectObjects(scene.children);
 for (var i=0; i<intersects.length; i++) {
   // Change the material of the selected objects
 }
+``` 
 
 # Control of the Camera position
 The method used previously in the first exercize only allows you to turn an object on itself (try using the same code with the two cubes with x=-2 and x=2 and see the result).
