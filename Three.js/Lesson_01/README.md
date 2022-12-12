@@ -95,7 +95,7 @@ geometry.setAttribute( 'color', new THREE.BufferAttribute( colors, 3, true) );
 ```
 A material is also necessary (see following code):
 ``` html
-const geometryMaterial = new THREE.MeshBasicMaterial( {vertexColors: THREE.VertexColors} );
+const geometryMaterial = new THREE.MeshBasicMaterial( {vertexColors: true} );
 ```
 Modify the example to create a scene similar to the figure below using the following 2D coordinates:
 ``` html
