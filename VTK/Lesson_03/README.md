@@ -21,7 +21,7 @@ class vtkMyCallback(object):
         # Just do this to demonstrate who called callback and the event that triggered it.
         print(caller.GetClassName(), 'Event Id:', ev)
         # Now print the camera position.
-        print('Camera Position:' + self.renderer.GetActiveCamera().GetPosition()[0] + ',' self.renderer.GetActiveCamera().GetPosition()[1] + ',' +self.renderer.GetActiveCamera().GetPosition()[2])
+        print("Camera Position: %f, %f, %f" % (self.ren.GetActiveCamera().GetPosition()[0],self.ren.GetActiveCamera().GetPosition()[1],self.ren.GetActiveCamera().GetPosition()[2]))
 # Callback for the interaction
 
 ....
@@ -29,8 +29,8 @@ class vtkMyCallback(object):
 In Code
 ################################################################
 # Here is where we setup the observer, we do a new and ren1 
-mo1 = vtkMyCallback()
-ren1->AddObserver(vtkCommand::AnyEvent,mo1);
+mo1 = vtkMyCallback(ren)
+ren.AddObserver(vtkCommand.AnyEvent,mo1)
 ################################################################
 ```
 
