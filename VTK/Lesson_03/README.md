@@ -6,7 +6,7 @@
 * Picking
 
 # Use of callbacks for interaction
-An important feature of VTK is the possibility to define Callback functionsmaking it possible to associate to an object a "callback" function to be executed whenever a given event occurs. The association between the function and the event is dobe using an observer.
+An important feature of VTK is the possibility to define Callback functions making it possible to associate to an object a "callback" function to be executed whenever a given event occurs. The association between the function and the event is dobe using an observer.
 Add the following function in the cone with interaction example (see lesson 02)
 
 ``` html
