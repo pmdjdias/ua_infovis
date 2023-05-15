@@ -43,8 +43,8 @@ Study the vtkGlyph 3D class and visualize a sphere with cones placed at each poi
 
 ``` html
 glyph = vtkGlyph3D()
-glyph.SetSource(cone.GetOutput())
-glyph.SetInput(sphere.GetOutput())
+glyph.SetSourceConnection(coneSource.GetOutputPort())
+glyph.SetInputConnection(sphereSource.GetOutputPort())
 ```
 
 Explore and try to understand what  the SetScaleFactor and SetVectorModeToUseNormal methods are used fro? Try to replicate the following model.
