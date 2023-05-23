@@ -64,6 +64,8 @@ Note: You may use the VisibilityOn/VisibilityOff methods so that the sphere is o
 myPicker = vtkPointPicker()
 mo1 = vtkMyCallback(myPicker)
 myPicker.AddObserver(vtkCommand.EndPickEvent ,mo1)
+...
+iren.SetPicker(myPicker)
 ```
 
 # Display of coordinates
