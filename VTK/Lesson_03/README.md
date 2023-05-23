@@ -61,9 +61,9 @@ Finally add a sphere indicating the selected point. To do so, create an actor th
 Note: You may use the VisibilityOn/VisibilityOff methods so that the sphere is only visible after picking.
 
 ``` html
-mo1 = vtkMyCallback()
 myPicker = vtkPointPicker()
-myPicker.AddObserver(vtkCommand::EndPickEvent ,mo1)
+mo1 = vtkMyCallback(myPicker)
+myPicker.AddObserver(vtkCommand.EndPickEvent ,mo1)
 ```
 
 # Display of coordinates
