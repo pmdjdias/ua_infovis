@@ -13,7 +13,7 @@ Compile and analyze the program poligonal.py that creates and visualizes a cube 
 Modify the code to create the following object.
 ![Poligonal model to replicate surface (left) and wireframe (right)](./polygonal.png)
 
-# Cliiping of a polygonal object
+# Clipping of a polygonal object
 Use the vtkVRMLImporter class to view the Teapot.wrl file. You can use the code example below.
 
 ``` html
