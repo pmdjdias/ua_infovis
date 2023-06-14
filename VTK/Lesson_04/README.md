@@ -1,45 +1,11 @@
 # Lesson 4 - Visualization techniques
 
 ## Outline
-* 3D widgets
-* Implicit functions and contouring 
 * Polygonal data
 * Clipping of a polygonal model
 * Scalar association to vectors and grids
-
-
-# 3D widgets
-The interactors used so far are used to react to mouse and keyboard events, but have no physical representation in the scene.
-In some cases it is important to be able to interact with objects directly exsting in the scene, for example to select a cutting plane. Widgets (Windows Objects) allow this type of interaction. Several widgets are available in VTK: vtkLineWidget, vtkPlaneWidget, vtkImplicitPlaneWidget, vtkBoxWidget, vtkImagePlaneWidget, vtkSphereWidget, vtkSplineWidget.
-
-
-To use a widget, several steps are required:
-* 1. Instantiate the Widget
-* 2. Specify the vtkRenderWindowInteractor to observe (SetInteractor method)
-* 3. Define the necessary callbacks associated to the Widget. Widgets have the following associated events: StartInteractionEvent, InteractionEvent, and EndInteractionEvent.
-* 4. Most widgets also need to be placed in a certain position in the scene. For that, it is necessary to specify an instance of the vtkProp3D type or a specific position and then invoke the PlaceWidget() method.
-* 5. Finally the Widget has to be activated. By default, the i key is used to activate the Widget.
-
-Compile and test the program widget.py which is a possible solution to the display of coordinate discussed in  lesson 3.
-
-Add a vtkImplicitPlaneWidget to to interact with the scene.
-At this stage, it is not necessary to define any callbacks, just instantiate and place the plane in the scene. Do not forget to place the widget in the scene (PlaceWidget method) and to associate an interactor to it (SetInteractor method)
-
-Activate the Widget using the I key and try to understand the different types of interaction available.
-
-Using the methods of the vtkImplicitPlaneWidget class, modify the plane so that it appears at the point (1,1,1) and is normal to the X axis.
-
-# Implicit functions and contouring
-Compile and test the program implicit.py to visualize 5 contours from a quadric function defined with an implicit function.
-Modify the number of contours to display 10 contours instead of 5 (to do so, it is necessary to change the parameters of the GenerateValues ​​function).
-Change the sampling volume to a cube centered at the origin and dimension 4 in all directions. What do you  observe (you may see the vtkSampleFunction class documentation). Test further with a sampling volume between 0 and 2 in all directions.
-Can you understand which is the defined quadric? what is its equation?
-
-Modify the code to visualize an hyperbolic paraboloid with equation
-
-$x^2-y^2-z=0$
-
-Start by visualizing 5 contours between 0 and 1.2 as in the example provided. Now change the code to display only the curve corresponding to level 0 (you can use the SetValue function instead of GenerateValues).
+* 3D widgets
+* Implicit functions and contouring 
 
 # Polygonal Data
 Compile and analyze the program poligonal.py that creates and visualizes a cube by creating an object of type vtkPolyData (this is an alternative of using te class vtkCubeSource).
@@ -86,3 +52,37 @@ Search for the vtkGlyph3D class methods that allow you to turn orientation and s
 
 # HedgeHog
 VTK has a class for displaying vector information in the form of line segments. Analyze the vtkHedgeHog class and try to visualize the vector data from the previous exercize using this vtkhedgeHog class instead of the vtkGlyph3D.
+
+
+# 3D widgets
+The interactors used so far are used to react to mouse and keyboard events, but have no physical representation in the scene.
+In some cases it is important to be able to interact with objects directly exsting in the scene, for example to select a cutting plane. Widgets (Windows Objects) allow this type of interaction. Several widgets are available in VTK: vtkLineWidget, vtkPlaneWidget, vtkImplicitPlaneWidget, vtkBoxWidget, vtkImagePlaneWidget, vtkSphereWidget, vtkSplineWidget.
+
+
+To use a widget, several steps are required:
+* 1. Instantiate the Widget
+* 2. Specify the vtkRenderWindowInteractor to observe (SetInteractor method)
+* 3. Define the necessary callbacks associated to the Widget. Widgets have the following associated events: StartInteractionEvent, InteractionEvent, and EndInteractionEvent.
+* 4. Most widgets also need to be placed in a certain position in the scene. For that, it is necessary to specify an instance of the vtkProp3D type or a specific position and then invoke the PlaceWidget() method.
+* 5. Finally the Widget has to be activated. By default, the i key is used to activate the Widget.
+
+Compile and test the program widget.py which is a possible solution to the display of coordinate discussed in  lesson 3.
+
+Add a vtkImplicitPlaneWidget to to interact with the scene.
+At this stage, it is not necessary to define any callbacks, just instantiate and place the plane in the scene. Do not forget to place the widget in the scene (PlaceWidget method) and to associate an interactor to it (SetInteractor method)
+
+Activate the Widget using the I key and try to understand the different types of interaction available.
+
+Using the methods of the vtkImplicitPlaneWidget class, modify the plane so that it appears at the point (1,1,1) and is normal to the X axis.
+
+# Implicit functions and contouring
+Compile and test the program implicit.py to visualize 5 contours from a quadric function defined with an implicit function.
+Modify the number of contours to display 10 contours instead of 5 (to do so, it is necessary to change the parameters of the GenerateValues ​​function).
+Change the sampling volume to a cube centered at the origin and dimension 4 in all directions. What do you  observe (you may see the vtkSampleFunction class documentation). Test further with a sampling volume between 0 and 2 in all directions.
+Can you understand which is the defined quadric? what is its equation?
+
+Modify the code to visualize an hyperbolic paraboloid with equation
+
+$x^2-y^2-z=0$
+
+Start by visualizing 5 contours between 0 and 1.2 as in the example provided. Now change the code to display only the curve corresponding to level 0 (you can use the SetValue function instead of GenerateValues).
