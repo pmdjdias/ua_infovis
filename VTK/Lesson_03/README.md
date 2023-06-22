@@ -6,7 +6,7 @@
 * Picking
 
 # Use of callbacks for interaction
-An important feature of VTK is the possibility to define Callback functionsmaking it possible to associate to an object a "callback" function to be executed whenever a given event occurs. The association between the function and the event is dobe using an observer.
+An important feature of VTK is the possibility to define Callback functions making it possible to associate to an object a "callback" function to be executed whenever a given event occurs. The association between the function and the event is done using an observer.
 Add the following function in the cone with interaction example (see lesson 02)
 
 ``` html
@@ -21,7 +21,7 @@ class vtkMyCallback(object):
         # Just do this to demonstrate who called callback and the event that triggered it.
         print(caller.GetClassName(), 'Event Id:', ev)
         # Now print the camera position.
-        print('Camera Position:' + self.renderer.GetActiveCamera().GetPosition()[0] + ',' self.renderer.GetActiveCamera().GetPosition()[1] + ',' +self.renderer.GetActiveCamera().GetPosition()[2])
+        print("Camera Position: %f, %f, %f" % (self.ren.GetActiveCamera().GetPosition()[0],self.ren.GetActiveCamera().GetPosition()[1],self.ren.GetActiveCamera().GetPosition()[2]))
 # Callback for the interaction
 
 ....
@@ -29,8 +29,8 @@ class vtkMyCallback(object):
 In Code
 ################################################################
 # Here is where we setup the observer, we do a new and ren1 
-mo1 = vtkMyCallback()
-ren1->AddObserver(vtkCommand::AnyEvent,mo1);
+mo1 = vtkMyCallback(ren)
+ren.AddObserver(vtkCommand.AnyEvent,mo1)
 ################################################################
 ```
 
@@ -43,8 +43,8 @@ Study the vtkGlyph 3D class and visualize a sphere with cones placed at each poi
 
 ``` html
 glyph = vtkGlyph3D()
-glyph.SetSource(cone.GetOutput())
-glyph.SetInput(sphere.GetOutput())
+glyph.SetSourceConnection(coneSource.GetOutputPort())
+glyph.SetInputConnection(sphereSource.GetOutputPort())
 ```
 
 Explore and try to understand what  the SetScaleFactor and SetVectorModeToUseNormal methods are used fro? Try to replicate the following model.
@@ -61,9 +61,11 @@ Finally add a sphere indicating the selected point. To do so, create an actor th
 Note: You may use the VisibilityOn/VisibilityOff methods so that the sphere is only visible after picking.
 
 ``` html
-mo1 = vtkMyCallback()
 myPicker = vtkPointPicker()
-myPicker.AddObserver(vtkCommand::EndPickEvent ,mo1)
+mo1 = vtkMyCallback(myPicker)
+myPicker.AddObserver(vtkCommand.EndPickEvent ,mo1)
+...
+iren.SetPicker(myPicker)
 ```
 
 # Display of coordinates
