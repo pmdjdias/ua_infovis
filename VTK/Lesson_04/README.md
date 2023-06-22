@@ -2,16 +2,15 @@
 
 ## Outline
 * 3D widgets
-* Implicit functions and contouring 
 * Polygonal data
 * Clipping of a polygonal model
-* Scalar association to vectors and grids
+* Scalar and vectors association unstructured grids
 
 
 # 3D widgets
 The interactors used so far are used to react to mouse and keyboard events, but have no physical representation in the scene.
 In some cases it is important to be able to interact with objects directly exsting in the scene, for example to select a cutting plane. Widgets (Windows Objects) allow this type of interaction. Several widgets are available in VTK: vtkLineWidget, vtkPlaneWidget, vtkImplicitPlaneWidget, vtkBoxWidget, vtkImagePlaneWidget, vtkSphereWidget, vtkSplineWidget.
-
+ 
 
 To use a widget, several steps are required:
 * 1. Instantiate the Widget
@@ -30,7 +29,7 @@ Activate the Widget using the I key and try to understand the different types of
 Using the methods of the vtkImplicitPlaneWidget class, modify the plane so that it appears at the point (1,1,1) and is normal to the X axis.
 
 # Implicit functions and contouring
-Compile and test the program implicit.py to visualize 5 contours from a quadric function defined with an implicit function.
+<!-- Compile and test the program implicit.py to visualize 5 contours from a quadric function defined with an implicit function.
 Modify the number of contours to display 10 contours instead of 5 (to do so, it is necessary to change the parameters of the GenerateValues ​​function).
 Change the sampling volume to a cube centered at the origin and dimension 4 in all directions. What do you  observe (you may see the vtkSampleFunction class documentation). Test further with a sampling volume between 0 and 2 in all directions.
 Can you understand which is the defined quadric? what is its equation?
@@ -39,22 +38,22 @@ Modify the code to visualize an hyperbolic paraboloid with equation
 
 $x^2-y^2-z=0$
 
-Start by visualizing 5 contours between 0 and 1.2 as in the example provided. Now change the code to display only the curve corresponding to level 0 (you can use the SetValue function instead of GenerateValues).
+Start by visualizing 5 contours between 0 and 1.2 as in the example provided. Now change the code to display only the curve corresponding to level 0 (you can use the SetValue function instead of GenerateValues). -->
 
 # Polygonal Data
 Compile and analyze the program poligonal.py that creates and visualizes a cube by creating an object of type vtkPolyData (this is an alternative of using te class vtkCubeSource).
 
 Modify the code to create the following object.
-![Poligonal model to replicate surface (left) and wireframe (right)](./polygonal.png)
+![Poligonal model to replicate surface (left) and wireframe (right)](./cube2tetrahedra.png)
 
-# Cliiping of a polygonal object
+# Cliping of a polygonal object
 Use the vtkVRMLImporter class to view the Teapot.wrl file. You can use the code example below.
 
 ``` html
 importer = vtkVRMLImporter()
-importer.SetRenderWindow(renWin);
-importer.SetFileName("Teapot.wrl");
-import.Read();
+importer.SetRenderWindow(renWin)
+importer.SetFileName(".//#04//teapot.wrl")
+import.Read()
 ``` 
 
 Note that vtkimporter already has an associated renderer (in addition to geometry, lights and other scene properties are also imported), so it is not necessary to create a renderer to view the scene, just a window.
@@ -67,8 +66,9 @@ Note that the input of the vtkClipPolyData object must be an object of type vtkP
 model = importer.GetRenderer().GetActors().GetLastActor().GetMapper().GetInput()
 ```
 
+Opcional:
 Now, modify the program to cut the model interactively by manipultaing the cutting plane. To do so, associate a callback to a vtkImplicitPlaneWidget. The implicit function (vtkPlane) will be updated using the getPlane() method of the vtkImplicitPlaneWidget. 
-
+# dar mais info e agum código
 ![Results of the Teapot Clipping](./clippingTeapot.png)
 
 # Scalar association to vectors and grids
@@ -82,7 +82,7 @@ Associate the following values ​​to the 4 points: 0.1 0.3 0.5 and 0.8.
 Run the code and notice how the scalar value is automatically used to modify the color of the various cones.
 Search for the vtkGlyph3D class methods that allow you to turn orientation and scaling on and off and observe the various results.
 
-![Visualization of the unstructured grid with a glyph (cone) with orientation according to the vector array and size according to the scalar array](./clippingTeapot.png)
+![Visualization of the unstructured grid with a glyph (cone) with orientation according to the vector array and size according to the scalar array](./unstructuredGrid.png)
 
 # HedgeHog
 VTK has a class for displaying vector information in the form of line segments. Analyze the vtkHedgeHog class and try to visualize the vector data from the previous exercize using this vtkhedgeHog class instead of the vtkGlyph3D.

@@ -83,15 +83,18 @@ coneActor.GetProperty().SetColor(0.2, 0.63, 0.79)
 
 The actor's representation can also be changed. See the VTK help and try to find out the options to change the representation to points, wireframe, or surface. Test these various options.
 
-You can also modify th etransparency of an object using the setOpacity method. Try the values ​​0, 0.5 and 1. What happens?
-Finally do one or two tests with the SetAmbient, SetDifuse, ... methods to change the lighting properties of the cone.
+You can also modify the transparency of an object using the setOpacity method. Try the values ​​0, 0.5 and 1. What happens?
+<!-- 
+talvez melhor deixar isto para a aula dois com mais algo sobre ilumiation and shading
+Finally do one or two tests with the SetAmbient, SetDifuse, ... methods to change the lighting properties of the sphere. 
+-->
 
 
 ## Properties and Lighting
 Add the following lights to the environment, all pointing towards the origin:
 * Red at position (-5,0,0)
-* Blue at position (5,0,0)
 * Green at position (0,0,-5)
+* Blue at position (5,0,0)
 * Yellow at position (0,0,5)
 
 Avoid code repetition by implementing a function to activate a light in a given position.

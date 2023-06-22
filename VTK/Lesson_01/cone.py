@@ -55,7 +55,6 @@ def main():
     # color here.
     ren = vtkRenderer()
     ren.AddActor( coneActor )
-    ren.SetBackground(1.0, 0.55, 0.41)
     
     # Finally we create the render window which will show up on the screen.
     # We put our renderer into the render window using AddRenderer. We also
@@ -64,7 +63,6 @@ def main():
     renWin = vtkRenderWindow()
     renWin.AddRenderer(ren)
 
-    renWin.SetSize(640, 480)
     renWin.SetWindowName('Cone')
 
     
