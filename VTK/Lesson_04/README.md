@@ -88,7 +88,7 @@ Search for the vtkGlyph3D class methods that allow you to turn orientation and s
 VTK has a class for displaying vector information in the form of line segments. Analyze the vtkHedgeHog class and try to visualize the vector data from the previous exercize using this vtkhedgeHog class instead of the vtkGlyph3D.
 
 
-# 3D widgets
+<!-- # 3D widgets
 The interactors used so far are used to react to mouse and keyboard events, but have no physical representation in the scene.
 In some cases it is important to be able to interact with objects directly exsting in the scene, for example to select a cutting plane. Widgets (Windows Objects) allow this type of interaction. Several widgets are available in VTK: vtkLineWidget, vtkPlaneWidget, vtkImplicitPlaneWidget, vtkBoxWidget, vtkImagePlaneWidget, vtkSphereWidget, vtkSplineWidget.
 
@@ -119,4 +119,4 @@ Modify the code to visualize an hyperbolic paraboloid with equation
 
 $x^2-y^2-z=0$
 
-Start by visualizing 5 contours between 0 and 1.2 as in the example provided. Now change the code to display only the curve corresponding to level 0 (you can use the SetValue function instead of GenerateValues).
+Start by visualizing 5 contours between 0 and 1.2 as in the example provided. Now change the code to display only the curve corresponding to level 0 (you can use the SetValue function instead of GenerateValues). -->

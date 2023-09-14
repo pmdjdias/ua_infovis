@@ -12,12 +12,12 @@
 The Visualization Toolkit (VTK) is open source software for manipulating and displaying scientific data. It comes with state-of-the-art tools for 3D rendering, a suite of widgets for 3D interaction, and extensive 2D plotting capability.
 To install VTK and its python wrapper, report to the following link: https://pypi.org/project/vtk/
 
-It is also possible to downlaod  VTK .js from https://vtk.org/download/
+It is also possible to downlaod  VTK from https://vtk.org/download/
 
 
 ## First example 
 Download and run the cone.py example.
-See the documentation page for the vtkConeSource method. Use the necessary methods so that the Cone has a height of 2, and a radius of 1. Run some tests with the SetResolution method. What is this method used for?
+See the documentation page for the [vtkConeSource](https://vtk.org/doc/nightly/html/classvtkConeSource.html) method. Use the necessary methods so that the Cone has a height of 2, and a radius of 1. Run some tests with the SetResolution method. What is this method used for?
 Use the Renderer's SetBackground method to change the background color to white.
 Add a line of code following the vtkRenderWindow definition to change the window size to (300x300) using the SetSize() method. What is the default window size?
 
@@ -102,6 +102,7 @@ Avoid code repetition by implementing a function to activate a light in a given 
 Modify the example by placing a sphere of radius 0.5 representing each light in the correct position and emitting in the desired color.
 The color of the sphere must not be altered by the light projected by other light sources. To do so, you'll have to access the actors' properties (vtkactor->GetProperty()) and disable lighting for the object.
 Note: To avoid code repetition try to implement a function to activate a light of a given color in a given position and draw the corresponding sphere.
+Replace the cone by other primitives (a sphere for example) and observe the effects of the 4 lights.
 
 ![Lighting](./Lighting.png)
 
