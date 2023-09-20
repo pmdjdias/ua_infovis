@@ -73,7 +73,7 @@ Most VTK objects have a given position and orientation (this is the case of vtkS
 Despite this, many classes do not allow this type of manipulation, in these situations, it is necessary to define the transformation using the vtkTransformFilter or vtkTransformPolyDataFilter filters as shown in the following code.
 
 ``` html
-vtkPlaneSource plane = vtkPlaneSource()
+plane = vtkPlaneSource()
   	
 # Definition of the transformation (a translation)
 MyTransform = vtkTransform()
