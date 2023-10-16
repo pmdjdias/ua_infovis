@@ -20,9 +20,10 @@ coneActor.GetProperty().SetSpecularPower(20)
 
 Create a new cone with the following properties (in this case, an object of type vtkProperty is used to store the properties. This method is far preferable when several objects share the same properties)
 
-#Create a property and directly manipulate it. Assign it to the second actor.
 
 ``` html
+#Create a property and directly manipulate it. Assign it to the second actor.
+
 property = vtkProperty()
 property.SetColor(1.0, 0.3882, 0.2784)
 property.SetDiffuse(0.7)
@@ -43,7 +44,7 @@ Change the opacity of the two cones to 0.5, what do you observe?
 Notice that the second actor is translated by 2 on the Y axis (with the invocation of the SetPosition method).
 
 # Multiple renderers
-using the cone.py example of lesson 1, define another renderer in the samw window. To do so, you will have to use the SetViewport(xmin, ymin, xmax, ymax) option [the values ​​are normalized between 0 and 1] to indicate to each renderer which part of the window will be assigned.
+using the cone.py example of lesson 1, define another renderer in the same window. To do so, you will have to use the SetViewport(xmin, ymin, xmax, ymax) option [the values ​​are normalized between 0 and 1] to indicate to each renderer which part of the window will be assigned.
 Modify the window size to 600 by 300 pixels , with half the window for each renderer.
 Modify the initial position of the camera in the second renderer so that it has a 90 degree rotation in azimuth, and then make the cone rotate in both windows by adapting the code from the firts example of lesson 1.
 Modify the background color in each Viewport (example: ( 0.1, 0.2, 0.4 ) and ( 0.2, 0.3, 0.4 ) ) to distinguish clearly both.

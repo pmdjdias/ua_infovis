@@ -102,6 +102,7 @@ Avoid code repetition by implementing a function to activate a light in a given 
 Modify the example by placing a sphere of radius 0.5 representing each light in the correct position and emitting in the desired color.
 The color of the sphere must not be altered by the light projected by other light sources. To do so, you'll have to access the actors' properties (vtkactor->GetProperty()) and disable lighting for the object.
 Note: To avoid code repetition try to implement a function to activate a light of a given color in a given position and draw the corresponding sphere.
+
 Replace the cone by other primitives (a sphere for example) and observe the effects of the 4 lights.
 
 ![Lighting](./Lighting.png)
