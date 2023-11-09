@@ -50,14 +50,20 @@ Compile and test the program widget.py which is a possible solution to the displ
 Add a vtkImplicitPlaneWidget to interact with the scene.
 At this stage, it is not necessary to define any callbacks, just instantiate and place the plane in the scene. Do not forget to place the widget in the scene (PlaceWidget method) and to associate an interactor to it (SetInteractor method)
 
-Activate the Widget using the I key and try to understand the different types of interaction available.
+``` 
+    plane = vtkImplicitPlaneWidget()
+    plane.PlaceWidget()
+    plane.SetInteractor(iren)
+    plane.On()
+``` 
+You can activate and deactivate the Widget using the I key and try to understand the different types of interaction available.
 
 Using the methods of the vtkImplicitPlaneWidget class, modify the plane so that it appears at the point (1,1,1) and is normal to the X axis.
 
 # Clipping of a polygonal object
 Use the vtkVRMLImporter class to view the Teapot.wrl file. You can use the code example below.
 
-``` html
+``` 
 
 importer = vtkVRMLImporter()
 importer.SetRenderWindow(renWin)
