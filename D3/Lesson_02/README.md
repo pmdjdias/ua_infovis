@@ -78,7 +78,7 @@ At the end, it must show something like this:
 Modify the data and see what happens. To better understand, put the `debugger` at the `cx` function to see the value `d`. More about circles [here](https://www.w3schools.com/graphics/svg_circle.asp).
 
 ### Different Colors (optional)
-Use the `style` method in the circles to change the properties of the circles (use one color for `fill` and another one for `stroke`, and bind the `stroke-width` for half of datum value). Reload the page, then modify the code to bind the color to the data, and add more values to the dataset. Analyze what happens.
+Use the `attr` method in the circles to change the properties of the circles (use one color for `fill` and another one for `stroke`, and bind the `stroke-width` for half of datum value). Reload the page, then modify the code to bind the color to the data, and add more values to the dataset. Analyze what happens.
 
 Add a circle to the SVG node (`svg.append('circle')`) in the possition `300,150` with radius `50` and `salmon` color. Now modify the example and change the color for `teal`.
 
