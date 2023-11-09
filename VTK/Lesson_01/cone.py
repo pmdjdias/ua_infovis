@@ -9,20 +9,21 @@
 # and can be found in most VTK programs
 
 # Imports
-#!/usr/bin/env python
 
-# noinspection PyUnresolvedReferences
-import vtkmodules.vtkInteractionStyle
-# noinspection PyUnresolvedReferences
-import vtkmodules.vtkRenderingOpenGL2
-from vtkmodules.vtkFiltersSources import vtkConeSource
-from vtkmodules.vtkRenderingCore import (
-    vtkActor,
-    vtkPolyDataMapper,
-    vtkRenderWindow,
-    vtkRenderWindowInteractor,
-    vtkRenderer
-)
+# Import all VTK modules
+from vtkmodules.all import *
+
+# Import only needed modules
+# import vtkmodules.vtkInteractionStyle
+# import vtkmodules.vtkRenderingOpenGL2
+# from vtkmodules.vtkFiltersSources import vtkConeSource
+# from vtkmodules.vtkRenderingCore import (
+#     vtkActor,
+#     vtkPolyDataMapper,
+#     vtkRenderWindow,
+#     vtkRenderWindowInteractor,
+#     vtkRenderer
+# )
 
 def main():
 

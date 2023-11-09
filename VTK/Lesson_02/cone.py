@@ -8,21 +8,20 @@
 # The pipeline  source -> mapper -> actor -> renderer  is typical 
 # and can be found in most VTK programs
 
-# Imports
-#!/usr/bin/env python
+# Import all VTK modules
+from vtkmodules.all import *
 
-# noinspection PyUnresolvedReferences
-import vtkmodules.vtkInteractionStyle
-# noinspection PyUnresolvedReferences
-import vtkmodules.vtkRenderingOpenGL2
-from vtkmodules.vtkFiltersSources import vtkConeSource
-from vtkmodules.vtkRenderingCore import (
-    vtkActor,
-    vtkPolyDataMapper,
-    vtkRenderWindow,
-    vtkRenderWindowInteractor,
-    vtkRenderer
-)
+# Import only needed modules
+# import vtkmodules.vtkInteractionStyle
+# import vtkmodules.vtkRenderingOpenGL2
+# from vtkmodules.vtkFiltersSources import vtkConeSource
+# from vtkmodules.vtkRenderingCore import (
+#     vtkActor,
+#     vtkPolyDataMapper,
+#     vtkRenderWindow,
+#     vtkRenderWindowInteractor,
+#     vtkRenderer
+# )
 
 def main():
 

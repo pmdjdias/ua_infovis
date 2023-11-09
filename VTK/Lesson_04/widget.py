@@ -1,43 +1,11 @@
 ###############################################################################
-#       						Cone.py
+#       						widget.py
 ###############################################################################
 
-# This example creates a polygonal model of a Cone e visualize the results in a
-# VTK render window.
-# The program creates the cone, rotates it 360º and closes
-# The pipeline  source -> mapper -> actor -> renderer  is typical 
-# and can be found in most VTK programs
 
-# Imports
-#!/usr/bin/env python
 
-# noinspection PyUnresolvedReferences
-import vtkmodules.vtkInteractionStyle
-# noinspection PyUnresolvedReferences
-import vtkmodules.vtkRenderingOpenGL2
-from vtkmodules.vtkFiltersSources import (
-    vtkConeSource,
-    vtkSphereSource,
-)
-from vtkmodules.vtkFiltersCore import (
-    vtkGlyph3D
-)
-from vtkmodules.vtkRenderingCore import (
-    vtkActor,
-    vtkActor2D,
-    vtkPolyDataMapper,
-    vtkRenderWindow,
-    vtkRenderWindowInteractor,
-    vtkRenderer,
-    vtkTextMapper,
-    vtkTextProperty
-)
-from vtkmodules.vtkCommonCore import vtkPoints
-from vtkmodules.vtkCommonDataModel import vtkPolyData
-from vtkmodules.vtkRenderingCore import vtkPointPicker
-from vtkmodules.vtkCommonCore import vtkCommand
-
-import vtk
+# Import all VTK modules
+from vtkmodules.all import *
 
 def main():
 
@@ -87,7 +55,7 @@ def main():
     ren = vtkRenderer()
     ren.AddActor( glyphActor )
     ren.AddActor( sphereActor )
-    # ren.SetBackground(1.0, 0.55, 0.41)
+    ren.SetBackground(1.0, 0.55, 0.41)
     
     # Finally we create the render window which will show up on the screen.
     # We put our renderer into the render window using AddRenderer. We also
