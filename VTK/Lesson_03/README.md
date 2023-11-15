@@ -93,7 +93,6 @@ iren.SetPicker(myPicker);
 ```
 
 The pseudo code of your program should be:
-* Test if the selection is valid (one possibility is to test the return of GetPointId()) – If the value is negative, the Actor becomes invisible.
 * Get the selected point coordinate [3D] (GetPickPosition method)
 * Get the coordinate of the selected pixel [2D] (GetSelectionPoint method). This coordinate is relative to the Viewport and represents a value in pixels.
 * Update the TextMapper with the pixel coordinates (setInput)
