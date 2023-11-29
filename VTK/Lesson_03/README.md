@@ -1,40 +1,10 @@
 # Lesson 3 - Callbacks, Glyphing and Picking
 
 ## Outline
-* Observers and callbacks
 * Glyphing 
 * Picking
-
-# Use of callbacks for interaction
-An important feature of VTK is the possibility to define Callback functions making it possible to associate to an object a "callback" function to be executed whenever a given event occurs. The association between the function and the event is done using an observer.
-Add the following function in the cone with interaction example (cone.py in lesson 02)
-
-``` html
-##############################
-# Callback for the interaction
-##############################
-class vtkMyCallback(object):
-    def __init__(self, renderer):
-        self.ren = renderer
-
-    def __call__(self, caller, ev):
-        # Just do this to demonstrate who called callback and the event that triggered it.
-        print(caller.GetClassName(), 'Event Id:', ev)
-        # Now print the camera position.
-        print("Camera Position: %f, %f, %f" % (self.ren.GetActiveCamera().GetPosition()[0],self.ren.GetActiveCamera().GetPosition()[1],self.ren.GetActiveCamera().GetPosition()[2]))
-# Callback for the interaction
-
-....
-
-In Code
-################################################################
-# Here is where we setup the observer, we do a new and ren1 
-mo1 = vtkMyCallback(ren)
-ren.AddObserver(vtkCommand.AnyEvent,mo1)
-################################################################
-```
-
-What do you observe when running the program? Try modifying the type of interaction (EndEvent, StartEvent, ResetCameraEvent, etc...)
+* Unstructured Grid
+* Scalar association to vectors and grids
 
 # Glyphing
 Glyphing is a form of visualization that represents data using geometric representations (glyphs).
@@ -51,7 +21,7 @@ Explore and try to understand what  the SetScaleFactor and SetVectorModeToUseNor
 
 ![Example using class vtkGlyph3D ](./vtkGlyph3D.png)
 
-Changemodify the theta (SetThetaResolution) and Phi (SetPhiResolution) resolutions of the sphere. What do you observe?
+Change modify the theta (SetThetaResolution) and Phi (SetPhiResolution) resolutions of the sphere. What do you observe?
 
 # Object picking
 Add a VtkPointPicker object to the interactor of the previous example to allow the selection of points of the model (use the setPicker method of the interactor). Associate a callback to this picker.
@@ -69,7 +39,7 @@ iren.SetPicker(myPicker)
 ```
 
 # Display of coordinates
-Modify the CallBack to show the point coordinates in the renderer next to the selected point. Use a textMapper and a vtkActor2D to visualize the coordinates of the selected point in the renderer.
+Modify the CallBack (see last lecture) to show the point coordinates in the renderer next to the selected point. Use a textMapper and a vtkActor2D to visualize the coordinates of the selected point in the renderer.
 To do so, modify the program as follows:
 
 ``` html
@@ -103,3 +73,22 @@ The pseudo code of your program should be:
 ![Expected result after point picking ](./vtkPicking.png)
 
 Use the textMapper options to modify the format of the text used to display the coordinates (centered, with font courrier and bold).
+
+# Unstructured Grid
+Compile and analyze the program ugrid.py that creates and visualizes an unstructured grid with only one cell: a tetrahedra. Modify the code to display not a tetrahedron but separate vertices (cell type becomes VTK_VERTEX instead of VTK_TETRA). Modifye the properties of the actor to see the results (UgridActor.GetProperty().SetColor(1,0,0) and UgridActor.GetProperty().SetPointSize(5)).
+
+
+# Scalar association to vectors and grids
+Defines an object of type vtkFloatArray with three components (use the SetNumberOfComponents method to define the number of components). This array will contain the vectorial information to be associated with each vertex of the unstructured grid. Use the InsertTuple3 method to fill the vtkFloatArray with the coordinates of the vectors to be associated with each point (Associate the following vectors to the 4 points (1,0,0) (0,1,0) (0,0,1) and (1,1,1) ).
+Associate the vectors defined in the vtkFloatArray to the points using the SetVectors method. (ugrid.GetPointData().SetVectors(your_array))
+Create a cone and use the vtkGlyph3D class to display a cone oriented according to the associated vector at each vertex (see Lecture 3).
+
+Now associate a scalar between 0 and 1 to each point of the grid, for that create another instance of type vtkFloatArray with a single component and use the setScalars method to associate a value to each point (dataSet.GetPointData().SetScalars(your_array )). 
+Associate the following values ​​to the 4 points: 0.1 0.3 0.5 and 0.8. 
+Run the code and notice how the scalar value is automatically used to modify the color of the various cones.
+Search for the vtkGlyph3D class methods that allow you to turn orientation and scaling on and off and observe the various results.
+
+![Visualization of the unstructured grid with a glyph (cone) with orientation according to the vector array and size according to the scalar array](./unstructuredGrid.png)
+
+# HedgeHog
+VTK has a class for displaying vector information in the form of line segments. Analyze the vtkHedgeHog class and try to visualize the vector data from the previous exercize using this vtkhedgeHog class instead of the vtkGlyph3D.

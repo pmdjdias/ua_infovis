@@ -5,6 +5,7 @@
 * Shading options
 * Textures
 * Transformations
+* Observers and callbacks
 
 
 # Multiple actors
@@ -97,4 +98,36 @@ planeActor.SetMapper( planeMapper )
 Create six planes and use six different texture images for each one (you may use Im1.jpg, Im2.jpg... Im3.jpg), then use the vtkTransform class to move the planes in such a way that they form a cube. To ease the process, create a function that, given the rotation, translation and name of the image for texture, returns the desired actor.
 
 ![Expected results for the cube from 6 textures planes](./texturedCube.png)
+
+# Use of callbacks for interaction
+An important feature of VTK is the possibility to define Callback functions making it possible to associate to an object a "callback" function to be executed whenever a given event occurs. The association between the function and the event is done using an observer.
+Add the following function in the cone with interaction example (cone.py in lesson 02)
+
+``` html
+##############################
+# Callback for the interaction
+##############################
+class vtkMyCallback(object):
+    def __init__(self, renderer):
+        self.ren = renderer
+
+    def __call__(self, caller, ev):
+        # Just do this to demonstrate who called callback and the event that triggered it.
+        print(caller.GetClassName(), 'Event Id:', ev)
+        # Now print the camera position.
+        print("Camera Position: %f, %f, %f" % (self.ren.GetActiveCamera().GetPosition()[0],self.ren.GetActiveCamera().GetPosition()[1],self.ren.GetActiveCamera().GetPosition()[2]))
+# Callback for the interaction
+
+....
+
+In Code
+################################################################
+# Here is where we setup the observer, we do a new and ren1 
+mo1 = vtkMyCallback(ren)
+ren.AddObserver(vtkCommand.AnyEvent,mo1)
+################################################################
+```
+
+What do you observe when running the program? Try modifying the type of interaction (EndEvent, StartEvent, ResetCameraEvent, etc...)
+
 

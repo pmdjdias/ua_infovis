@@ -1,31 +1,10 @@
 # Lesson 4 - Visualization techniques
 
 ## Outline
-* Unstructured Grid
-* Scalar association to vectors and grids
 * Polygonal data
 * 3D widgets
 * Clipping of a polygonal model
 
-
-# Unstructured Grid
-Compile and analyze the program ugrid.py that creates and visualizes an unstructured grid with only one cell: a tetrahedra. Modify the code to display not a tetrahedron but separate vertices (cell type becomes VTK_VERTEX instead of VTK_TETRA). Modifye the properties of the actor to see the results (UgridActor.GetProperty().SetColor(1,0,0) and UgridActor.GetProperty().SetPointSize(5)).
-
-
-# Scalar association to vectors and grids
-Defines an object of type vtkFloatArray with three components (use the SetNumberOfComponents method to define the number of components). This array will contain the vectorial information to be associated with each vertex of the unstructured grid. Use the InsertTuple3 method to fill the vtkFloatArray with the coordinates of the vectors to be associated with each point (Associate the following vectors to the 4 points (1,0,0) (0,1,0) (0,0,1) and (1,1,1) ).
-Associate the vectors defined in the vtkFloatArray to the points using the SetVectors method. (ugrid.GetPointData().SetVectors(your_array))
-Create a cone and use the vtkGlyph3D class to display a cone oriented according to the associated vector at each vertex (see Lecture 3).
-
-Now associate a scalar between 0 and 1 to each point of the grid, for that create another instance of type vtkFloatArray with a single component and use the setScalars method to associate a value to each point (dataSet.GetPointData().SetScalars(your_array )). 
-Associate the following values ​​to the 4 points: 0.1 0.3 0.5 and 0.8. 
-Run the code and notice how the scalar value is automatically used to modify the color of the various cones.
-Search for the vtkGlyph3D class methods that allow you to turn orientation and scaling on and off and observe the various results.
-
-![Visualization of the unstructured grid with a glyph (cone) with orientation according to the vector array and size according to the scalar array](./unstructuredGrid.png)
-
-# HedgeHog
-VTK has a class for displaying vector information in the form of line segments. Analyze the vtkHedgeHog class and try to visualize the vector data from the previous exercize using this vtkhedgeHog class instead of the vtkGlyph3D.
 
 # Polygonal Data
 Compile and analyze the program poligonal.py that creates a poligonal cube as a vtkpolydata object. Modify the code to display a tetrahedron.
