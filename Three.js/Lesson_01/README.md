@@ -124,6 +124,6 @@ window.addEventListener('resize', function () {
 ## Other primitives
 Modify the first example to show the cube in wireframe.
 Investigate other available geometries (Extras / Geometries) and visualize at least 4 other geometries in the same scene changing some of their default parameters. 
-Write a report following the template available at the course page (http://sweet.ua.pt/paulo.dias/vi/ReportVI_template.docx) about the experiences done in this class. It should contain examples of the visualizations produced in each exercise, as well your comments about them.
+Write a report following the template available at the course page (http://sweet.ua.pt/paulo.dias/vi/revdetiua.zip) about the experiences done in this class. It should contain examples of the visualizations produced in each exercise, as well your comments about them.
 
 
