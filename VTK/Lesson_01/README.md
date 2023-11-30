@@ -107,4 +107,4 @@ Replace the cone by other primitives (a sphere for example) and observe the effe
 
 ![Lighting](./Lighting.png)
 
-
+Write a report following the template available at http://sweet.ua.pt/paulo.dias/vi/revdetiua.zip about the experiences done in this class. It should contain examples of the visualizations produced in each exercise, as well your comments about them.
