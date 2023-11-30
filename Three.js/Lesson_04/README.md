@@ -51,7 +51,7 @@ Analyze the following code and use it to select objects from the scene by clicki
 //mouse event variables
 var raycaster = new THREE.Raycaster(); // create once
 var mouse = new THREE.Vector2(); // create once
-intersects = [];
+var intersects = [];
 function onMouseDown(e) {
 	//compute transform betweem mouse and three.jscoordinate systems
 	mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -91,26 +91,29 @@ camera.updateMatrix();
 ``` 
 Use the +/- keys on the keyboard (see the last lesson) to allow “zoom in” and “zoom out”.
 
-# Texto 
-Use Three.js' TextGeometry (https://threejs.org/docs/#examples/en/geometries/TextGeometry) to place a text on top of the cubes indicating “cube1” or “cube2”. Use the font "helvetiker" (you can use the file provided in the examples/fonts folder of three.js (helvetiker_regular.typeface.json) To define the text object you can use the following code to create the text geometry for cube 1. You need to add the follwoong js files:
+# Text
+Use Three.js' ([TextGeometry](https://threejs.org/docs/#examples/en/geometries/TextGeometry)) to place a text on top of the cubes indicating “cube1” or “cube2”. Use the font "helvetiker" (you can use the file provided in the examples/fonts folder of three.js (helvetiker_regular.typeface.json) To define the text object you can use the following code to create the text geometry for cube 1. You need to add the following import:
 ``` html
-<script src="https://threejs.org/examples/js/loaders/FontLoader.js"></script>
-<script src="https://threejs.org/examples/js/geometries/TextGeometry.js"></script>
+import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 ```
 And use the following code to create the text
 ``` html
-var textMesh1;
-var loader = new THREE.FontLoader();
-loader.load("https://threejs.org/examples/fonts/helvetiker_regular.typeface.json", function (font) {
-    textGeometry1 = new THREE.TextGeometry("Cube 1", {
-        font: font,
-        size: 0.22,
-        height: 0.05,
-    });
-    var materialText = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    textMesh1 = new THREE.Mesh(textGeometry1, materialText);
-    textMesh1.position.x = -2.5;
-    textMesh1.position.y = 1.5;
-});
+loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
+	const textGeometry1 = new TextGeometry( 'Cube 1', {
+		font: font,
+		size: 80,
+		height: 5,
+		curveSegments: 12,
+		bevelEnabled: true,
+		bevelThickness: 10,
+		bevelSize: 8,
+		bevelOffset: 0,
+		bevelSegments: 5
+		} );
+} );
+var materialText = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+textMesh1 = new THREE.Mesh(textGeometry1, materialText);
+textMesh1.position.x = -2.5;
+textMesh1.position.y = 1.5;
 ``` 
 Modify the example so that the text only appears when a given cube is selected (see Object Selection) and use the mesh's visible property accordingly.
