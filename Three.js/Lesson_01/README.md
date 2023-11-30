@@ -10,17 +10,36 @@
 
 ## three.js configuration 
 Three.js is a library built on webGL to abstract some of the difficulties related to low-level graphics and to reduce the quantity of code to produce the visualizations. Its configuration is similar to the one used by webGL.
-To use three.js, it is necessary to include the following lines in you javascript code:
+To use three.js, it is necessary to include the following lines in you the index.html file (see: https://threejs.org/docs/index.html#manual/en/introduction/Installation):
 
 
 ``` html
-<script src="https://threejs.org/build/three.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+		</style>
+		<script type="importmap">
+			{
+			  "imports": {
+				"three": "https://unpkg.com/three@v0.159.0/build/three.module.js",
+				"three/addons/": "https://unpkg.com/three@v0.159.0/examples/jsm/"
+			  }
+			}
+	</head>
+	<body>
+		<script type="module" src="/main.js"></script>
+	</body>
+</html>
 ```
 
-It is also possible to downlaod  three.js from http://threejs.org/ and use a local copy with the following link:
+and the following import in the main.js file:
 
 ``` html
-<script src="js/three.js"></script>
+import * as THREE from 'three';
 ```
 
 You can explore some three.js examples at the following site : http://threejs.org/examples/
@@ -124,6 +143,6 @@ window.addEventListener('resize', function () {
 ## Other primitives
 Modify the first example to show the cube in wireframe.
 Investigate other available geometries (Extras / Geometries) and visualize at least 4 other geometries in the same scene changing some of their default parameters. 
-Write a report following the template available at the course page (http://sweet.ua.pt/paulo.dias/vi/ReportVI_template.docx) about the experiences done in this class. It should contain examples of the visualizations produced in each exercise, as well your comments about them.
+Write a report following the template available at page http://sweet.ua.pt/paulo.dias/vi/revdetiua.zip about the experiences done in this class. It should contain examples of the visualizations produced in each exercise, as well your comments about them.
 
 
