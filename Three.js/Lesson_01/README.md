@@ -32,7 +32,7 @@ To use three.js, it is necessary to include the following lines in you the index
 		</script>
 	</head>
 	<body>
-		<script type="module" src="/main.js"></script>
+		<script type="module" src="main.js"></script>
 	</body>
 </html>
 ```
