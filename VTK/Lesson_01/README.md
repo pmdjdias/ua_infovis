@@ -57,9 +57,11 @@ cam1 = vtkCamera()
 cam1.SetPosition(10,0,0)
 cam1.SetViewUp(0,1,0)
 ren.SetActiveCamera(cam1)
-``` 
-
+```
 Modify the code to obtain the same result without having to create a new camera (the idea is to access the camera created by default by the Renderer with the GetActiveCamera method).
+
+Set the camera to orthographic view (SetParallelProjection(True)) and visualize a cube in wireframe with the camera in orthographic or projection
+view. What do you see?
 
 ## Lighting
 Replace the camera code with the following in the example provided. What is its effect?
