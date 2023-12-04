@@ -29,6 +29,7 @@ To use three.js, it is necessary to include the following lines in you the index
 				"three/addons/": "https://unpkg.com/three@v0.159.0/examples/jsm/"
 			  }
 			}
+		</script>
 	</head>
 	<body>
 		<script type="module" src="/main.js"></script>
