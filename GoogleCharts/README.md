@@ -99,7 +99,7 @@ Modify the code to visualize the following ColumnChart:
 
 ![World Cup Column chart](./world_cup_attendance.png)
 
-Now modify the previous chart to present the data in a line chart. On one side the evolution of the attendance to the games is clearer, on the other side, the WWII effect has disappeared. 
+## 2.2 Line chartNow modify the previous chart to present the data in a line chart. On one side the evolution of the attendance to the games is clearer, on the other side, the WWII effect has disappeared. 
 Use the point options to show a marker at each data showing at the same time the line (evolution) and a marker of your choice to represent the data (each 4 years and WWII effect). More [here](https://developers.google.com/chart/interactive/docs/points)
 
 
