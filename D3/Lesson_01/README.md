@@ -112,7 +112,7 @@ To access the array data you need to create a callback function on the element. 
 Using the `style` function modify the code to bind the color with the array value, black for `d <= 15` and red for `d > 15`. Modify the function used to generate the text and add what is needed. Style other attributes using the data, like the _font-size_ and _margin-left_.(Note that some values need more than the numbers, it needs the metric too,like `font-size: 20px`).
 
 ## Bar chart with divs
-For this final task of this lesson, we will create a bar chart using the `div` HTML tag. To guarantee that all bars are equal we will define a class and style it using CSS, that way all the divs will share the same set of attributes. The only difference between them will be the size. Add this CSS on the HTML.
+For the final task of this lesson, we will create a bar chart using the `div` HTML tag. To guarantee that all bars are equal we will define a class and style it using CSS, that way all the divs will share the same set of attributes. The only difference between them will be the size. Add this CSS on the HTML.
 
 ``` css
 <style type="text/css">
