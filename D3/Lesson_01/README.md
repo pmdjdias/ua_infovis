@@ -29,7 +29,7 @@ To use D3 locally, download the d3.js script from the [D3 website](https://d3js.
 
 To use the script without direct download:
 ``` html
-<script type="text/javascript" src="https://d3js.org/d3.v6.js"></script>
+<script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
 ```
 Reload your page, and to verify the correct loading of the library one can use the developer's tools of the browser with `ctrl + shift + i` or `F12` (in Chrome). Choose the source tab and hover over the D3 link, then open a new tab on the browser with source code. Alternatively, on the console tab you can write `d3.` and expect the auto-complete shows available options. Both options can be seen in the following image:
 
