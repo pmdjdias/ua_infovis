@@ -67,7 +67,7 @@ Create a new HTML file (`d3_1_3.htm`), with the following content:
     <head>
         <meta charset="utf-8">
         <title>First D3 Example</title>
-        <script type="text/javascript" src="http://d3js.org/d3.v6.js"></script>
+        <script type="text/javascript" src="http://d3js.org/d3.v7.min.js"></script>
     </head>
 
     <body>
