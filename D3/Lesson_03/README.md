@@ -18,7 +18,7 @@ Save the excerpt below on a `d3_3_1.htm` file:
 <head>
     <meta charset="utf-8">
     <title>Scatterplot - Lesson 3</title>
-    <script type="text/javascript" src="http://d3js.org/d3.v6.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v7.min.js"></script>
 </head>
 
 <body>
