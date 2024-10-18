@@ -16,7 +16,7 @@ To start, create the `d3_2_1.html` file with the following content:
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="http://d3js.org/d3.v7.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v7.min.js"></script>
 </head>
 
 <body>
