@@ -88,7 +88,7 @@ Most data used for visualization is stored in files. Embbed data with the script
 
 <head>
     <meta charset="utf-8">
-    <script src="http://d3js.org/d3.v6.js"></script>
+    <script src="http://d3js.org/d3.v7.min.js"></script>
     <script>
         let width = 500;
         let height = 300;
