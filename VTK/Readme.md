@@ -1,5 +1,5 @@
 
-# three.js lab lessons
+# VTK lab lessons
 
 
 ## Lessons
