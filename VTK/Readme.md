@@ -1,5 +1,5 @@
 
-# three.js lab lessons
+# VTK lab lessons
 
 
 ## Lessons
@@ -9,5 +9,5 @@
 * [Lesson 4 - Polignal Data, Unstructured Grids](./Lesson_04/)
 
 ## External Sources
-* [vtk.org](http://https://vtk.org/)
+* [vtk.org](https://vtk.org/)
 * [vtk Books and Documentation](https://vtk.org/documentation/)
