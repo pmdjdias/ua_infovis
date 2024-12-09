@@ -80,7 +80,7 @@ Compile and analyze the program ugrid.py that creates and visualizes an unstruct
 # Scalar association to vectors and grids
 Defines an object of type vtkFloatArray with three components (use the SetNumberOfComponents method to define the number of components). This array will contain the vectorial information to be associated with each vertex of the unstructured grid. Use the InsertTuple3 method to fill the vtkFloatArray with the coordinates of the vectors to be associated with each point (Associate the following vectors to the 4 points (1,0,0) (0,1,0) (0,0,1) and (1,1,1) ).
 Associate the vectors defined in the vtkFloatArray to the points using the SetVectors method. (ugrid.GetPointData().SetVectors(your_array))
-Create a cone and use the vtkGlyph3D class to display a cone oriented according to the associated vector at each vertex (see Lecture 3).
+Create a cone and use the vtkGlyph3D class to display a cone oriented according to the associated vector at each vertex (see Glyphing options).
 
 Now associate a scalar between 0 and 1 to each point of the grid, for that create another instance of type vtkFloatArray with a single component and use the setScalars method to associate a value to each point (dataSet.GetPointData().SetScalars(your_array )). 
 Associate the following values ​​to the 4 points: 0.1 0.3 0.5 and 0.8. 
