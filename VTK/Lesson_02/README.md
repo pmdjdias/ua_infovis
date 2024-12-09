@@ -60,13 +60,14 @@ Make a VTK program  that allows to visualize a plane (vtkPlaneSource) based on  
 Analyze the vtkTexture class and use the VTKXXXReader class to read an image and map it to the created plane. You may use the VTKJPGReader class to read an image and use it as a texture as shown in the following code.
 
 ``` html
-vtkJPEGReader *JPGReader = vtkJPEGReader::New();
-JPGReader->SetFileName(“./images/Lena.jpg”);
-...
-vtkTexture *aText = vtkTexture::New();
-aText->SetInput( (vtkDataObject*) JPGReader->GetOutput() );
+JPGReader = vtkJPEGReader()
+JPGReader.SetFileName("./VTK/#02/Images/lena.JPG")
+JPGReader.Update()
+...    
+aText = vtkTexture()
+aText.SetInputConnection( JPGReader.GetOutputPort() )
 
-planeActor->SetTexture(aText);
+planeActor.SetTexture(aText)
 ```
 Try changing the size of the Plane (you can use the setOrigin, SetPoint1 and SetPoint2 methods), what happens to the texture?
 
