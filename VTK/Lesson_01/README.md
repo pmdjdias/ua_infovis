@@ -77,7 +77,7 @@ ren.AddLight(light)
 ```
 
 ## Actor properties
-In VTK, it is possible to modify the properties that control the appearance of an actor. One of the most used properties is color. Modify the example change the color of the cone to Red. To do so, use the VTK's SetColor property. Note that to access an actor's properties, it is necessary to use the GetProperty method.
+In VTK, it is possible to modify the properties that control the appearance of an actor. One of the most used properties is color. Using the example below, modify the example to change the color of the cone to Red. To do so, use the VTK's SetColor property. Note that to access an actor's properties, it is necessary to use the GetProperty method.
 
 ``` html
 coneActor.GetProperty().SetColor(0.2, 0.63, 0.79)
