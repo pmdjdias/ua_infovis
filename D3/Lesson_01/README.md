@@ -57,7 +57,7 @@ More on selection on the [docs](https://github.com/d3/d3/blob/master/API.md#sele
 
 ## D3 Chaining 
 
-Pay atention that `d3.select()` returns an array. Most D3 functions return its own selection, allowing chaining of operations. Using selections, change the text of paragraph to "Good morning World!" using the console.
+Pay atention that `d3.select()` returns an array. Check that if this array is the same as `elem` using the `===` operator. Most D3 functions return its own selection, allowing chaining of operations. Using selections, change the text of paragraph to "Good morning World!" using the console.
 
 ## First Example
 Create a new HTML file (`d3_1_3.htm`), with the following content:
