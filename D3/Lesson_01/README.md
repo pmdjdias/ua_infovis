@@ -19,7 +19,7 @@ For starters, create a file, name it `d3_1_1.html` with the following content:
     </body>
 </html>
 ```
-To load the D3 library, we must refer to the script source, being served locally or in a CDN. There are 2 versions of D3 simultaneously in every D3 iteration (d3.js and d3.min.js), the main one is better for development purposes, as it can output better error messages and allow navigation of source in-browser, the min version is a deploy version, smaller and usually faster. Alternatively, one can download all the [source repository](https://github.com/mbostock/d3/releases) to make with the source and see the examples. The version used here is 6.5.0 and all the lessons will be tested using this one.
+To load the D3 library, we must refer to the script source, being served locally or in a CDN. There are 2 versions of D3 simultaneously in every D3 iteration (d3.js and d3.min.js), the main one is better for development purposes, as it can output better error messages and allow navigation of source in-browser, the min version is a deploy version, smaller and usually faster. Alternatively, one can download all the [source repository](https://github.com/mbostock/d3/releases) to make with the source and see the examples. The latest stable release is 7.9.0 (March 2024) and all the lessons will be tested using this one.
  
 To use D3 locally, download the d3.js script from the [D3 website](https://d3js.org/). Place the d3.js in your work directory and use this tag on the `<head>` of your html:
 
