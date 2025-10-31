@@ -90,7 +90,7 @@ let total = d3.sum(group, g => g["attendance"]);
 ```
 In each year the Wold Cup is held by different stadiums in a country, these stadium coordinates are on the defined on the file. Save them in an array with the following code:
 ``` javascript
-let coords = leaves.map( d => projection([+d.long, +d.lat]));
+let coords = group.map( d => projection([+d.long, +d.lat]));
 ```
 Note that the map function return the array values after the projection transformation. With these values it is possiible to calculate the mean to position the circles representing the spectators quantity for each country.
 ``` javascript
