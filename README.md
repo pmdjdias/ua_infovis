@@ -7,7 +7,7 @@ In [this page](./webtech.md) there are some pointers and reminders for web devel
 * [Google Charts](./GoogleCharts/)
 * [SVG](./SVG/)
 * [D3](./D3/)
-* [Three.js](./Three.js/)
+* [VTK](./VTK/)
 
 
 # Credits
