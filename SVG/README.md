@@ -107,7 +107,7 @@ Use the `begin` element on the animation to allow the animation to start on clic
 
 
 ## Path and text
-Use `textpath` to modify the text below the circle like the following image. More [here](https://www.w3schools.com/graphics/svg_textpath.asp) and [here](http://www.w3schools.com/svg/svg_path.asp)
+Use `textpath` to modify the text below the circle like the following image. More [here](https://www.w3schools.com/graphics/svg_textpath.asp) 
 
 ![Path and text](./images/circling_text.jpg)
 
