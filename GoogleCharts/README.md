@@ -103,15 +103,7 @@ Modify the code to visualize the following ColumnChart:
 Use the point options to show a marker at each data showing at the same time the line (evolution) and a marker of your choice to represent the data (each 4 years and WWII effect). More [here](https://developers.google.com/chart/interactive/docs/points)
 
 
-## 3. Miscellaneous
-## 3.1 Geo Charts
-Consider the `Censos_2011_Densidade_Populacional.xls` file containing, for each portuguese province, the number of habitants per Km<sup>2</sup> according to the 2011 Portuguese population survey.
-Complete the `GCT_ex_11.htm` example to represent the information relative to the 20 provinces with larger population density (add 5 provinces from the file).
-Test the various interaction functionalities available in the example.
-
-Outdated: you need to get a google API key to get the example running in full see: https://developers.google.com/maps/documentation/javascript/get-api-key#restrict_key
-
-## 3.2 Org charts / Tree maps
+## 3.1 Org charts / Tree maps
 Build an Org chart representing the internal structure of the DETI. The final visualization should use the abbreviates as labels and the size to map the number of persons in each group. Use the following data:
 ```
 DETI(549)
