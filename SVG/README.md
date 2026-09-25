@@ -58,7 +58,7 @@ Replicate the figures of the image below using SVG.
 Use the `transform` attribute to apply a 1/2 scale factor to one of the rects created, rotate it by 45 degrees and apply a translation of `(-20,10)`. More [here](https://www.w3schools.com/graphics/svg_transformations.asp)
 
 ## Images
-Modify an example to load and show an image inside the SVG area. More [here](https://www.w3schools.com/graphics/svg_image.asp)
+Modify an example to load and show an image inside the SVG area. More [here](https://www.w3schools.com/graphics/svg_image.asp). Experiment with zoom-in and zoom-out, observe what happens.
 
 ## Path and curves
 Use the `path` element with the `L` option to get the jar of figure below. More [here](https://www.w3schools.com/graphics/svg_path.asp).
