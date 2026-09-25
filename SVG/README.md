@@ -67,9 +67,6 @@ Use the `path` element with the `L` option to get the jar of figure below. More 
 
 Modify the jar using the `Q` (Quadratic Bézier) to obtain the curved jar. Visualize it side by side.
 
-### Optional
-Create a figure that shows simplified flags of four countries in a table two by two. Add countries images to show it side by side with its flag.
-
 ## Text 
 Save the excerpt below in a `html` file
 and load it.
